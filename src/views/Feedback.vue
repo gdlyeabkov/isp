@@ -45,35 +45,90 @@
       <div style="margin-top: 25px; width:100%;">
         <h1>Предлагаемые тарифы</h1>
         <div class="rates">
-          
-          <div v-for="(rate, rateIdx) in rates" :key="rate.name">
-            <div :style="`background-color: ${colorsOfRates[rateIdx]}`" class="rate">
-              <p class="rateHeader">{{ rate.name }}</p>
-              <div class="rateFeature">
-                <p class="rateSubheader">Скорость</p>
-                <p class="rateHeader">{{ rate.speed }}</p>
-                <p class="rateSubheader">Мбит/сек</p>
-              </div>
-              <div class="rateFeature" v-if="rate.tv">
-                <p class="rateSubheader">Телевидение в пакете</p>
-                <p class="rateHeader">
-                  <span class="material-icons">
-                    tv
-                  </span>
-                {{ rate.tvDesc }}</p>
-                <p class="rateSubheader">Список каналов</p>
-              </div>
-              <div class="rateFeature">
-                <p class="rateSubheader">Стоимость</p>
-                <p class="rateHeader">{{ rate.cost }}</p>
-                <p class="rateSubheader">рублей в месяц</p>
-              </div>
-              <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
+          <div style="background-color: rgb(205, 215, 0);" class="rate">
+            <p class="rateHeader">тв100М/ТВ+/499р</p>
+            <div class="rateFeature">
+              <p class="rateSubheader">Скорость</p>
+              <p class="rateHeader">100</p>
+              <p class="rateSubheader">Мбит/сек</p>
             </div>
+            <div class="rateFeature">
+            <p class="rateSubheader">Телевидение в пакете</p>
+            <p class="rateHeader">
+              <span class="material-icons">
+                tv
+              </span>
+            от 193 каналов + IVI</p>
+            <p class="rateSubheader">Список каналов</p>
+            </div>
+            <div class="rateFeature">
+              <p class="rateSubheader">Стоимость</p>
+              <p class="rateHeader">499</p>
+              <p class="rateSubheader">рублей в месяц</p>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
           </div>
-
-          <!-- здесь тарифы -->
-          
+          <div style="background-color: rgb(75, 75, 75);" class="rate">
+            <p class="rateHeader">Супер u100M/399р</p>
+            <div class="rateFeature">
+              <p class="rateSubheader">Скорость</p>
+              <p class="rateHeader">100</p>
+              <p class="rateSubheader">Мбит/сек</p>
+            </div>
+            <div class="rateFeature">
+              <p class="rateSubheader">Телевидение в пакете</p>
+              <p class="rateHeader">Без ТВ</p>
+              <p class="rateSubheader">Подключается дополнительно</p>
+            </div>
+            <div class="rateFeature">
+              <p class="rateSubheader">Стоимость</p>
+              <p class="rateHeader">399</p>
+              <p class="rateSubheader">рублей в месяц</p>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
+          </div>
+          <div style="background-color: rgb(200, 50, 0);" class="rate">
+            <p class="rateHeader">тв50M/ТВ/390р</p>
+            <div class="rateFeature">
+              <p class="rateSubheader">Скорость</p>
+              <p class="rateHeader">50</p>
+              <p class="rateSubheader">Мбит/сек</p>
+            </div>
+            <div class="rateFeature">
+              <p class="rateSubheader">Телевидение в пакете</p>
+              <p class="rateHeader">
+                <span class="material-icons">
+                  tv
+                </span>
+              от 120 каналов</p>
+              <p class="rateSubheader">Список каналов</p>
+            </div>
+            <div class="rateFeature">
+              <p class="rateSubheader">Стоимость</p>
+              <p class="rateHeader">390</p>
+              <p class="rateSubheader">рублей в месяц</p>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
+          </div>
+          <div style="background-color: rgb(35, 35, 35);" class="rate">
+            <p class="rateHeader">Комфорт u50M/300р</p>
+            <div class="rateFeature">
+              <p class="rateSubheader">Скорость</p>
+              <p class="rateHeader">50</p>
+              <p class="rateSubheader">Мбит/сек</p>
+            </div>
+            <div class="rateFeature">
+              <p class="rateSubheader">Телевидение в пакете</p>
+              <p class="rateHeader">Без ТВ</p>
+              <p class="rateSubheader">Подключается дополнительно</p>
+            </div>
+            <div class="rateFeature">
+              <p class="rateSubheader">Стоимость</p>
+              <p class="rateHeader">300</p>
+              <p class="rateSubheader">рублей в месяц</p>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
+          </div>
         </div>
         <button class="btn btn-lg btn-danger btn-block otherRatesBtn">Прочие тарифы(дешевле или дороже)</button>
         <div class="news">
@@ -83,20 +138,24 @@
             </span>
             Новости
           </p>
-          <!-- здесь новости -->
-          <div v-for="newion in news.filter((newion, newsIdx) => newion.section.includes('news') && newsIdx <= 6)" :key="newion._id">
-            <p><span class="newsItemHeader">{{ `${newion.date.toString().split('T')[0].split('-')[2]}-${newion.date.toString().split('T')[0].split('-')[1]}-${newion.date.toString().split('T')[0].split('-')[0]}` }}</span>{{ newion.name }}</p>
-          </div>
-          <p><span class="newsItemHeader">График работы абонентского отдела в праздники:</span></p>
-          <div v-for="newion in news.filter((newion, newsIdx) => newion.section.includes('shedule') && newsIdx <= 6)" :key="newion._id" >
-            <p><span class="newsItemHeader">{{ `${newion.date.toString().split('T')[0].split('-')[2]}-${newion.date.toString().split('T')[0].split('-')[1]}-${newion.date.toString().split('T')[0].split('-')[0]}` }}</span>{{ newion.name }}</p>
-          </div>
+          <p><span class="newsItemHeader">08-08-2021:</span> Электросталь. Обрыв магистральной оптики. Разбираемся....</p>
 
-          <p @click="$router.push({ name: 'News' })" style="display: flex;">
-            <span style="cursor: pointer;" class="material-icons-outlined">
+          <p><span class="newsItemHeader">13-07-2021</span>: Сегодня, 13.07.2021 г., на центральном узле связи в течение дня будут проводится внеплановые сервисные работы на оборудовании. Возможны крат...</p>
+
+          <p><span class="newsItemHeader">09-06-2021:</span> График работы абонентского отдела в праздники:</p>
+          <p><span class="newsItemHeader">11 июня 2021г.</span> - с 9:00 до 18:00</p>
+          <p><span class="newsItemHeader">12 июня 2021г.</span> - ВЫХОДНОЙ</p>
+          <p>...</p>
+
+          <p><span class="newsItemHeader">28-04-2021</span>: Уважаемые абоненты!</p>
+          <p class="newsItemHeader">График работы абонентского отдела в праздничные дни:</p>
+          <p><span class="newsItemHeader">30 апреля 2021</span> - с 9:00 до 18:00</p>
+
+          <p>
+            <span style="" class="material-icons-outlined">
               arrow_circle_right
             </span>
-            &nbsp;Далее на новости
+            Далее на новости
           </p>
         </div>
         <div class="billboards">
@@ -104,13 +163,13 @@
           <img class="billboard" src="https://flex.ru/media/pic/customer/home/pro/statban/olfr.jpg" alt="">
         </div>
         <div class="socialMedia">
-          <a class="btn btn-primary socialMediaItem" style="background-color: #3b5998;" href="https://www.facebook.com/" role="button">
+          <a class="btn btn-primary socialMediaItem" style="background-color: #3b5998;" href="#!" role="button">
             <i class="fab fa-facebook-f"></i>
           </a>
-          <a class="btn btn-primary socialMediaItem" style="background-color: #3b5998;" href="https://vk.com" role="button">
+          <a class="btn btn-primary socialMediaItem" style="background-color: #3b5998;" href="#!" role="button">
             <i class="fab fa-vk"></i>
           </a>
-          <a class="btn btn-primary socialMediaItem" style="background-color: #3b5998;" href="https://twitter.com/" role="button">
+          <a class="btn btn-primary socialMediaItem" style="background-color: #3b5998;" href="#!" role="button">
             <i class="fab fa-twitter"></i>
           </a>
         </div>
@@ -127,57 +186,10 @@ import Header from '@/components/Header.vue'
 
 export default {
   name: 'Home',
-  data(){
-    return {
-      news: [],
-      rates: [],
-      colorsOfRates: [
-        "rgb(205, 215, 0);",
-        "rgb(75, 75, 75);",
-        "rgb(200, 50, 0);",
-        "rgb(35, 35, 35);",
-      ],
-    }
-  },
   methods: {
     plugIn(){
 
-    },
-    toNews(){
-      this.$router.push({ name: 'News' })
     }
-  },
-  mounted(){
-    fetch(`http://localhost:4000/home/`, {
-      mode: 'cors',
-      method: 'GET'
-    }).then(response => response.body).then(rb  => {
-      const reader = rb.getReader()
-      return new ReadableStream({
-        start(controller) {
-          function push() {
-            reader.read().then( ({done, value}) => {
-              if (done) {
-                console.log('done', done);
-                controller.close();
-                return;
-              }
-              controller.enqueue(value);
-              console.log(done, value);
-              push();
-            })
-          }
-          push();
-        }
-      });
-    }).then(stream => {
-      return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
-    })
-    .then(result => {
-      console.log(`JSON.parse(result): ${JSON.parse(result)}`)
-      this.rates = JSON.parse(result).rates
-      this.news = JSON.parse(result).news
-    });
   },
   components: {
     Header,
