@@ -6,12 +6,6 @@
         <!-- </div> -->
         <div v-if="!auth">
             <div v-if="!area" style="display: flex; justify-content: space-around;">
-                <p class="personalArea" style="display: flex;">
-                  Личный кабинет
-                  <span @click="toPage('PersonalArea')" class="material-icons" style="margin-left: 15px; align-self: center;">
-                      settings
-                  </span>
-                </p>
                 <p class="support" style="display: flex;">
                   Контактная информация
                   <span @click="toPage('Feedback')" class="material-icons" style="margin-left: 15px; align-self: center;">
@@ -24,7 +18,12 @@
                     support
                   </span>
                 </p>
-                
+                <p class="personalArea" ref="personalArea" style="display: flex;">
+                  Личный кабинет
+                  <span @click="openLoginWindow()" class="material-icons" style="margin-left: 15px; align-self: center;">
+                      settings
+                  </span>
+                </p>
             </div>
             <div v-else-if="area">
                 <p class=" logout" style="display: flex;">
@@ -42,13 +41,88 @@
 export default {
     name: 'Header',
     props: [
-        'auth',
-        'area'
+      'auth',
+      'area'
     ],
+    data(){
+      return {
+        loginToggler: false,
+        loginWindow: null,
+        loginWindowInputClientId: null,
+        loginWindowInputPassword: null,
+        loginWindowButton: null,
+      }
+    },
     methods: {
-        toPage(pageName){
-            this.$router.push({ name: pageName })
+      openLoginWindow(){
+        this.loginToggler = !this.loginToggler
+        if(this.loginToggler){
+          this.$refs.personalArea.style = `
+            background-color: rgb(225, 225, 225);
+            color: white;
+          `
+          this.loginWindow =  document.createElement("div")
+          this.loginWindow.style = `
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 70px;
+            left: 825px;
+            width: 400px;
+            height: 200px;
+            background-color: rgb(225, 225, 225);
+            border: 2px solid rgb(200, 200, 200);
+          `
+          this.loginWindowInputClientId =  document.createElement("input")
+          this.loginWindowInputClientId.type = "text"
+          this.loginWindowInputClientId.id = "inputClientId"
+          this.loginWindowInputClientId.classList.add("form-control")
+          this.loginWindowInputClientId.placeholder = "Client id"
+          this.loginWindowInputClientId.required = ""
+          this.loginWindowInputClientId.autofocus = ""
+          this.loginWindowInputClientId.style = `
+            width: 175px;
+            margin: 5px;
+          `
+          this.loginWindowInputClientId.setAttribute("v-model", "clientid")
+          this.loginWindow.appendChild(this.loginWindowInputClientId)
+          this.loginWindowInputPassword =  document.createElement("input")
+          this.loginWindowInputPassword.type = "password"
+          this.loginWindowInputPassword.id = "inputPassword"
+          this.loginWindowInputPassword.classList.add("form-control")
+          this.loginWindowInputPassword.placeholder = "Пароль"
+          this.loginWindowInputPassword.required = ""
+          this.loginWindowInputPassword.autofocus = ""
+          this.loginWindowInputPassword.style = `
+            width: 175px;
+            margin: 5px;
+          `
+          this.loginWindowInputPassword.setAttribute("v-model", "password")
+          this.loginWindow.appendChild(this.loginWindowInputPassword)
+          this.loginWindowBtn = document.createElement("button")
+          this.loginWindowBtn.classList.add("btn")
+          this.loginWindowBtn.classList.add("btn-lg")
+          this.loginWindowBtn.classList.add("btn-primary")
+          this.loginWindowBtn.classList.add("btn-block")
+          this.loginWindowBtn.classList.add("loginBtn")
+          
+          // letloginWindowBtn.setAttribute("@click", "login()")
+          this.loginWindowBtn.textContent = "Войти"
+          this.loginWindow.appendChild(this.loginWindowBtn)
+          document.body.appendChild(this.loginWindow)
+        } else if(!this.loginToggler){
+          this.$refs.personalArea.style = `
+            background-color: transparent;
+            color: black;
+          `
+          this.loginWindow.remove()
         }
+      },  
+      toPage(pageName){
+          this.$router.push({ name: pageName })
+      }
     }
 }
 </script>
