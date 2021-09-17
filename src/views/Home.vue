@@ -100,8 +100,9 @@
           </p>
         </div>
         <div class="billboards">
-          <img class="billboard" src="https://flex.ru/media/pic/customer/home/pro/statban/smotr.jpg" alt="">
-          <img class="billboard" src="https://flex.ru/media/pic/customer/home/pro/statban/olfr.jpg" alt="">
+          <div v-for="ad in ads" :key="ad._id">
+            <img class="billboard" :src="ad.url" alt="">
+          </div>
         </div>
         <div class="socialMedia">
           <a class="btn btn-primary socialMediaItem" style="background-color: #3b5998;" href="https://www.facebook.com/" role="button">
@@ -131,6 +132,7 @@ export default {
     return {
       news: [],
       rates: [],
+      ads: [],
       colorsOfRates: [
         "rgb(205, 215, 0);",
         "rgb(75, 75, 75);",
@@ -177,6 +179,7 @@ export default {
       console.log(`JSON.parse(result): ${JSON.parse(result)}`)
       this.rates = JSON.parse(result).rates
       this.news = JSON.parse(result).news
+      this.ads = JSON.parse(result).ads
     });
   },
   components: {
@@ -201,6 +204,7 @@ export default {
     align-items: center;
     float: left;
     height: 2300px;
+    overflow-y: auto;
   }
 
   .header {

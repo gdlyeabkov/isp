@@ -1,6 +1,9 @@
 <template>
     <div class="header">
-        <p>ISP</p>
+        <!-- <div style="display: flex; height: 100%;"> -->
+          <p>ISP</p>
+          <!-- <img style="height: 100%;" src="https://lk.flex.ru/blocks/pre/1/logo.png"> -->
+        <!-- </div> -->
         <div v-if="!auth">
             <div v-if="!area" style="display: flex; justify-content: space-around;">
                 <p class="personalArea" style="display: flex;">
@@ -11,13 +14,13 @@
                 </p>
                 <p class="support" style="display: flex;">
                   Контактная информация
-                  <span class="material-icons" style="margin-left: 15px; align-self: center;">
+                  <span @click="toPage('Feedback')" class="material-icons" style="margin-left: 15px; align-self: center;">
                     call
                   </span>
                 </p>
                 <p class="feedback" style="display: flex;">
                   Техническая поддержка
-                  <span class="material-icons" style="margin-left: 15px; align-self: center;">
+                  <span @click="toPage('Support')" class="material-icons" style="margin-left: 15px; align-self: center;">
                     support
                   </span>
                 </p>
@@ -69,7 +72,9 @@ export default {
   }
 
   .header {
-    height: 75px;
+    overflow: hidden;
+    /* height: 75px; */
+    min-height: 75px;
     width: 100%;
     background-color: rgb(235, 235, 235);
   }

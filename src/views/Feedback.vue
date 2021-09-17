@@ -5,173 +5,117 @@
       
     </div>
     <div class="main">
-      <div class="ads">
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image: url('https://www.malls.ru/upload/medialibrary/e92/tpu-shchelkovskiy.jpg'); background-size: cover; height: 250px;">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Открытие нового центра обслуживания абонентов.</h5>
-                <p>Друзья открылся новый центр обслуживания абонентов.</p>
-              </div>
-            </div>
-            <div class="carousel-item" style="background-image: url('https://cdn5.vedomosti.ru/crop/image/2016/61/1eq7nx/original-1tqr.jpg?height=609&width=1082'); background-size: cover; height: 250px;">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Множество онлайн кинотеатров в мобильном приложении.</h5>
-                <p>Доступно бесплатно в Google Play и App Store.</p>
-              </div>
-            </div>
-            <div class="carousel-item" style="background-image: url('https://moscow.shop.megafon.ru/images/goods/1058/105860_p_8_3.jpg'); background-size: cover; height: 250px;">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Роутер в рассрочку</h5>
-                <p>50 руб. в месяц.</p>
-              </div>
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>      
       <div style="margin-top: 25px; width:100%;">
-        <h1>Предлагаемые тарифы</h1>
-        <div class="rates">
-          <div style="background-color: rgb(205, 215, 0);" class="rate">
-            <p class="rateHeader">тв100М/ТВ+/499р</p>
-            <div class="rateFeature">
-              <p class="rateSubheader">Скорость</p>
-              <p class="rateHeader">100</p>
-              <p class="rateSubheader">Мбит/сек</p>
-            </div>
-            <div class="rateFeature">
-            <p class="rateSubheader">Телевидение в пакете</p>
-            <p class="rateHeader">
-              <span class="material-icons">
-                tv
-              </span>
-            от 193 каналов + IVI</p>
-            <p class="rateSubheader">Список каналов</p>
-            </div>
-            <div class="rateFeature">
-              <p class="rateSubheader">Стоимость</p>
-              <p class="rateHeader">499</p>
-              <p class="rateSubheader">рублей в месяц</p>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
-          </div>
-          <div style="background-color: rgb(75, 75, 75);" class="rate">
-            <p class="rateHeader">Супер u100M/399р</p>
-            <div class="rateFeature">
-              <p class="rateSubheader">Скорость</p>
-              <p class="rateHeader">100</p>
-              <p class="rateSubheader">Мбит/сек</p>
-            </div>
-            <div class="rateFeature">
-              <p class="rateSubheader">Телевидение в пакете</p>
-              <p class="rateHeader">Без ТВ</p>
-              <p class="rateSubheader">Подключается дополнительно</p>
-            </div>
-            <div class="rateFeature">
-              <p class="rateSubheader">Стоимость</p>
-              <p class="rateHeader">399</p>
-              <p class="rateSubheader">рублей в месяц</p>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
-          </div>
-          <div style="background-color: rgb(200, 50, 0);" class="rate">
-            <p class="rateHeader">тв50M/ТВ/390р</p>
-            <div class="rateFeature">
-              <p class="rateSubheader">Скорость</p>
-              <p class="rateHeader">50</p>
-              <p class="rateSubheader">Мбит/сек</p>
-            </div>
-            <div class="rateFeature">
-              <p class="rateSubheader">Телевидение в пакете</p>
-              <p class="rateHeader">
-                <span class="material-icons">
-                  tv
-                </span>
-              от 120 каналов</p>
-              <p class="rateSubheader">Список каналов</p>
-            </div>
-            <div class="rateFeature">
-              <p class="rateSubheader">Стоимость</p>
-              <p class="rateHeader">390</p>
-              <p class="rateSubheader">рублей в месяц</p>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
-          </div>
-          <div style="background-color: rgb(35, 35, 35);" class="rate">
-            <p class="rateHeader">Комфорт u50M/300р</p>
-            <div class="rateFeature">
-              <p class="rateSubheader">Скорость</p>
-              <p class="rateHeader">50</p>
-              <p class="rateSubheader">Мбит/сек</p>
-            </div>
-            <div class="rateFeature">
-              <p class="rateSubheader">Телевидение в пакете</p>
-              <p class="rateHeader">Без ТВ</p>
-              <p class="rateSubheader">Подключается дополнительно</p>
-            </div>
-            <div class="rateFeature">
-              <p class="rateSubheader">Стоимость</p>
-              <p class="rateHeader">300</p>
-              <p class="rateSubheader">рублей в месяц</p>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
-          </div>
-        </div>
-        <button class="btn btn-lg btn-danger btn-block otherRatesBtn">Прочие тарифы(дешевле или дороже)</button>
-        <div class="news">
+        <div style="text-align: left;">
+          <p><a style="cursor: pointer;" @click="$router.push({ name: 'Home' })">ISP</a> > Контакты</p>
           <p class="newsHeader">
-            <span class="material-icons">
-              description
-            </span>
-            Новости
+            Контакты и реквизиты
           </p>
-          <p><span class="newsItemHeader">08-08-2021:</span> Электросталь. Обрыв магистральной оптики. Разбираемся....</p>
+          <p>Полное наименование:</p>
+          <p>Общество с ограниченной ответственностью «ФЛЕКС»</p>
+          <p>Сокращенное наименование: ООО «ФЛЕКС»</p>
+          <p>Наименование на английском языке: «Flex» Ltd.</p>
 
-          <p><span class="newsItemHeader">13-07-2021</span>: Сегодня, 13.07.2021 г., на центральном узле связи в течение дня будут проводится внеплановые сервисные работы на оборудовании. Возможны крат...</p>
+          <p>ИНН 5031018470</p>
+          <p>КПП 503101001</p>
+          <p>ОГРН 1035006102240</p>
+          <p>ОКВЭД 64.20</p>
+          <p>ОКТМО 46639101</p>
 
-          <p><span class="newsItemHeader">09-06-2021:</span> График работы абонентского отдела в праздники:</p>
-          <p><span class="newsItemHeader">11 июня 2021г.</span> - с 9:00 до 18:00</p>
-          <p><span class="newsItemHeader">12 июня 2021г.</span> - ВЫХОДНОЙ</p>
-          <p>...</p>
+            <table bgcolor="white">
+              <tr>
+                <td style="width: 500px;">Телефон/факс:</td>
+                <td style="width: 300px;">8(495)600-42-13</td>
+              </tr>
+              <tr>
+                <td style=""></td>
+                <td style="">8(495)600-42-11</td>
+              </tr>
+              <tr>
+                <td style=""></td>
+                <td style="">8(495)702-94-49</td>
+              </tr>
+              <tr>
+                <td style=""></td>
+                <td style="">8(495)995-52-40</td>
+              </tr>
+              <tr>
+                <td style=""></td>
+                <td style="">8(496)510-12-00</td>
+              </tr>
+              <tr>
+                <td style="">Служба технической поддержки:</td>
+                <td style="">8(495)600-42-11, 8(906) 70-111-70</td>
+              </tr>
+              <tr>
+                <td style="">Адрес компании:</td>
+                <td style="">Россия, 142403, Московская область, Богородский городской округ, г. Ногинск, пл. Ленина, 11</td>
+              </tr>
+              <tr>
+                <td style="">Офис обслуживания физических лиц (абонентский отдел):</td>
+                <td style="">Богородский городской округ, Ногинск, Трудовая улица, д. 5</td>
+              </tr>
+              <tr>
+                <td style="">Офис обслуживания юридических лиц и ИП (коммерческий отдел):</td>
+                <td style="">Богородский городской округ, г. Ногинск, пл. Ленина, 11</td>
+              </tr>
+              <tr>
+                <td style="">Режим работы подразделений и служб ГК "ФЛЕКС":</td>
+                <td style=""></td>
+              </tr>
+              <tr>
+                <td style="">Служба технической поддержки:</td>
+                <td style="">круглосуточно;</td>
+              </tr>
+              <tr>
+                <td style="">Офис обслуживания физических лиц (абонентский отдел):</td>
+                <td style="">рабочие дни - 9:00-19:00 (без перерыва на обед), суббота - 10:00-16:00 (без перерыва на обед), воскресенье - выходной;</td>
+              </tr>
+              <tr>
+                <td style="">Офис обслуживания юридических лиц и ИП (коммерческий отдел):</td>
+                <td style="">рабочие дни - 09:00-18:00 (обеденный перерыв - 13:00-14:00), пятница – 09.00-17.00 (обеденный перерыв – 13:00-14:00) суббота, воскресенье - выходной;</td>
+              </tr>
+              <tr>
+                <td style="">Бухгалтерия:</td>
+                <td style="">рабочие дни - 09:00-18:00 (обеденный перерыв - 13:00-14:00) пятница - 09.00-17.00 (обеденный перерыв - 13:00-14:00) суббота, воскресенье – выходной.</td>
+              </tr>
+              <tr>
+                <td style="">Остальные подразделения и службы:</td>
+                <td style="">рабочие дни - 09:00-18:00 (обеденный перерыв - 13:00-14:00) суббота, воскресенье - выходной</td>
+              </tr>
+              <tr>
+                <td style="">E-mail:</td>
+                <td style=""></td>
+              </tr>
+              <tr>
+                <td style="">Общая информация:</td>
+                <td style="">info@flex.ru</td>
+              </tr>
+              <tr>
+                <td style="">Технический отдел:</td>
+                <td style="">support@flex.ru</td>
+              </tr>
+              <tr>
+                <td style="">Бухгалтерия:</td>
+                <td style="">billing@flex.ru</td>
+              </tr>
+              <tr>
+                <td style="">Абонентская служба:</td>
+                <td style="">abon@flex.ru</td>
+              </tr>
+              <tr>
+                <td style="">Коммерческий отдел:</td>
+                <td style="">info@flex.ru</td>
+              </tr>
+            </table>
+            <p>ФЛЕКС на карте:</p>
+            <div class="map">
 
-          <p><span class="newsItemHeader">28-04-2021</span>: Уважаемые абоненты!</p>
-          <p class="newsItemHeader">График работы абонентского отдела в праздничные дни:</p>
-          <p><span class="newsItemHeader">30 апреля 2021</span> - с 9:00 до 18:00</p>
+            </div>
+            <p>Офис обслуживания организаций и ИП:</p>
+            <div class="map">
 
-          <p>
-            <span style="" class="material-icons-outlined">
-              arrow_circle_right
-            </span>
-            Далее на новости
-          </p>
-        </div>
-        <div class="billboards">
-          <img class="billboard" src="https://flex.ru/media/pic/customer/home/pro/statban/smotr.jpg" alt="">
-          <img class="billboard" src="https://flex.ru/media/pic/customer/home/pro/statban/olfr.jpg" alt="">
-        </div>
-        <div class="socialMedia">
-          <a class="btn btn-primary socialMediaItem" style="background-color: #3b5998;" href="#!" role="button">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a class="btn btn-primary socialMediaItem" style="background-color: #3b5998;" href="#!" role="button">
-            <i class="fab fa-vk"></i>
-          </a>
-          <a class="btn btn-primary socialMediaItem" style="background-color: #3b5998;" href="#!" role="button">
-            <i class="fab fa-twitter"></i>
-          </a>
+            </div>
         </div>
       </div>
     </div>
@@ -331,6 +275,13 @@ export default {
 
   .personalArea {
     cursor: pointer;
+  }
+
+  .map {
+    display:block;
+    width: 250px;
+    height: 250px;
+    background-color: rgb(245, 245, 245);
   }
 
 </style>

@@ -1,32 +1,15 @@
 <template>
   <div>
-    <Header :auth="false" :area="false"/>
+    <Header :auth="true" :area="false"/>
     <div class="aside">
       
     </div>
     <div class="main">
-      <div style="margin-top: 25px; width:85%;">
-        <div style="text-align: left;">
-          <p><a style="cursor: pointer;" @click="$router.push({ name: 'Home' })">ISP</a> > Лицензии</p>
-          <p class="newsHeader">
-            Лицензии
-          </p>
-          <table bgcolor="white" border="1">
-            <tr>
-              <td style="border: 4px double black;">Дата выдачи</td>
-              <td style="border: 4px double black;">Наименование документа</td>
-              <td style="border: 4px double black;">Примечание</td>
-            </tr>
-            <tr border="1" v-for="license in licenses" :key="license._id">
-              <!-- <tr> -->
-                <td style="border: 4px double black;">{{ `${license.date.toString().split('T')[0].split('-')[2]}.${license.date.toString().split('T')[0].split('-')[1]}.${license.date.toString().split('T')[0].split('-')[0]}` }}</td>
-                <td style="border: 4px double black;">{{ license.name }}</td>
-                <td style="border: 4px double black;">{{ license.note }}</td>
-              <!-- </tr> -->
-            </tr>
-          </table>
-
-        </div>
+      <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+        <label for="inputUrl" class="labelRateField">Ссылка на объявление</label>
+        <input  v-model="adsUrl" type="text" id="inputUrl" class="form-control inputRateField" placeholder="Ссылка на объявление" required="" autofocus="">
+        <button @click="register()" class="btn btn-lg btn-primary btn-block registerBtn">Создать объявление</button>
+        <div class="customErrors">{{ errors }}</div>
       </div>
     </div>
     <br style="clear: both"/>
@@ -39,46 +22,47 @@ import Footer from '@/components/Footer.vue'
 import Header from '@/components/Header.vue'
 
 export default {
-  name: 'Licenses',
+  name: 'NewsRegiser',
   data(){
     return {
-      licenses: [],
+      adsUrl: "",
       errors: ''
     }
   },
   methods: {
-    
-  },
-  mounted(){
-    fetch(`http://localhost:4000/home/`, {
-      mode: 'cors',
-      method: 'GET'
-    }).then(response => response.body).then(rb  => {
-      const reader = rb.getReader()
-      return new ReadableStream({
-        start(controller) {
-          function push() {
-            reader.read().then( ({done, value}) => {
-              if (done) {
-                console.log('done', done);
-                controller.close();
-                return;
-              }
-              controller.enqueue(value);
-              console.log(done, value);
-              push();
-            })
+    register(){
+      fetch(`http://localhost:4000/ads/create/?adsurl=${this.adsUrl}`, {
+        mode: 'cors',
+        method: 'GET'
+      }).then(response => response.body).then(rb  => {
+        const reader = rb.getReader()
+        return new ReadableStream({
+          start(controller) {
+            function push() {
+              reader.read().then( ({done, value}) => {
+                if (done) {
+                  console.log('done', done);
+                  controller.close();
+                  return;
+                }
+                controller.enqueue(value);
+                console.log(done, value);
+                push();
+              })
+            }
+            push();
           }
-          push();
+        });
+    }).then(stream => {
+        return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+      })
+      .then(result => {
+        if(JSON.parse(result).status.includes("OK")){
+          console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+          this.$router.push({ name: 'Home' })
         }
       });
-    }).then(stream => {
-      return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
-    })
-    .then(result => {
-      console.log(`JSON.parse(result): ${JSON.parse(result)}`)
-      this.licenses = JSON.parse(result).licenses
-    });
+    }
   },
   components: {
     Header,
@@ -220,6 +204,20 @@ export default {
 
   .personalArea {
     cursor: pointer;
+  }
+
+  .inputRateField {
+    width: 500px;
+    margin: 15px;
+  }
+  
+  .labelRateField {
+    margin-top: 35px;
+  }
+
+  .measure {
+    align-self: center;
+    font-weight: bold;
   }
 
 </style>

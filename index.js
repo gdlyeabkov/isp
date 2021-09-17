@@ -50,7 +50,7 @@ const NewsSchema = new mongoose.Schema({
     }
 }, { collection : 'mynews' });
 
-const LicenseSchema = new mongoose.Schema({
+const LicensesSchema = new mongoose.Schema({
     name: String,
     note: String,
     date: {
@@ -59,7 +59,13 @@ const LicenseSchema = new mongoose.Schema({
     }
 }, { collection : 'mylicenses' });
 
-const LicenseModel = mongoose.model('LicenseModel', LicenseSchema);
+const AdsSchema = new mongoose.Schema({
+    url: String
+}, { collection : 'myads' });
+
+const AdsModel = mongoose.model('AdsModel', AdsSchema);
+
+const LicensesModel = mongoose.model('LicensesModel', LicensesSchema);
 
 const NewsModel = mongoose.model('NewsModel', NewsSchema);
 
@@ -246,7 +252,13 @@ app.get('/home', async (req, res)=>{
                 if (err){
                     return res.json({ "status": "Error" })
                 }
-                return res.json({ "rates": allRates, "news": allNews, "licenses": allLicenses, "status": "OK" })
+                let queryOfAds = AdsModel.find({})
+                queryOfAds.exec(async (err, allAds) => {
+                    if (err){
+                        return res.json({ "status": "Error" })
+                    }
+                    return res.json({ "rates": allRates, "news": allNews, "licenses": allLicenses, "ads": allAds, "status": "OK" })
+                })
             })
         })
     })
@@ -351,6 +363,38 @@ app.get('/licenses/create', async (req, res)=>{
     })
 })
 
+app.get('/ads/create', async (req, res)=>{
+    
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+   
+    let queryOfAds = AdsModel.find({})
+    queryOfAds.exec(async (err, allAds) => {
+        if (err){
+            return res.json({ "status": "Error" })
+        }
+        let adsExists = false
+        allAds.forEach(ads => {
+            if(ads.url.includes(req.query.adsname)){
+                adsExists = true
+            }
+        })
+        if(adsExists){
+            return res.json({ "status": "Error" })
+        } else {
+
+            let newAds = await new AdsModel({ url: req.query.adsurl });
+            newAds.save(function (err) {
+                if(err){
+                    return res.json({ "status": "Error" })
+                }
+                return res.json({ "status": "OK" })
+            })
+        }
+    })
+})
 
 app.get("**", (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');

@@ -11,6 +11,9 @@ import NewsRegister from '../views/NewsRegister.vue'
 import News from '../views/News.vue'
 import LicenseRegister from '../views/LicenseRegister.vue'
 import Licenses from '../views/Licenses.vue'
+import Ads from '../views/Ads.vue'
+import Regulations from '../views/Regulations.vue'
+import ErrorsConnection from '../views/ErrorsConnection.vue'
 
 Vue.use(VueRouter)
 
@@ -69,8 +72,22 @@ const routes = [
     path: '/licenses/register',
     name: 'LicenseRegister',
     component: LicenseRegister
+  },
+  {
+    path: '/ads/register',
+    name: 'Ads',
+    component: Ads
+  },
+  {
+    path: '/support/regulations',
+    name: 'Regulations',
+    component: Regulations
+  },
+  {
+    path: '/support/errors',
+    name: 'ErrorsConnection',
+    component: ErrorsConnection
   }
-  
   
 ]
 
