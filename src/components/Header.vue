@@ -27,7 +27,7 @@
               settings
             </span>
             <div v-if="loginToggler" style="display: flex; flex-direction: column; align-items: center; justify-content: center; position: absolute; top: 70px; left: 825px; width: 400px; height: 200px; background-color: rgb(225, 225, 225); border: 2px solid rgb(200, 200, 200); z-index: 5; border-radius: 8px;">
-              <input v-model="clientid" type="text" id="inputClientId" class="form-control" placeholder="Client id" required="" autofocus="" style="width: 275px; margin: 5px;">
+              <input v-model="clientid" type="text" id="inputClientId" class="form-control" placeholder="Client id" required="" autofocus="" style="width: 215px; margin: 5px;">
               <!-- <input ref="passwordfield" v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Пароль" required="" style="width: 275px; margin: 5px;"/> -->
               <div style="display: flex; text-align: center;">
                 <input ref="passwordfield" v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Пароль" required=""/>

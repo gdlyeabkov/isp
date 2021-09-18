@@ -5,6 +5,53 @@
       
     </div>
     <div class="main">
+      <div style="width: 100%; background-color: rgb(35, 35, 35); display: flex; justify-content: flex-start;">
+        <div style="width: 65%; background-color: rgb(35, 35, 35); display: flex; justify-content: space-around; margin-left: 75px;">
+          <p @mouseenter="drawSubMenu(1)" @mouseout="drawSubMenu(1)" class="subHeaderItem" style="color: rgb(255, 255, 255); font-size: 18px; cursor: pointer;">
+            Интернет
+          </p>
+          <p  @mouseenter="drawSubMenu(2)" @mouseout="drawSubMenu(2)" style="color: rgb(255, 255, 255); font-size: 18px; cursor: pointer;">
+            Телевидение
+          </p>
+          <p  @mouseenter="drawSubMenu(3)" @mouseout="drawSubMenu(3)" style="color: rgb(255, 255, 255); font-size: 18px; cursor: pointer;">
+            Телефония
+          </p>
+          <p  @mouseenter="drawSubMenu(4)" @mouseout="drawSubMenu(4)" style="color: rgb(255, 255, 255); font-size: 18px; cursor: pointer;">
+            Домофоны
+          </p>
+        </div>
+        
+        <div v-if="subMenuOne" style="width: 285px; min-height: 250px; border: 1px solid red; background-color: rgb(200, 200, 200); position: absolute; top: 115px; left: 200px; z-index: 10;">
+          <p>Подключённые дома</p>
+          <p>Тарифы для квартиры и дома</p>
+          <p>Тарифы индивидуальный радиоканал</p>
+          <p>Заявка на подключение</p>
+          <p>Способы оплаты</p>
+          <p>Настройки компьютера или роутера</p>
+          <p>Турбокнопка</p>
+          <p>Временная блокировка</p>
+          <p>Наши партнёры</p>
+          <p>Регламент технической поддержки</p>
+          <p>Гостевая книга</p>
+          <p>Публичная оферта</p>
+          <p>Роутер в рассрочку</p>
+        </div>
+        <div v-if="subMenuTwo" style="width: 255px; height: 250px; border: 1px solid red; background-color: rgb(200, 200, 200); position: absolute; top: 115px; left: 455px; z-index: 11;">
+          <p>Интерактивное телевидение "Смотрёшка"</p>
+          <p>Системы коллективного приёма</p>
+          <p>Медиаплеер для "Смотрёшки"</p>
+        </div>
+        <div v-if="subMenuThree" style="width: 225px; height: 250px; border: 1px solid red; background-color: rgb(200, 200, 200); position: absolute; top: 115px; left: 655px; z-index: 12;">
+          <p>Тарифы на телефонную связь</p>
+          <p>Заявка на подключение</p>
+          <p>Способы оплаты</p>
+        </div>
+        <div v-if="subMenuFour" style="width: 285px; height: 250px; border: 1px solid red; background-color: rgb(200, 200, 200); position: absolute; top: 115px; left: 845px; z-index: 13;">
+          <p>"УМНЫЙ ДОМОФОН"</p>
+          <p>ДОМОФОННЫЕ СИСТЕМЫ</p>
+        </div>
+
+      </div>
       <div class="ads">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
@@ -139,9 +186,25 @@ export default {
         "rgb(200, 50, 0);",
         "rgb(35, 35, 35);",
       ],
+      subMenuOne: false,
+      subMenuTwo: false,
+      subMenuThree: false,
+      subMenuFour: false
     }
   },
   methods: {
+    drawSubMenu(idx){
+      console.log(`idx: ${idx}`);
+      if(idx === 1){
+        this.subMenuOne = !this.subMenuOne
+      } else if(idx === 2){
+        this.subMenuTwo = !this.subMenuTwo
+      } else if(idx === 3){
+        this.subMenuThree = !this.subMenuThree
+      } else if(idx === 4){
+        this.subMenuFour = !this.subMenuFour
+      }
+    },
     plugIn(){
 
     },
@@ -323,6 +386,10 @@ export default {
 
   .personalArea {
     cursor: pointer;
+  }
+
+  .subHeaderItem:hover {
+    color: green;
   }
 
 </style>
