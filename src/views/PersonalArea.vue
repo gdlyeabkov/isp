@@ -1,17 +1,61 @@
 <template>
   <div>
-    <Header :auth="false" :area="true" />
+    <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" />
     <div class="aside">
-      
+      <p>Новости и уведомления</p>
+      <hr/>
+      <p>Лицевой счет</p>
+      <hr/>
+      <p>Тарифный план</p>
+      <hr/>
+      <p>Данные по трафику</p>
+      <hr/>
+      <p>Турбокнопка</p>
+      <hr/>
+      <p>Пароль на доступ в интернет</p>
+      <hr/>
+      <p>Данные по соединениям</p>
+      <hr/>
+      <p>Статистика платежей</p>
+      <hr/>
+      <p>Статистика списаний</p>
+      <hr/>
+      <p>Финансовые документы</p>
+      <hr/>
+      <p>Активация карты оплаты</p>
+      <hr/>
+      <p>Оплата банковской картой</p>
+      <hr/>
+      <p>Обещанный платеж</p>
+      <hr/>
+      <p>Оплата услуг</p>
+      <hr/>
+      <p>Блокировка учетной записи</p>
+      <hr/>
+      <p>Смотрёшка</p>
+      <hr/>
+      <p>Антивирус Dr.Web</p>
+      <hr/>
+      <p>Статический IP адрес</p>
+      <hr/>
+      <p>SMS уведомления</p>
+      <hr/>
+      <p>Настройки</p>
+      <hr/>
+      <p>Помощь по ЛК</p>
+      <hr/>
+      <p>Выход</p>
     </div>
     <div class="main">
-      <div style="margin-top: 25px; width:100%;">
+      <div style="background: rgb(92,194,207); background: linear-gradient(90deg, rgba(92,194,207,1) 0%, rgba(255,255,255,1) 100%); align-self: center; width: 100%; color: rgb(255, 255, 255); font-size: 28px;">
         <p>Личный кабинет: Интернет</p>
-        <p>Лицевой счет абонента № {{ clientId }}</p>
-        <p>Имя пользователя: {{ clientName }}</p>
-        <p>Баланс лицевого счета: {{ personalAccountBonus }}</p>
-        <p>Действующий тарифный план: {{ clientRate }}</p>
-        <p>Бонусная скидка: {{ personalAccountBonus }}%</p>
+      </div>
+      <div style="margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start;">
+        <p style="font-size: 20px; text-align: left;">Лицевой счет абонента № {{ clientId }}</p>
+        <p>Имя пользователя: <span style="font-weight: bolder;">{{ clientName }}</span></p>
+        <p>Баланс лицевого счета: <span style="font-weight: bolder;">{{ personalAccountBonus }}Ք</span></p>
+        <p>Действующий тарифный план: <span style="font-weight: bolder;">{{ clientRate }}</span></p>
+        <p><span style="color: rgb(0, 0, 255);">Бонусная скидка:</span> <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span></p>
       </div>
     </div>
     <br style="clear: both"/>
@@ -23,15 +67,62 @@
 import Footer from '@/components/Footer.vue'
 import Header from '@/components/Header.vue'
 
+import * as jwt from 'jsonwebtoken'
+
 export default {
   name: 'PersonalArea',
   data(){
     return {
+      _id: '',
       clientId: '411269',
       clientName: 'all-4973',
       clientRate: 'Супер u100M/399р',
       personalAccountBonus: 221.5,
+      balance: 0,
+      token: window.localStorage.getItem("isptoken"),
     }
+  },
+  mounted(){
+    jwt.verify(this.token, 'ispsecret', async (err, decoded) => {
+      if (err) {
+        this.$router.push({ name: "Home" })
+      } else {
+        console.log(`decoded.clientId: ${decoded.clientId}`)
+        fetch(`http://localhost:4000/clients/get/?clientid=${decoded.clientId}`, {
+          mode: 'cors',
+          method: 'GET'
+        }).then(response => response.body).then(rb  => {
+          const reader = rb.getReader()
+          return new ReadableStream({
+            start(controller) {
+              function push() {
+                reader.read().then( ({done, value}) => {
+                  if (done) {
+                    console.log('done', done);
+                    controller.close();
+                    return;
+                  }
+                  controller.enqueue(value);
+                  console.log(done, value);
+                  push();
+                })
+              }
+              push();
+            }
+          });
+        }).then(stream => {
+          return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+        })
+        .then(result => {
+          console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+          this.clientId = JSON.parse(result).client.clientId 
+          this.clientName = JSON.parse(result).client.name
+          this.clientRate = JSON.parse(result).client.rate
+          this.personalAccountBonus = JSON.parse(result).client.personalAccountBonus
+          this.balance = JSON.parse(result).client.balance
+        });
+      }
+    })
   },
   methods: {
     plugIn(){
@@ -49,12 +140,12 @@ export default {
   .aside {
     float: left;
     height: 2300px;
-    width: 15%;
+    width: 25%;
     background-color: rgb(205, 205, 205);
   }
   .main {
     background-color: rgb(225, 225, 225);
-    width: 85%;
+    width: 75%;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -175,6 +266,10 @@ export default {
 
   .billboard {
     width: 100%;
+  }
+
+  .aside > p {
+    color: rgb(0, 0, 255);
   }
 
 </style>

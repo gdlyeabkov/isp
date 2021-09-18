@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :auth="false" :area="false"/>
+    <Header :auth="false" :area="false" :minheight="75" :balance="0" :bonus="0" :clientId="''" :clientName="''" />
     <div class="aside">
       
     </div>
@@ -239,7 +239,7 @@ export default {
 
   .ads {
     width: 50%;
-    
+    margin-top: 15px;
     background-color: rgb(0, 0, 0); 
   }
 

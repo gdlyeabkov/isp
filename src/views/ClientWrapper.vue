@@ -1,30 +1,18 @@
 <template>
   <div>
-    <Header :auth="true" :area="false" :minheight="75" :balance="0" :bonus="0" :clientId="''" :clientName="''" />
+    <Header :auth="false" :area="false" :minheight="75" :balance="0" :bonus="0" :clientId="''" :clientName="''" />
     <div class="aside">
       
     </div>
     <div class="main">
-      <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-        <label for="inputName" class="labelRateField">Название тарифа</label>
-        <input  v-model="rateName" type="text" id="inputName" class="form-control inputRateField" placeholder="Название тарифа" required="" autofocus="">
-        <label for="inputSpeed" class="labelRateField">Скорость тарифа</label>
-        <div style="display: flex;">
-          <input  v-model="rateSpeed" type="number" id="inputSpeed" class="form-control inputRateField" placeholder="Скорость тарифа" required="" autofocus="">
-          <span class="measure">Мб/с</span>
-        </div>
-        <label for="inputTV" class="labelRateField">Поддержка ТВ</label>
-        <input  @change="debug()" v-model="rateTV" type="checkbox" id="inputTV" required="" autofocus="" class="inputRateField">
-        <label for="inputTVDesc" class="labelRateField">Описание поддержки TV</label>
-        <input :disabled="!rateTV" v-model="rateTVDesc" type="text" id="inputTVDesc" class="form-control inputRateField" placeholder="Описание поддержки TV" required="" autofocus="">
-        <label for="inputWriteOff" class="labelRateField">Ежемесячное списание</label>
-        <div style="display: flex;">
-          <input  v-model="rateWriteOff" type="number" id="inputWriteOff" class="form-control inputRateField" placeholder="Ежемесячное списание" required="" autofocus="">
-          <span class="measure">Р</span>
-        </div>
-        <button @click="register()" class="btn btn-lg btn-primary btn-block registerBtn">Создать новый тариф</button>
-        <div class="customErros">{{ errors }}</div>
+      <h1>Регистрация клиента</h1>
+      <input v-model="clientName" type="text" id="inputName" class="form-control" placeholder="Имя клиента" required="" autofocus="" style="width: 215px; margin: 5px;">
+      <label for="inputPassword" class="sr-only">Пароль</label>
+      <input ref="passwordfield" v-model="clientPassword" type="password" id="inputPassword" class="form-control" placeholder="Пароль" required="" style="width: 215px; margin: 5px;">
+      <div class="checkbox mb-3">
       </div>
+      <button @click="register()" class="btn btn-lg btn-primary btn-block registerBtn">Зарегестрировать нового клиента</button>
+      <div class="customErros">{{ errors }}</div>
     </div>
     <br style="clear: both"/>
     <Footer />
@@ -36,23 +24,20 @@ import Footer from '@/components/Footer.vue'
 import Header from '@/components/Header.vue'
 
 export default {
-  name: 'RateRegiser',
-  date(){
+  name: 'ClientLogin',
+  data(){
     return {
-      rateName: '',
-      rateSpeed: 0,
-      rateTV: false,
-      rateTVDesc: '',
-      rateWriteOff: 157286400,
+      clientName: '',
+      clientPassword: '',
     }
   },
+  components: {
+    Header,
+    Footer
+  },
   methods: {
-    debug(){
-      console.log(this.rateTV)
-    },
     register(){
-      console.log(`Регистрирую новый тариф: ${this.rateName}, ${this.rateSpeed}, ${this.rateTV}, ${this.rateWriteOff}`)
-      fetch(`http://localhost:4000/rates/create/?ratename=${this.rateName}&ratespeed=${this.rateSpeed}&supporttv=${this.rateTV}&tvdesc=${this.rateTVDesc}&ratecost=${this.rateWriteOff}`, {
+      fetch(`http://localhost:4000/clients/create/?clientname=${this.clientName}&clientpassword=${this.clientPassword}&`, {
         mode: 'cors',
         method: 'GET'
       }).then(response => response.body).then(rb  => {
@@ -74,20 +59,17 @@ export default {
             push();
           }
         });
-    }).then(stream => {
+      }).then(stream => {
         return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
       })
       .then(result => {
+        console.log(`JSON.parse(result): ${JSON.parse(result)}`)
         if(JSON.parse(result).status.includes("OK")){
           console.log(`JSON.parse(result): ${JSON.parse(result)}`)
           this.$router.push({ name: 'Home' })
         }
       });
     }
-  },
-  components: {
-    Header,
-    Footer
   }
 }
 </script>
@@ -107,6 +89,7 @@ export default {
     align-items: center;
     float: left;
     height: 2300px;
+    overflow-y: auto;
   }
 
   .header {
@@ -225,20 +208,6 @@ export default {
 
   .personalArea {
     cursor: pointer;
-  }
-
-  .inputRateField {
-    width: 500px;
-    margin: 15px;
-  }
-  
-  .labelRateField {
-    margin-top: 35px;
-  }
-
-  .measure {
-    align-self: center;
-    font-weight: bold;
   }
 
 </style>

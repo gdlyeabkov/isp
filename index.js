@@ -3,6 +3,7 @@ const path = require('path')
 const app = express()
 const serveStatic = require('serve-static')
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
 
 app.use('/', serveStatic(path.join(__dirname, '/dist')))
 
@@ -14,11 +15,15 @@ const connectionParams = {
 
 const ClientSchema = new mongoose.Schema({
     name: String,
+    password: String,
     rate: {
         type: String,
-        default: "__id__"
+        default: "614381fa21140a08e85570b5"
     },
-    balance: Number,
+    balance: {
+        type: Number,
+        default: 0
+    },
     clientId: String,
     personalAccountBonus: {
         type: Number,
@@ -145,7 +150,9 @@ app.get('/clients/create', async (req, res)=>{
         let randomLetter = alphabet[randomIndex]
         preparedGeneratedClientId += randomLetter
     }
+
     generatedClientId = bcrypt.hashSync(preparedGeneratedClientId, 10)
+    // generatedClientId = bcrypt.hash(preparedGeneratedClientId, 10, ())
 
     let queryOfClients = ClientModel.find({})
     queryOfClients.exec(async (err, allClients) => {
@@ -163,15 +170,29 @@ app.get('/clients/create', async (req, res)=>{
         } else {
 
             let encodedPassword = "#"
-            let salt = bcrypt.genSalt(saltRounds)
-            encodedPassword = bcrypt.hashSync(req.query.clientpassword, saltRounds)
+            let salt = bcrypt.genSalt(10)
+            encodedPassword = bcrypt.hashSync(req.query.clientpassword, 10)
 
-            let newClient = await new ClientModel({ name: req.query.clientname, password: encodedPassword, clientId: encodedPassword, age:req.query.userage });
+            let newClient = await new ClientModel({ name: req.query.clientname, password: encodedPassword, clientId: generatedClientId });
             newClient.save(function (err) {
                 if(err){
                     return res.json({ "status": "Error" })
                 }
-                return res.json({ "status": "OK" })
+                RateModel.updateOne({ _id: '614381fa21140a08e85570b5' },
+                    { $push: 
+                        { 
+                            bindingClients: [
+                                {
+                                    clientId: generatedClientId,
+                                    name: req.query.clientname,
+                                    balance: 0,
+                                }
+                            ]
+                            
+                        }
+                }, (err, client) => {
+                    return res.json({ "status": "OK" })
+                })
             })
         }
     })
@@ -188,15 +209,31 @@ app.get('/clients/check', (req,res)=>{
         if (err || client == undefined || client == null){
             return res.json({ "status": "Error" })
         } else {
-            let passwordCheck = bcrypt.compareSync(req.query.password, user.password) && req.query.password !== ''
+            let passwordCheck = bcrypt.compareSync(req.query.password, client.password) && req.query.password !== ''
 
-            if(req.query.clientid == client.email && passwordCheck){
+            if(req.query.clientid == client.clientId && passwordCheck){
                 return res.json({ "client": client, "status": "OK" })
             }
             return res.json({ "status": "Error" })
         }
     })
 })
+
+app.get('/clients/get', (req,res)=>{
+  
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+   
+    let queryOfClient =  ClientModel.findOne({'clientId': req.query.clientid}, function(err, client){
+        if(err){
+            return res.json({ "status": "Error" })
+        }
+        return res.json({ "client": client, "status": "OK" })
+    })
+})
+
 
 app.get('/client/rates/add', (req, res)=>{
     
@@ -212,6 +249,10 @@ app.get('/client/rates/add', (req, res)=>{
         if(err){
             return res.json({ "status": "Error" })
         }
+        mongoose.connection.collection("myrates").updateOne(
+            { _id: req.query.rateid },
+            { $pull: { 'bindingClients': { clientId: req.query.clientid } } }
+        )
         RateModel.updateOne({ _id: req.query.rateid },
             { $push: 
                 { 

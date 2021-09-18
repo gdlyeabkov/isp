@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :auth="true" :area="false"/>
+    <Header :auth="true" :area="false" :minheight="75" :balance="0" :bonus="0" :clientId="''" :clientName="''" />
     <div class="aside">
       
     </div>

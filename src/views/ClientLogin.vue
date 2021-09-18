@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :auth="true" :area="false" />
+    <Header :auth="true" :area="false" :minheight="75" :balance="0" :bonus="0" :clientId="''" :clientName="''" />
     <div class="aside">
       
     </div>
@@ -13,13 +13,13 @@
       </div>
       <label for="inputPassword" class="sr-only">Пароль</label>
       <div style="display: flex; text-align: center;">
-        <input ref="passwordfield" v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required=""/>
+        <input ref="passwordfield" v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Пароль" required=""/>
         <span ref="visibilitybtn" style="margin: 5px; cursor: pointer;" class="material-icons" @click="toggleVisibility()">
           visibility
         </span>
       </div>
       <button class="btn btn-lg btn-primary btn-block loginBtn" @click="login()">Войти</button>
-      <div class="customErros">{{ errors }}</div>
+      <div class="errors">{{ errors }}</div>
     </div>
     <br style="clear: both"/>
     <Footer />
@@ -30,17 +30,70 @@
 import Footer from '@/components/Footer.vue'
 import Header from '@/components/Header.vue'
 
+import * as jwt from 'jsonwebtoken'
+
 export default {
   name: 'ClientLogin',
   data(){
     return {
       clientid: "",
-      password: ""
+      password: "",
+      errors: ""
     }
   }, 
   methods: {
+    toggleVisibility(){
+      if(this.$refs.passwordfield.type.includes("text")){
+        this.$refs.passwordfield.type = "password"
+        this.$refs.visibilitybtn.textContent = "visibility"
+      } else {
+        this.$refs.passwordfield.type = "text"
+        this.$refs.visibilitybtn.textContent = "visibility_off"
+      }
+    },
     login(){
-      this.$router.push({ name: "Home" })
+      fetch(`http://localhost:4000/clients/check/?clientid=${this.clientid}&password=${this.password}`, {
+        mode: 'cors',
+        method: 'GET'
+      }).then(response => response.body).then(rb  => {
+        const reader = rb.getReader()
+        return new ReadableStream({
+          start(controller) {
+            function push() {
+              reader.read().then( ({done, value}) => {
+                if (done) {
+                  console.log('done', done);
+                  controller.close();
+                  return;
+                }
+                controller.enqueue(value);
+                console.log(done, value);
+                push();
+              })
+            }
+            push();
+          }
+        });
+      }).then(stream => {
+        return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+      })
+      .then(result => {
+        console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+        if(JSON.parse(result).status.includes("OK")){
+          
+          this.token = jwt.sign({
+            clientId: this.clientid
+          }, 'ispsecret', { expiresIn: '5m' })
+          localStorage.setItem('isptoken', this.token)
+          
+          let clientInfo = JSON.parse(result).client
+          // console.log(`Object.values(clientInfo): ${Object.values(clientInfo)}`)
+          // this.$router.push({ name: 'PersonalArea', query: { bonus: clientInfo.personalAccountBonus, rateid: clientInfo.rate, name: clientInfo.name, cilentid: clientInfo.cilentId } })
+          this.$router.push({ name: 'PersonalArea' })
+        } else {
+          this.errors = "Неправильно введены логин и пароль"
+        }
+      });
     }
   },
   components: {
@@ -99,6 +152,11 @@ export default {
 
   .footerDescription {
     font-size: 11px;
+  }
+
+  .errors {
+    color: rgb(255, 0, 0);
+    font-weight: bolder;
   }
 
 </style>
