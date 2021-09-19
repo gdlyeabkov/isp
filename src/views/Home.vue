@@ -7,48 +7,48 @@
     <div class="main">
       <div style="width: 100%; background-color: rgb(35, 35, 35); display: flex; justify-content: flex-start;">
         <div style="width: 65%; background-color: rgb(35, 35, 35); display: flex; justify-content: space-around; margin-left: 75px;">
-          <p @mouseenter="drawSubMenu(1)" @mouseout="drawSubMenu(1)" class="subHeaderItem" style="color: rgb(255, 255, 255); font-size: 18px; cursor: pointer;">
-            Интернет
+          <p ref="subMenuOneWindow" @mouseenter="drawSubMenu(1, true)" style="color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; height: 100%;">
+            &nbsp;&nbsp;&nbsp;&nbsp;Интернет&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
-          <p  @mouseenter="drawSubMenu(2)" @mouseout="drawSubMenu(2)" style="color: rgb(255, 255, 255); font-size: 18px; cursor: pointer;">
-            Телевидение
+          <p ref="subMenuTwoWindow" @mouseenter="drawSubMenu(2, true)" style="color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; height: 100%;">
+            &nbsp;&nbsp;&nbsp;&nbsp;Телевидение&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
-          <p  @mouseenter="drawSubMenu(3)" @mouseout="drawSubMenu(3)" style="color: rgb(255, 255, 255); font-size: 18px; cursor: pointer;">
-            Телефония
+          <p ref="subMenuThreeWindow" @mouseenter="drawSubMenu(3, true)" style="color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; height: 100%;">
+            &nbsp;&nbsp;&nbsp;&nbsp;Телефония&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
-          <p  @mouseenter="drawSubMenu(4)" @mouseout="drawSubMenu(4)" style="color: rgb(255, 255, 255); font-size: 18px; cursor: pointer;">
-            Домофоны
+          <p ref="subMenuFourWindow" @mouseenter="drawSubMenu(4, true)" style="color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; height: 100%;">
+            &nbsp;&nbsp;&nbsp;&nbsp;Домофоны&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
         
-        <div v-if="subMenuOne" style="width: 285px; min-height: 250px; border: 1px solid red; background-color: rgb(200, 200, 200); position: absolute; top: 115px; left: 200px; z-index: 10;">
-          <p>Подключённые дома</p>
-          <p>Тарифы для квартиры и дома</p>
-          <p>Тарифы индивидуальный радиоканал</p>
-          <p>Заявка на подключение</p>
-          <p>Способы оплаты</p>
-          <p>Настройки компьютера или роутера</p>
-          <p>Турбокнопка</p>
-          <p>Временная блокировка</p>
-          <p>Наши партнёры</p>
-          <p>Регламент технической поддержки</p>
-          <p>Гостевая книга</p>
-          <p>Публичная оферта</p>
-          <p>Роутер в рассрочку</p>
+        <div @mouseleave="drawSubMenu(1, false)" v-if="subMenuOne" style="width: 285px; min-height: 250px; border: 1px solid rgb(0, 0, 0); background-color: rgb(255, 255, 255); position: absolute; top: 115px; left: 304px; z-index: 10; border-top-style: none; border-radius: 0px 0px 10px 10px;">
+          <p class="subMenuItem">Подключённые дома</p>
+          <p class="subMenuItem">Тарифы для квартиры и дома</p>
+          <p class="subMenuItem">Тарифы индивидуальный радиоканал</p>
+          <p class="subMenuItem">Заявка на подключение</p>
+          <p class="subMenuItem">Способы оплаты</p>
+          <p class="subMenuItem">Настройки компьютера или роутера</p>
+          <p class="subMenuItem">Турбокнопка</p>
+          <p class="subMenuItem">Временная блокировка</p>
+          <p class="subMenuItem">Наши партнёры</p>
+          <p class="subMenuItem">Регламент технической поддержки</p>
+          <p class="subMenuItem">Гостевая книга</p>
+          <p class="subMenuItem">Публичная оферта</p>
+          <p class="subMenuItem">Роутер в рассрочку</p>
         </div>
-        <div v-if="subMenuTwo" style="width: 255px; height: 250px; border: 1px solid red; background-color: rgb(200, 200, 200); position: absolute; top: 115px; left: 455px; z-index: 11;">
-          <p>Интерактивное телевидение "Смотрёшка"</p>
-          <p>Системы коллективного приёма</p>
-          <p>Медиаплеер для "Смотрёшки"</p>
+        <div @mouseleave="drawSubMenu(2, false)" v-if="subMenuTwo" style="width: 255px; height: 250px; border: 1px solid rgb(0, 0, 0); background-color: rgb(255, 255, 255); position: absolute; top: 115px; left: 476px; z-index: 11; border-top-style: none; border-radius: 0px 0px 10px 10px;">
+          <p class="subMenuItem">Интерактивное телевидение "Смотрёшка"</p>
+          <p class="subMenuItem">Системы коллективного приёма</p>
+          <p class="subMenuItem">Медиаплеер для "Смотрёшки"</p>
         </div>
-        <div v-if="subMenuThree" style="width: 225px; height: 250px; border: 1px solid red; background-color: rgb(200, 200, 200); position: absolute; top: 115px; left: 655px; z-index: 12;">
-          <p>Тарифы на телефонную связь</p>
-          <p>Заявка на подключение</p>
-          <p>Способы оплаты</p>
+        <div @mouseleave="drawSubMenu(3, false)" v-if="subMenuThree" style="width: 225px; height: 250px; border: 1px solid rgb(0, 0, 0); background-color: rgb(255, 255, 255); position: absolute; top: 115px; left: 677px; z-index: 12; border-top-style: none; border-radius: 0px 0px 10px 10px;">
+          <p class="subMenuItem">Тарифы на телефонную связь</p>
+          <p class="subMenuItem">Заявка на подключение</p>
+          <p class="subMenuItem">Способы оплаты</p>
         </div>
-        <div v-if="subMenuFour" style="width: 285px; height: 250px; border: 1px solid red; background-color: rgb(200, 200, 200); position: absolute; top: 115px; left: 845px; z-index: 13;">
-          <p>"УМНЫЙ ДОМОФОН"</p>
-          <p>ДОМОФОННЫЕ СИСТЕМЫ</p>
+        <div @mouseleave="drawSubMenu(4, false)" v-if="subMenuFour" style="width: 285px; height: 250px; border: 1px solid rgb(0, 0, 0); background-color: rgb(255, 255, 255); position: absolute; top: 118px; left: 860px; z-index: 13; border-top-style: none; border-radius: 0px 0px 10px 10px;">
+          <p class="subMenuItem">"УМНЫЙ ДОМОФОН"</p>
+          <p class="subMenuItem">ДОМОФОННЫЕ СИСТЕМЫ</p>
         </div>
 
       </div>
@@ -193,16 +193,184 @@ export default {
     }
   },
   methods: {
-    drawSubMenu(idx){
-      console.log(`idx: ${idx}`);
+    drawSubMenu(idx, subMenuToggler){
       if(idx === 1){
-        this.subMenuOne = !this.subMenuOne
+        this.subMenuOne = subMenuToggler
+        if(this.subMenuOne) {
+          this.$refs.subMenuOneWindow.style = `
+            color: rgb(0, 0, 0);
+            background-color: rgb(255, 255, 255);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+
+          this.$refs.subMenuTwoWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+          this.$refs.subMenuThreeWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+          this.$refs.subMenuFourWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+          this.subMenuTwo = false;
+          this.subMenuThree = false;
+          this.subMenuFour = false;
+        } else if(!this.subMenuOne) {
+          this.$refs.subMenuOneWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+        }
       } else if(idx === 2){
-        this.subMenuTwo = !this.subMenuTwo
+        this.subMenuTwo = subMenuToggler
+        if(this.subMenuTwo) {
+          this.$refs.subMenuTwoWindow.style = `
+            color: rgb(0, 0, 0);
+            background-color: rgb(255, 255, 255);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+
+          this.$refs.subMenuOneWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+          this.$refs.subMenuThreeWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+          this.$refs.subMenuFourWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+          this.subMenuOne = false;
+          this.subMenuThree = false;
+          this.subMenuFour = false;
+        } else if(!this.subMenuTwo) {
+          this.$refs.subMenuTwoWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+        }
       } else if(idx === 3){
-        this.subMenuThree = !this.subMenuThree
+        this.subMenuThree = subMenuToggler
+        if(this.subMenuThree) {
+          this.$refs.subMenuThreeWindow.style = `
+            color: rgb(0, 0, 0);
+            background-color: rgb(255, 255, 255);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+
+          this.$refs.subMenuFourWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+          this.$refs.subMenuTwoWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+          this.$refs.subMenuOneWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+          this.subMenuOne = false;
+          this.subMenuTwo = false;
+          this.subMenuFour = false;
+        } else if(!this.subMenuThree) {
+          this.$refs.subMenuThreeWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+        }
       } else if(idx === 4){
-        this.subMenuFour = !this.subMenuFour
+        this.subMenuFour = subMenuToggler
+        if(this.subMenuFour) {
+          this.$refs.subMenuFourWindow.style = `
+            color: rgb(0, 0, 0);
+            background-color: rgb(255, 255, 255);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+
+          this.$refs.subMenuOneWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+          this.$refs.subMenuTwoWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+          this.$refs.subMenuThreeWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+          this.subMenuOne = false;
+          this.subMenuTwo = false;
+          this.subMenuThree = false;
+
+        } else if(!this.subMenuFour) {
+          this.$refs.subMenuFourWindow.style = `
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            height: 100%;
+          `
+        }
       }
     },
     plugIn(){
@@ -390,6 +558,17 @@ export default {
 
   .subHeaderItem:hover {
     color: green;
+  }
+
+  .subMenuItem {
+    cursor: pointer;
+    padding: 2px 0px;
+  }
+
+  .subMenuItem:hover {
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 0, 0);
   }
 
 </style>

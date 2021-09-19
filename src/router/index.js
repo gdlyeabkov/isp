@@ -15,6 +15,28 @@ import Ads from '../views/Ads.vue'
 import Regulations from '../views/Regulations.vue'
 import ErrorsConnection from '../views/ErrorsConnection.vue'
 
+import ConnectedHouses from '../views/ConnectedHouses.vue'
+import TariffsForApartmentsAndHouses from '../views/TariffsForApartmentsAndHouses.vue'
+import IndividualRadioChannelTariffs from '../views/IndividualRadioChannelTariffs.vue'
+import ConnectionRequest from '../views/ConnectionRequest.vue'
+import PaymentMethods from '../views/PaymentMethods.vue'
+import ComputerOrRouterSettings from '../views/ComputerOrRouterSettings.vue'
+import TurboButton from '../views/TurboButton.vue'
+import TemporaryBlocking from '../views/TemporaryBlocking.vue'
+import OurPartners from '../views/OurPartners.vue'
+import TechnicalSupportRegulations from '../views/TechnicalSupportRegulations.vue'
+import GuestBook from '../views/GuestBook.vue'
+import PublicOffer from '../views/PublicOffer.vue'
+import RouterInInstallments from '../views/RouterInInstallments.vue'
+import InteractiveTelevisionSmotryoshka from '../views/InteractiveTelevisionSmotryoshka.vue'
+import CollectiveReceptionSystems from '../views/CollectiveReceptionSystems.vue'
+import MediaPlayerForSmotryoshka from '../views/MediaPlayerForSmotryoshka.vue'
+import TelephoneTariffs from '../views/TelephoneTariffs.vue'
+import ConnectionRequestMobile from '../views/ConnectionRequestMobile.vue'
+import PaymentMethod from '../views/PaymentMethod.vue'
+import SmartIntercom from '../views/SmartIntercom.vue'
+import IntercomSystems from '../views/IntercomSystems.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -87,6 +109,116 @@ const routes = [
     path: '/support/errors',
     name: 'ErrorsConnection',
     component: ErrorsConnection
+  },
+  {
+    path: '/support/errors',
+    name: 'ErrorsConnection',
+    component: ErrorsConnection
+  },
+  {
+    path: '/connectedhouses',
+    name: 'ConnectedHouses',
+    component: ConnectedHouses
+  },
+  {
+    path: '/tariffsforapartmentsandhouses',
+    name: 'TariffsForApartmentsAndHouses',
+    component: TariffsForApartmentsAndHouses
+  },
+  {
+    path: '/individualradiochanneltariffs',
+    name: 'IndividualRadioChannelTariffs',
+    component: IndividualRadioChannelTariffs
+  },
+  {
+    path: '/connectionrequest',
+    name: 'ConnectionRequest',
+    component: ConnectionRequest
+  },
+  {
+    path: '/paymentmethods',
+    name: 'PaymentMethods',
+    component: PaymentMethods
+  },
+  {
+    path: '/computerorroutersettings',
+    name: 'ComputerOrRouterSettings',
+    component: ComputerOrRouterSettings
+  },
+  {
+    path: '/turbobutton',
+    name: 'TurboButton',
+    component: TurboButton
+  },
+  {
+    path: '/temporaryblocking',
+    name: 'TemporaryBlocking',
+    component: TemporaryBlocking
+  },
+  {
+    path: '/ourpartners',
+    name: 'OurPartners',
+    component: OurPartners
+  },
+  {
+    path: '/technicalsupportregulations',
+    name: 'TechnicalSupportRegulations',
+    component: TechnicalSupportRegulations
+  },
+  {
+    path: '/guestbook',
+    name: 'GuestBook',
+    component: GuestBook
+  },
+  {
+    path: '/publicoffer',
+    name: 'PublicOffer',
+    component: PublicOffer
+  },
+  {
+    path: '/routerininstallments',
+    name: 'RouterInInstallments',
+    component: RouterInInstallments
+  },
+  {
+    path: '/interactivetelevisionsmotryoshka',
+    name: 'InteractiveTelevisionSmotryoshka',
+    component: InteractiveTelevisionSmotryoshka
+  },
+  {
+    path: '/collectivereceptionsystems',
+    name: 'CollectiveReceptionSystems',
+    component: CollectiveReceptionSystems
+  },
+  {
+    path: '/mediaplayerforsmotryoshka',
+    name: 'MediaPlayerForSmotryoshka',
+    component: MediaPlayerForSmotryoshka
+  },
+  {
+    path: '/telephonetariffs',
+    name: 'TelephoneTariffs',
+    component: TelephoneTariffs
+  },
+  {
+    path: '/connectionrequestmobile',
+    name: 'ConnectionRequestMobile',
+    component: ConnectionRequestMobile
+  },
+  {
+    path: '/paymentmethod',
+    name: 'PaymentMethod',
+    component: PaymentMethod
+  },
+  {
+    path: '/smartintercom',
+    name: 'SmartIntercom',
+    component: SmartIntercom
+  },
+  {
+    path: '/intercomsystems',
+    name: 'IntercomSystems',
+    component: IntercomSystems
   }
   
 ]
