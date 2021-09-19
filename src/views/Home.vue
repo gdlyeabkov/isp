@@ -22,33 +22,33 @@
         </div>
         
         <div @mouseleave="drawSubMenu(1, false)" v-if="subMenuOne" style="width: 285px; min-height: 250px; border: 1px solid rgb(0, 0, 0); background-color: rgb(255, 255, 255); position: absolute; top: 115px; left: 304px; z-index: 10; border-top-style: none; border-radius: 0px 0px 10px 10px;">
-          <p class="subMenuItem">Подключённые дома</p>
-          <p class="subMenuItem">Тарифы для квартиры и дома</p>
-          <p class="subMenuItem">Тарифы индивидуальный радиоканал</p>
-          <p class="subMenuItem">Заявка на подключение</p>
-          <p class="subMenuItem">Способы оплаты</p>
-          <p class="subMenuItem">Настройки компьютера или роутера</p>
-          <p class="subMenuItem">Турбокнопка</p>
-          <p class="subMenuItem">Временная блокировка</p>
-          <p class="subMenuItem">Наши партнёры</p>
-          <p class="subMenuItem">Регламент технической поддержки</p>
-          <p class="subMenuItem">Гостевая книга</p>
-          <p class="subMenuItem">Публичная оферта</p>
-          <p class="subMenuItem">Роутер в рассрочку</p>
+          <p @click="toPage('ConnectedHouses')" class="subMenuItem">Подключённые дома</p>
+          <p @click="toPage('TariffsForApartmentsAndHouses')" class="subMenuItem">Тарифы для квартиры и дома</p>
+          <p @click="toPage('IndividualRadioChannelTariffs')" class="subMenuItem">Тарифы индивидуальный радиоканал</p>
+          <p @click="toPage('ConnectionRequest')" class="subMenuItem">Заявка на подключение</p>
+          <p @click="toPage('PaymentMethods')" class="subMenuItem">Способы оплаты</p>
+          <p @click="toPage('ComputerOrRouterSettings')" class="subMenuItem">Настройки компьютера или роутера</p>
+          <p @click="toPage('TurboButton')" class="subMenuItem">Турбокнопка</p>
+          <p @click="toPage('TemporaryBlocking')" class="subMenuItem">Временная блокировка</p>
+          <p @click="toPage('OurPartners')" class="subMenuItem">Наши партнёры</p>
+          <p @click="toPage('TechnicalSupportRegulations')" class="subMenuItem">Регламент технической поддержки</p>
+          <p @click="toPage('GuestBook')" class="subMenuItem">Гостевая книга</p>
+          <p @click="toPage('PublicOffer')" class="subMenuItem">Публичная оферта</p>
+          <p @click="toPage('RouterInInstallments')" class="subMenuItem">Роутер в рассрочку</p>
         </div>
         <div @mouseleave="drawSubMenu(2, false)" v-if="subMenuTwo" style="width: 255px; height: 250px; border: 1px solid rgb(0, 0, 0); background-color: rgb(255, 255, 255); position: absolute; top: 115px; left: 476px; z-index: 11; border-top-style: none; border-radius: 0px 0px 10px 10px;">
-          <p class="subMenuItem">Интерактивное телевидение "Смотрёшка"</p>
-          <p class="subMenuItem">Системы коллективного приёма</p>
-          <p class="subMenuItem">Медиаплеер для "Смотрёшки"</p>
+          <p @click="toPage('InteractiveTelevisionSmotryoshka')" class="subMenuItem">Интерактивное телевидение "Смотрёшка"</p>
+          <p @click="toPage('CollectiveReceptionSystems')" class="subMenuItem">Системы коллективного приёма</p>
+          <p @click="toPage('MediaPlayerForSmotryoshka')" class="subMenuItem">Медиаплеер для "Смотрёшки"</p>
         </div>
         <div @mouseleave="drawSubMenu(3, false)" v-if="subMenuThree" style="width: 225px; height: 250px; border: 1px solid rgb(0, 0, 0); background-color: rgb(255, 255, 255); position: absolute; top: 115px; left: 677px; z-index: 12; border-top-style: none; border-radius: 0px 0px 10px 10px;">
-          <p class="subMenuItem">Тарифы на телефонную связь</p>
-          <p class="subMenuItem">Заявка на подключение</p>
-          <p class="subMenuItem">Способы оплаты</p>
+          <p @click="toPage('TelephoneTariffs')" class="subMenuItem">Тарифы на телефонную связь</p>
+          <p @click="toPage('ConnectionRequestMobile')" class="subMenuItem">Заявка на подключение</p>
+          <p @click="toPage('PaymentMethod')" class="subMenuItem">Способы оплаты</p>
         </div>
         <div @mouseleave="drawSubMenu(4, false)" v-if="subMenuFour" style="width: 285px; height: 250px; border: 1px solid rgb(0, 0, 0); background-color: rgb(255, 255, 255); position: absolute; top: 118px; left: 860px; z-index: 13; border-top-style: none; border-radius: 0px 0px 10px 10px;">
-          <p class="subMenuItem">"УМНЫЙ ДОМОФОН"</p>
-          <p class="subMenuItem">ДОМОФОННЫЕ СИСТЕМЫ</p>
+          <p @click="toPage('SmartIntercom')" class="subMenuItem">"УМНЫЙ ДОМОФОН"</p>
+          <p @click="toPage('IntercomSystems')" class="subMenuItem">ДОМОФОННЫЕ СИСТЕМЫ</p>
         </div>
 
       </div>
@@ -193,6 +193,9 @@ export default {
     }
   },
   methods: {
+    toPage(pageName){
+      this.$router.push({ name: pageName })
+    },
     drawSubMenu(idx, subMenuToggler){
       if(idx === 1){
         this.subMenuOne = subMenuToggler
