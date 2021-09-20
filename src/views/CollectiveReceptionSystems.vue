@@ -17,465 +17,740 @@
               <p class="newsHeader">
                 Тарифы
               </p>
-              Разовые платежи при подключении к системе коллективного приема телевидения:
+              <p>
+                Разовые платежи при подключении к системе коллективного приема телевидения:
+              </p>
+              <table bgcolor="white" >
+                <tr style="height: 75px">
+                  <td style="width: 375px; font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                    Единовременный платеж за первичное подключение квартиры к уже существующей абонентской распределительной сети кабельного телевидения
+                  </td>
+                  <td style="width: 95px; font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                    1 точка
+                  </td>
+                  <td style="width: 95px; font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                    350 руб.
+                  </td>
+                </tr>
+                <tr style="height: 75px">
+                  <td style="width: 375px; font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                    Единовременный платеж за за первичное подключение квартиры с прокладкой кабеля от слаботочного шкафа до квартиры, включая кабель до 20м, после 20м = 25 рублей за м.
+                  </td>
+                  <td style="width: 95px; font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                    1 точка
+                  </td>
+                  <td style="width: 95px; font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                    1150 руб.
+                  </td>
+                </tr>
+              </table>
+              <p>
+                Периодические платежи:
+              </p>
+              <table bgcolor="white" >
+                <tr style="height: 75px">
+                  <td style="width: 375px; font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                    Ежемесячная абонентская плата	
+                  </td>
+                  <td style="width: 275px; border: 1px solid rgb(0, 0, 0);">
+                    от 50 руб./мес.*
+                  </td>
+                </tr>
+              </table>
+              <p>
+                *- сумма ежемесячного платежа зависит от адреса подключения, точную стоимость  уточняйте в абонентском отделе
+              </p>
+              <p>
+                Стоимость дополнительных услуг:
+              </p>
+            
+            <table width="75%" style="text-align: center; margin: auto;" bgcolor="white">
+              <tr>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  1  
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
-              Единовременный платеж за первичное подключение квартиры к уже существующей абонентской распределительной сети кабельного телевидения
+              <tr>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  2  
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
-              1 точка
+              <tr>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  3  
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
-              350 руб.
+              <tr>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  4  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
-              Единовременный платеж за за первичное подключение квартиры с прокладкой кабеля от слаботочного шкафа до квартиры, включая кабель до 20м, после 20м = 25 рублей за м.
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  5  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
-              1 точка
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  6  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
-              1150 руб.
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  7  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
-              Периодические платежи:
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  8  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  9  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
-              Ежемесячная абонентская плата	
-              от 50 руб./мес.*
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  10  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+            </table>
 
-              *- сумма ежемесячного платежа зависит от адреса подключения, точную стоимость  уточняйте в абонентском отделе
-
-              Стоимость дополнительных услуг:
-
-
-              № п/п	
-              Наименование работ
-
-              Прим.
-
-              Стоимость, руб.
-
-              1
-
-              Прокладка кабеля от слаботочного шкафа до квартиры, включая кабель до 20м, после 20м = 25 рублей за м.
-
-              1 точка
-
-              800
-
-              2
-
-              Настройка одного телевизионного приемника в автоматическом режиме
-
-              при первичном подключении
-
-              0
-
-              3
-
-              Выезд к абоненту для диагностики внутриквартирной разводки (измерение сигналов на абонентском отводе в слаботочном шкафу и на входе на ТВ приёмнике) с прокладкой проверочного кабеля и демонстрацией качества изображения на ТВ приёмнике.
-
-              
-
-              500
-
-              4
-
-              Подключение ответвителя (ТВ делителя) на 2,3 устройства (без стоимости оборудования)
-
-              без крепления к стене
-
-              150
-
-              5
-
-              Установка или замена штекера на абонентском кабеле без стоимости штекера
-
-              1 шт.
-
-              30
-
-              6
-
-              Проверка 1-й ТВ-розетки
-
-              1 шт.
-
-              150
-
-              7
-
-              Монтаж F-разъема, разъема типа "бочка"
-
-              1 шт.
-
-              30
-
-              8
-
-              Сверление отверстий в стене толщиной до 300 мм, d=8-10 мм для ввода кабеля в квартиру
-
-              1 шт.
-
-              250
-
-              9
-
-              Сверление отверстий в стене толщиной от 300 мм, d=10-12 мм для ввода кабеля в квартиру
-
-              1 шт.
-
-              400
-
-              10
-
-              Настройка ТВ ресивера ( Бесплатно при первичной установке )
-
-              1 шт.
-
-              250
-
+            <p class="newsHeader">
               Стоимость расходных материалов при монтаже (подключении) к системе коллективного приема телевидения:
+            </p>
+            <table width="75%" style="text-align: center; margin: auto;" bgcolor="white">
+              <tr>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  1  
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
+              <tr>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  2  
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
-              № п/п	
-              Вид материалов или оборудования
+              <tr>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  3  
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
-              Прим.
+              <tr>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  4  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
-              Стоимость, руб.
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  5  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
-              1
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  6  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
 
-              Телевизионный кабель типа RG-6
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  7  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+            </table>
 
-              за 1м
-
-              25
-
-              2
-
-              F-разъем для телевизионного кабеля RG-6 (наконечник на конец кабеля)
-
-              за шт.
-
-              30
-
-              3
-
-              Разъем-переходник F818 типа "бочка" (для соединения кусков кабеля)
-
-              за шт.
-
-              30
-
-              4
-
-              Штекер для F-разъема "папа" или "мама" (для подключения кабеля в розетку или разъем на телевизоре)
-
-              за шт.
-
-              30
-
-              5
-
-              Сплиттер (делитель) на 2 телевизора
-
-              за шт.
-
-              200
-
-              6
-
-              Сплиттер (делитель) на 3 телевизора
-
-              за шт.
-
-              250
-
-              7
-
-              ТВ ресивер
-
-              за шт.
-
-              1150
-
-
+            <p class="newsHeader">
               Стоимость ежемесячного обслуживания домофонных систем и систем коллективного приема телевидения (СКПТ) по следующим адресам:
-              Адрес оказания услуг
-
-              Услуга ДМФ/СКПТ
-
-              Стоимость с 01.07.21
-
-              1
-
-              Комсомольская 22А
-
-              ДМФ   
-
-              50
-
-              СКПТ  
-
-              50
-
-              2
-
-              Комсомольская 20Б
-
-              ДМФ    
-
-              50
-
-              СКПТ   
-
-              130
-
-              3
-
-              Комсомольская, д.10
-
-              ДМФ     
-
-              65
-
-              4
-
-              Академика Фортова, д.1
-
-              ДМФ     
-
-              55
-
-              СКПТ    
-
-              55
-
-              5
-
-              1-я Ревсобраний, дома. 6А, 6Б
-
-              ДМФ      
-
-              50
-
-              СКПТ    
-
-              60
-
-              6
-
-              Юбилейная, д.16А
-
-              ДМФ      
-
-              55
-
-              СКПТ     
-
-              55
-
-              7
-
-              Социалистическая, д. 3
-
-              ДМФ+Видео    
-
-              95
-
-              8
-
-              Московская ул. 1 кв.1-20
-
-              ДМФ       
-
-              50
-
-              9
-
-              28 июня, 9А
-
-              ДМФ+Видео
-
-              95
-
-              10
-
-              Самодеятельная д.2В, корп.3, 4
-
-              СКПТ  
-
-              130
-
-              ДМФ       
-
-              55
-
-              11
-
-              г.п. Обухово, ул.Энтузиастов, д.5
-
-              ДМФ       
-
-              50
-
-              СКПТ
-
-              50
-
-              12
-
-              Щемилово Орлова ул. 2,4, 6, 8, 10, 26,                                                      мкр-рн Новое бисерово-2 - 1-17
-
-              СКПТ
-
-              60
-
-              13
-
-              Шевченко, 1, 5 подъезд, квартиры 257-320
-
-              ДМФ
-
-              50
-
-              15
-
-              Кирова, 21- 3,4 подъезды, квартиры 193-272
-
-              ДМФ
-
-              50
-
-              16
-
-              Чехова, д.4
-
-              СКПТ
-
-              60
-
-              17
-
-              Чехова, д.9
-
-              ДМФ
-
-              50
-
-              СКПТ
-
-              50
-
-              18
-
-              ул.Новая, д.6
-
-              ДМФ
-
-              55
-
-              видеоДМФ
-
-              60
-
-              19
-
-              60 Лет Победы, д.10
-
-              ДМФ  
-
-              50
-
-              СКПТ 
-
-              50
-
-              20
-
-              60 Лет Победы, д.12; Ялагина 13, 13А, 13Б
-
-              СКПТ
-
-              50
-
-              21
-
-              Спортивная, д.26, 26А
-
-              ДМФ 
-
-              50
-
-              22
-
-              Лесная, д.27
-
-              ДМФ 
-
-              50
-
-              23
-
-              ул.Ленина, д.08
-
-              ДМФ
-
-              55
-
-              СКПТ 
-
-              55
-
-              24
-
-              ул.Ленина, д.08А
-
-              ДМФ
-
-              50
-
-              25
-
-              ул. Ногинское ш. 36к4
-
-              ДМФ
-
-              60
-
-              СКПТ
-
-              55
-
-              26
-
-              ул. Захарченко, д. 8, 10
-
-              СКПТ
-
-              70
-
-              27
-
-              Федурново,«МАРЗ», дома 8, 9, 10
-
-              ДМФ
-
-              50
-
-              28
-
-              Черное, ул. Агрогородок, дома: 7, 18, 19, 20, 32
-
-              СКПТ
-
-              50
-
-              29
-
-              Черное, ул. Агрогородок, д. 7
-
-              ДМФ 
-
-              50
-
-
+            </p>
+            <table width="75%" style="text-align: center; margin: auto;" bgcolor="white">
+              <tr>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  1  
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  2  
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  3  
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td style="border: 1px solid rgb(0, 0, 0);">
+                  4  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  5  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  7  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  8  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  9  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  10  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  11  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  12  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  13  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  14  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  15  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  16  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  17  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  18  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  19  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  20  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  21  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  22  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  23  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  24  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  25  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  26  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  27  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  28  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+
+              <tr>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  29  
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  Черное, ул. Агрогородок, д. 7
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  ДМФ 
+                </td>
+                <td  style="border: 1px solid rgb(0, 0, 0);">
+                  50
+                </td>
+              </tr>
+            </table>
+            <p>
               Услуга технического обслуживания системы коллективного приема телевидения оказывается ООО «ФлексКомм» (ГК «ФЛЕКС»)
             </p>
           </div>
