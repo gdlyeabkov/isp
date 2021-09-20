@@ -8,12 +8,26 @@
       <div style="margin-top: 25px; width:85%;">
         <div style="text-align: left;">
           <p><a style="cursor: pointer;" @click="$router.push({ name: 'Home' })">ISP</a>> Смотрёшка SB-317</p>
-          <div v-if="zoomToggler">
-            <p ref="zoom" style="position: absolute; top: 185px; left: 405px;">
-              <span style="font-size: 165px;" class="material-icons">
+          <div v-show="zoomToggler">
+            
+            <!-- <p ref="zoom" style="position: absolute; top: 185px; left: 405px;">
+              <span style="font-size: 75px;" class="material-icons">
                 search
               </span>
+            </p> -->
+
+            <!-- <p ref="zoom" style="position: absolute; top: 185px; left: 405px;">
+              <span style="zoom: 1.0; transform: translateZ(5.0); border-radius: 50%; opacity: 0.5; width: 200px; height: 200px; display: block; background-color: rgb(255, 255, 255); font-size: 75px;" class="">
+                &nbsp;
+              </span>
+            </p> -->
+              
+            <p ref="zoom" style="position: absolute; top: 185px; left: 405px;">
+              <span id="zoomscope" ref="zoomscope" style="border-radius: 50%; opacity: 0.8; background-image: url('https://flex.ru/media/shop/thumbs/thumb.b317_1.jpg'); background-position: 0px 0px; background-size: contain; width: 250px; height: 250px;" class="material-icons">
+                &nbsp;
+              </span>   
             </p>
+
           </div>
           <p class="newsHeader">
             Медиаплеер Смотрёшка SB-317
@@ -21,14 +35,17 @@
           <div>
             <div style="display: flex; height: 1500px;">
               <div>
-                <img class="preview" style="display: block; margin: 5px 5px;" width="100px" src="https://flex.ru/media/shop/thumbs/thumb.b317_1.jpg" alt="">
-                <img class="preview" style="display: block; margin: 5px 5px;" width="100px" src="https://flex.ru/media/shop/thumbs/thumb.b317_2.jpg" alt="">
-                <img class="preview" style="display: block; margin: 5px 5px;" width="100px" src="https://flex.ru/media/shop/thumbs/thumb.b317_3.jpg" alt="">
+                <img @click="changeMask(1)" class="preview" style="display: block; margin: 5px 5px;" width="100px" src="https://flex.ru/media/shop/thumbs/thumb.b317_1.jpg" alt="">
+                <img @click="changeMask(2)" class="preview" style="display: block; margin: 5px 5px;" width="100px" src="https://flex.ru/media/shop/thumbs/thumb.b317_2.jpg" alt="">
+                <img @click="changeMask(3)" class="preview" style="display: block; margin: 5px 5px;" width="100px" src="https://flex.ru/media/shop/thumbs/thumb.b317_3.jpg" alt="">
                 
                 <button style="margin-top: 75px;" class="w-75 btn btn-success">V</button>
               </div>
               
-              <img @mouseenter="zoomHandler($event, true)" @mouseleave="zoomHandler($event, false)" @mousemove="zoomDrag($event)" style="margin: 0px 5px;" width="35%" height="35%" src="https://flex.ru/media/shop/thumbs/thumb.b317_1.jpg" alt="">
+              <div ref="mainImg" @mouseenter="zoomHandler(true, $event)" @mouseleave="zoomHandler(false, $event)" @mousemove="zoomDrag($event)" style="background-size: 100% 100%; background-image:url('https://flex.ru/media/shop/thumbs/thumb.b317_1.jpg'); margin: 0px 5px; width:100%; height:35%;">
+
+              </div>
+              <!-- <img @mouseenter="zoomToggler = true" @mouseout="zoomToggler = false" @mousemove="zoomDrag($event)" style="overflow: hidden; margin: 0px 5px;" width="35%" height="35%" src="https://flex.ru/media/shop/thumbs/thumb.b317_1.jpg" alt=""> -->
               <div>
                 <div style="display: flex; justify-content: space-around;">
                   <div style="color: rgb(0, 175, 0);">
@@ -227,28 +244,100 @@ export default {
   name: 'SmartIntercom',
   data(){
     return {
-      zoomToggler: false
+      zoomToggler: false,
+      mask: "https://flex.ru/media/shop/thumbs/thumb.b317_1.jpg",
     }
   },
   methods: {
-    zoomHandler(event, zoomValue){
+    changeMask(source){
+      if(source === 1) {
+        // this.$refs.zoomscope.style = `
+        //   border-radius: 50%;
+        //   opacity: 0.8;
+        //   background-image: url('https://flex.ru/media/shop/thumbs/thumb.b317_1.jpg');
+        //   background-position: 15px 0px;
+        //   background-size: 250% 250%;
+        //   width: 250px;
+        //   height: 250px;
+        // `
+        // let zoomscope = document.getElementById("zoomscope")
+        // zoomscope.style = `
+        //   border-radius: 50%;
+        //   opacity: 0.8;
+        //   background-image: url('https://flex.ru/media/shop/thumbs/thumb.b317_1.jpg');
+        //   background-position: 15px 0px;
+        //   background-size: 250% 250%;
+        //   width: 250px;
+        //   height: 250px;
+        // `
+        this.mask = "https://flex.ru/media/shop/thumbs/thumb.b317_1.jpg"
+        this.$refs.mainImg.style.backgroundImage = "url('https://flex.ru/media/shop/thumbs/thumb.b317_1.jpg')"
+      } else if(source === 2) {
+        // this.$refs.zoomscope.style = `
+        //   border-radius: 50%;
+        //   opacity: 0.8;
+        //   background-image: url('https://flex.ru/media/shop/thumbs/thumb.b317_2.jpg');
+        //   background-position: 15px 0px;
+        //   background-size: 250% 250%;
+        //   width: 250px;
+        //   height: 250px;
+        // `
+        // let zoomscope = document.getElementById("zoomscope")
+        // zoomscope.style = `
+        //   border-radius: 50%;
+        //   opacity: 0.8;
+        //   background-image: url('https://flex.ru/media/shop/thumbs/thumb.b317_2.jpg');
+        //   background-position: 15px 0px;
+        //   background-size: 250% 250%;
+        //   width: 250px;
+        //   height: 250px;
+        // `
+        this.mask = "https://flex.ru/media/shop/thumbs/thumb.b317_2.jpg"
+        this.$refs.mainImg.style.backgroundImage = "url('https://flex.ru/media/shop/thumbs/thumb.b317_2.jpg')"
+      } else if(source === 3) {
+        // this.$refs.zoomscope.style = `
+        //   border-radius: 50%;
+        //   opacity: 0.8;
+        //   background-image: url('https://flex.ru/media/shop/thumbs/thumb.b317_3.jpg');
+        //   background-position: 15px 0px;
+        //   background-size: 250% 250%;
+        //   width: 250px;
+        //   height: 250px;
+        // `
+        this.mask = "https://flex.ru/media/shop/thumbs/thumb.b317_3.jpg"
+        this.$refs.mainImg.style.backgroundImage = "url('https://flex.ru/media/shop/thumbs/thumb.b317_3.jpg')"
+      }
+    },
+    zoomHandler(zoomValue, event){
       this.zoomToggler = zoomValue
-      if(this.zoomToggler){
+      if(!this.zoomToggler){
         event.target.style.cursor = "default"
-      } else if(!this.zoomToggler){
-        event.target.style.cursor = "crosshair"
+      } else if(this.zoomToggler){
+        // event.target.style.cursor = "crosshair"
+        event.target.style.cursor = "none"
+        // setTimeout(() => {
+          // this.$refs.zoomscope.style.backgroundImage = `url('${this.mask}');`
+          this.$refs.zoomscope.style = `
+            border-radius: 50%;
+            opacity: 0.8;
+            background-image: url('${this.mask}');
+            background-position: 15px 0px;
+            background-size: 250% 250%;
+            width: 250px;
+            height: 250px;
+          `
+        // }, 3000)
+        console.log(`this.mask: url('${this.mask}');`)
       }
     },
     zoomDrag(event){
-      // event.style.cursor = "crosshair"
-      // let newTop = Number(this.$refs.zoom.style.top.split("px")[0]) + event.y 
-      let newTop = this.$refs.zoom.style.top
-
-      console.log(`перемещаю zoom: ${newTop}, ${event.y}`)
       this.$refs.zoom.style = `
         position: absolute;
-        top: ${event.y}px;
-        left: ${event.x}px;
+        top: ${event.clientY}px;
+        left: ${event.clientX}px;
+      `
+      this.$refs.zoomscope.style.backgroundPosition = `
+        ${event.clientX}px ${event.clientY}px
       `
     }
   },
