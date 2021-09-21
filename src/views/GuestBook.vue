@@ -8,13 +8,21 @@
       <div style="margin-top: 25px; width:85%;">
         <div style="text-align: left;">
           <p><a style="cursor: pointer;" @click="$router.push({ name: 'Home' })">ISP</a> > Интернет для дома > Гостевая книга</p>
-          <p class="newsHeader">
-            Гостевая книга
-          </p>
-          <div>
+          <div style="display: flex; height: 75px; background-color: rgb(215, 215, 215);">
+            <p class="newsHeader" style="margin-left: 25px; align-self: center;">
+              Гостевая книга
+            </p>
+          </div>
+          <div style="margin: 15px 0px; border: 1px dashed rgb(145, 145, 145);">
+
+          </div>
+          <div style="box-sizing: border-box; padding: 15px; display: flex; height: 125px; background-color: rgb(215, 215, 215);">
             <p>
               Уважаемые гости! Претензии к качеству предоставляемых услуг без указания вашей контактной информации (возможные варианты: адрес, логин, номер договора) не рассматриваются. Сообщения подобного содержания будут удаляться. Размещение информации рекламного характера ЗАПРЕЩЕНО! Убедительная просьба при написании сообщения указывать номер договора!
             </p>
+          </div>
+          <div style="margin: 15px 0px; border: 1px dashed rgb(145, 145, 145);">
+
           </div>
         </div>
       </div>

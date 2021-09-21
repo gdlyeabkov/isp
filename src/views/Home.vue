@@ -25,13 +25,13 @@
           <p @click="toPage('ConnectedHouses')" class="subMenuItem">Подключённые дома</p>
           <p @click="toPage('TariffsForApartmentsAndHouses')" class="subMenuItem">Тарифы для квартиры и дома</p>
           <p @click="toPage('IndividualRadioChannelTariffs')" class="subMenuItem">Тарифы индивидуальный радиоканал</p>
-          <p @click="toPage('ConnectionRequest')" class="subMenuItem">Заявка на подключение</p>
-          <p @click="toPage('PaymentMethods')" class="subMenuItem">Способы оплаты</p>
-          <p @click="toPage('ComputerOrRouterSettings')" class="subMenuItem">Настройки компьютера или роутера</p>
+          <p @click="toPage('ConnectionRequestMobile')" class="subMenuItem">Заявка на подключение</p>
+          <p @click="toPage('PaymentMethod')" class="subMenuItem">Способы оплаты</p>
+          <p @click="toPage('Support')" class="subMenuItem">Настройки компьютера или роутера</p>
           <p @click="toPage('TurboButton')" class="subMenuItem">Турбокнопка</p>
           <p @click="toPage('TemporaryBlocking')" class="subMenuItem">Временная блокировка</p>
           <p @click="toPage('OurPartners')" class="subMenuItem">Наши партнёры</p>
-          <p @click="toPage('TechnicalSupportRegulations')" class="subMenuItem">Регламент технической поддержки</p>
+          <p @click="toPage('Regulations')" class="subMenuItem">Регламент технической поддержки</p>
           <p @click="toPage('GuestBook')" class="subMenuItem">Гостевая книга</p>
           <p @click="toPage('PublicOffer')" class="subMenuItem">Публичная оферта</p>
           <p @click="toPage('RouterInInstallments')" class="subMenuItem">Роутер в рассрочку</p>

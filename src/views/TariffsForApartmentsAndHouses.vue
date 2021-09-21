@@ -15,160 +15,471 @@
           <div>
             <p>
               Основные тарифные планы, с возможностью смены в личном кабинете
-              тв100М/ТВ+/499р
-              Скорость*
-              100
-              Мбит/сек
-              Телевидение в пакете
-              от 193 каналов + IVI
-              Список каналов
-              Стоимость
-              499
-              рублей в месяц
-              ПОДКЛЮЧИТЬ
-              Супер u100M/399р
-              Скорость*
-              100
-              Мбит/сек
-              Телевидение в пакете
-              Без ТВ
-              Подключается дополнительно
-              Стоимость
-              399
-              рублей в месяц
-              ПОДКЛЮЧИТЬ
-              тв50M/ТВ/390р
-              Скорость*
-              50
-              Мбит/сек
-              Телевидение в пакете
-              от 120 каналов
-              Список каналов
-              Стоимость
-              390
-              рублей в месяц
-              ПОДКЛЮЧИТЬ
-              Комфорт u50M/300р
-              Скорость*
-              50
-              Мбит/сек
-              Телевидение в пакете
-              Без ТВ
-              Подключается дополнительно
-              Стоимость
-              300
-              рублей в месяц
-              ПОДКЛЮЧИТЬ
-              Стандарт u25M/250р
-              Скорость*
-              25
-              Мбит/сек
-              Телевидение в пакете
-              Без ТВ
-              Подключается дополнительно
-              Стоимость
-              250
-              рублей в месяц
-              ПОДКЛЮЧИТЬ
-              Эконом u6M/200р
-              Скорость*
-              6
-              Мбит/сек
-              Телевидение в пакете
-              Без ТВ
-              Подключается дополнительно
-              Стоимость
-              200
-              рублей в месяц
-              ПОДКЛЮЧИТЬ
-              Высокоскоростные тарифные планы, с возможностью смены по заявлению
-              1Гб/1790р
-              Скорость*
-              1
-              Гбит/сек
-              Телевидение в пакете
-              Без ТВ
-              Подключается дополнительно
-              Стоимость
-              1790
-              рублей в месяц
-              ПОДКЛЮЧИТЬ
-              500М/890р
-              Скорость*
-              500
-              Мбит/сек
-              Телевидение в пакете
-              Без ТВ
-              Подключается дополнительно
-              Стоимость
-              890
-              рублей в месяц
-              ПОДКЛЮЧИТЬ
-              200М/590р
-              Скорость*
-              200
-              Мбит/сек
-              Телевидение в пакете
-              Без ТВ
-              Подключается дополнительно
-              Стоимость
-              590
-              рублей в месяц
-              ПОДКЛЮЧИТЬ
+            <p>
+            <div class="rates">
+              <div :style="`background-color: rgb(255, 0, 0); box-sizing: border-box; padding: 15px 25px;`" class="rate">
+                <p class="rateHeader">тв100М/ТВ+/499р</p>
+                <div class="rateFeature">
+                  <p class="rateSubheader">Скорость</p>
+                  <p class="rateHeader">100</p>
+                  <p class="rateSubheader">Мбит/сек</p>
+                </div>
+                <div class="rateFeature" v-if="true">
+                  <p class="rateSubheader">Телевидение в пакете</p>
+                  <p class="rateHeader">
+                    <span class="material-icons">
+                      tv
+                    </span>
+                  от 193 каналов + IVI</p>
+                  <p class="rateSubheader">Список каналов</p>
+                </div>
+                <div class="rateFeature">
+                  <p class="rateSubheader">Стоимость</p>
+                  <p class="rateHeader">499</p>
+                  <p class="rateSubheader">рублей в месяц</p>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
+              </div>
+              <div :style="`background-color: rgb(255, 0, 0); box-sizing: border-box; padding: 15px 25px;`" class="rate">
+                <p class="rateHeader">Супер u100M/399р</p>
+                <div class="rateFeature">
+                  <p class="rateSubheader">Скорость</p>
+                  <p class="rateHeader">100</p>
+                  <p class="rateSubheader">Мбит/сек</p>
+                </div>
+                <p class="rateSubheader">Телевидение в пакете</p>
+                <p class="rateHeader">
+                  Без ТВ
+                <p class="rateSubheader">Список каналов</p>
+                <div class="rateFeature">
+                  <p class="rateSubheader">Стоимость</p>
+                  <p class="rateHeader">399</p>
+                  <p class="rateSubheader">рублей в месяц</p>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
+              </div>
+              <div :style="`background-color: rgb(255, 0, 0); box-sizing: border-box; padding: 15px 25px;`" class="rate">
+                <p class="rateHeader">тв50M/ТВ/390р</p>
+                <div class="rateFeature">
+                  <p class="rateSubheader">Скорость</p>
+                  <p class="rateHeader">50</p>
+                  <p class="rateSubheader">Мбит/сек</p>
+                </div>
+                <p class="rateSubheader">Телевидение в пакете</p>
+                <p class="rateHeader">
+                  <span class="material-icons">
+                    tv
+                  </span>
+                    от 120 каналов
+                    Список каналов
+                </p>
+                <p class="rateSubheader">Список каналов</p>
+                <div class="rateFeature">
+                  <p class="rateSubheader">Стоимость</p>
+                  <p class="rateHeader">399</p>
+                  <p class="rateSubheader">рублей в месяц</p>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
+              </div>
+              <div :style="`background-color: rgb(255, 0, 0); box-sizing: border-box; padding: 15px 25px;`" class="rate">
+                <p class="rateHeader">Комфорт u50M/300р</p>
+                <div class="rateFeature">
+                  <p class="rateSubheader">Скорость</p>
+                  <p class="rateHeader">50</p>
+                  <p class="rateSubheader">Мбит/сек</p>
+                </div>
+                  <p class="rateSubheader">Телевидение в пакете</p>
+                  <p class="rateHeader">
+                    Без ТВ  
+                  </p>
+                  <p class="rateSubheader">Подключается дополнительно</p>
+                <div class="rateFeature">
+                  <p class="rateSubheader">Стоимость</p>
+                  <p class="rateHeader">300</p>
+                  <p class="rateSubheader">рублей в месяц</p>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
+              </div>
+              </div>
+              <div style="display: flex;">
+                <div :style="`background-color: rgb(255, 0, 0); box-sizing: border-box; padding: 15px 25px;`" class="rate">
+                  <p class="rateHeader">Стандарт u25M/250р</p>
+                  <div class="rateFeature">
+                    <p class="rateSubheader">Скорость</p>
+                    <p class="rateHeader">25</p>
+                    <p class="rateSubheader">Мбит/сек</p>
+                  </div>
+                  <p class="rateSubheader">Телевидение в пакете</p>
+                  <p class="rateHeader">
+                    Без ТВ  
+                  </p>
+                  <p class="rateSubheader">Подключается дополнительно</p>
+                <div class="rateFeature">
+                  <p class="rateSubheader">Стоимость</p>
+                  <p class="rateHeader">250</p>
+                  <p class="rateSubheader">рублей в месяц</p>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
+              </div>
+                <div :style="`background-color: rgb(255, 0, 0); box-sizing: border-box; padding: 15px 25px;`" class="rate">
+                  <p class="rateHeader">Эконом u6M/200р</p>
+                  <div class="rateFeature">
+                    <p class="rateSubheader">Скорость</p>
+                    <p class="rateHeader">6</p>
+                    <p class="rateSubheader">Мбит/сек</p>
+                  </div>
+                  <p class="rateSubheader">Телевидение в пакете</p>
+                  <p class="rateHeader">
+                    Без ТВ  
+                  </p>
+                  <p class="rateSubheader">Подключается дополнительно</p>
+                <div class="rateFeature">
+                  <p class="rateSubheader">Стоимость</p>
+                  <p class="rateHeader">200</p>
+                  <p class="rateSubheader">рублей в месяц</p>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block plugInBtn" @click="plugIn()">ПОДКЛЮЧИТЬ</button>
+              </div>
+            </div>
+            <p class="newsHeader">
               Единовременные платежи
-              Подключение к сети Интернет на тарифы до 150 Мбит/сек. (вся сумма зачисляется на лицевой счёт абонента за исключением домов, в разделе Подключенные дома отмеченные звездочкой *)	
-              Подключение к сети Интернет на высокоскоростные тарифы от 100 Мбит/сек.	2900
-              Смена тарифного плана до 100 Мбит/сек.	бесплатно
-              Смена тарифного плана от 100 Мбит/сек.	1900
-              Регистрация статического IP-адреса	420
+            </p>
+            <div style="box-sizing: border-box; padding: 10px; border: 1px solid rgb(135, 135, 135); border-radius: 15px; background-color: rgb(255, 255, 255);">
+              <p>
+                Подключение к сети Интернет на тарифы до 150 Мбит/сек. (вся сумма зачисляется на лицевой счёт абонента за исключением домов, в разделе <span style="color: rgb(0, 0, 255);">Подключенные дома</span> отмеченные звездочкой *)	
+              </p>
+              <table style="background-color: #B564D4; text-align: center;">
+                <tr>
+                  <td style="border: 5px double rgb(255, 255, 255); width: 750px;">
+                    Подключение к сети Интернет на высокоскоростные тарифы от 100 Мбит/сек.
+                  </td>
+                  <td style="border: 5px double rgb(255, 255, 255); width: 250px;">
+                    2900
+                  </td>
+                </tr>
+              </table>
+                <p>Смена тарифного плана до 100 Мбит/сек.	бесплатно</p>
+              <table style="background-color: #B564D4; text-align: center;">
+                <tr>
+                  <td style="border: 5px double rgb(255, 255, 255); width: 750px;">
+                    Смена тарифного плана от 100 Мбит/сек.
+                  </td>
+                  <td style="border: 5px double rgb(255, 255, 255); width: 250px;">
+                    1900
+                  </td>
+                </tr>
+              </table>
+              <p>Регистрация статического IP-адреса	420</p>
+            </div>
+            <p class="newsHeader">
               Периодические платежи
-              Поддержка статического IP-адреса (ежемесячно руб.)	140
+            </p>
+            <table style="background-color: #B564D4; text-align: center;">
+              <tr>
+                <td style="border: 5px double rgb(255, 255, 255); width: 750px;">
+                  Поддержка статического IP-адреса (ежемесячно руб.)
+                </td>
+                <td style="border: 5px double rgb(255, 255, 255); width: 250px;">
+                  140
+                </td>
+              </tr>
+            </table>
+            
+              
+            <p class="newsHeader">
               Стоимость услуг
-              Наименование услуг
-              Единовременная плата за подключение к сети Интернет на тарифы до 150 Мбит/сек.	1000 руб. Вся сумма зачисляется на лицевой счёт абонента (за исключением домов, в разделе Подключенные дома отмеченные звездочкой *)
-              Единовременная плата за подключение к сети Интернет на высокоскоростные тарифы от 150Мбит/сек.	2900 руб. 1000 рублей зачисляется на лицевой счёт абонента
-              Стоимость работ при изменении тарифного плана до 150 Мбит/сек., единовременно	бесплатно
-              Стоимость работ при изменении тарифного плана от 150 Мбит/сек., единовременно	1900 руб.
-              Регистрация первого почтового ящика электронной почты	бесплатно
-              Поддержка первого почтового ящика объемом до 5мб
-              (в домене flexuser.ru)	бесплатно
-              Регистрация каждого дополнительного почтового ящика	84 руб.
-              Поддержка первого почтового ящика объемом до 5мб
-              (в домене noginsk.ru)	84 руб./мес
-              Поддержка первого почтового ящика без ограничения объема
-              (в домене flexuser.ru)	28 руб./1Мб/мес
-              Поддержка каждого дополнительного почтового ящика	84 руб./мес
-              Регистрация реального статического IP-адреса	420 руб.
-              Абонентская плата за реальный статический IP-адрес	140 руб./мес
+            </p>
+            <table style="text-align: center;">
+              <tr>
+                <td colspan="2" style="font-weight: bolder; width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Наименование услуг
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Единовременная плата за подключение к сети Интернет на тарифы до 150 Мбит/сек.
+                </td>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  <span style="font-weight: bolder;">1000 руб.</span> Вся сумма зачисляется на лицевой счёт абонента (за исключением домов, в разделе Подключенные дома отмеченные звездочкой *)
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Единовременная плата за подключение к сети Интернет на <span style="font-weight: bolder;">высокоскоростные</span> тарифы от 150Мбит/сек.
+                </td>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  <span style="font-weight: bolder;">2900 руб.</span>  1000 рублей зачисляется на лицевой счёт абонента
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Стоимость работ при изменении тарифного плана до 150 Мбит/сек., единовременно
+                </td>
+                <td style="font-weight: bolder; width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  бесплатно
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Стоимость работ при изменении тарифного плана от 150 Мбит/сек., единовременно
+                </td>
+                <td style="font-weight: bolder; width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  1900 руб.
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Регистрация первого почтового ящика электронной почты	
+                </td>
+                <td style="font-weight: bolder; width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  бесплатно
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Поддержка первого почтового ящика объемом до 5мб (в домене flexuser.ru)                </td>
+                <td style="font-weight: bolder; width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  бесплатно
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Регистрация каждого дополнительного почтового ящика	
+                </td>
+                <td style="font-weight: bolder; width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  84 руб.
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Поддержка первого почтового ящика объемом до 5мб (в домене noginsk.ru)
+                </td>
+                <td style="font-weight: bolder; width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  84 руб./мес
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Поддержка первого почтового ящика без ограничения объема (в домене flexuser.ru)
+                </td>
+                <td style="font-weight: bolder; width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  28 руб./мес
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Поддержка каждого дополнительного почтового ящика	
+                </td>
+                <td style="font-weight: bolder; width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  84 руб./мес
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Регистрация реального статического IP-адреса	
+                </td>
+                <td style="font-weight: bolder; width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  420 руб.
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Абонентская плата за реальный статический IP-адрес
+                </td>
+                <td style="font-weight: bolder; width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  140 руб./мес
+                </td>
+              </tr>
+            </table>  
+              
+            <p class="newsHeader">
               Дополнительные услуги
-              Перечень дополнительных услуг
-              Выезд специалиста на объект абонента	300 руб.
-              Ремонтные работы	150 руб./час
-              Изготовление дубликата договора по запросу абонента	90 руб.
-              Перемонтаж оборудования при смене адреса нахождения клиентского оборудования (при наличии технической возможности)	50% стоимости подключения
-              Подключение дополнительного компьютера (при наличии технической возможности)	50% стоимости подключения
-              Повторная настройка программного обеспечения для доступа в ИНТЕРНЕТ (при установленных у абонента ОС и ПП фирмы Microsoft)	300 руб.
-              Переоформление договора на другое лицо (смена собственника)	350 руб.
-
+            </p>
+            <table style="text-align: center;">
+              <tr>
+                <td colspan="2" style="font-weight: bolder; width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Перечень дополнительных услуг
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Выезд специалиста на объект абонента	300 руб.
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  300 руб.
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Ремонтные работы
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  150 руб./час
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Изготовление дубликата договора по запросу абонента
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  90 руб.
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Перемонтаж оборудования при смене адреса нахождения клиентского оборудования (при наличии технической возможности)	
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  50% стоимости подключения
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Подключение дополнительного компьютера (при наличии технической возможности)	
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  50% стоимости подключения
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Повторная настройка программного обеспечения для доступа в ИНТЕРНЕТ (при установленных у абонента ОС и ПП фирмы Microsoft)
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  300 руб.
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Переоформление договора на другое лицо (смена собственника)
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  350 руб.
+                </td>
+              </tr>
+            </table>
+              
+            <p class="newsHeader">
               Телематические услуги
-
-              Перечень телематических услуг
-              Организация домена в зоне .ru («ваше-имя».ru)
-              Организация и поддержка в течение первого года	900 руб.
-              Поддержка в течение последующих лет	900 руб./год
-              Поддержка первичной зоны DNS (для «ваше-имя».ru)
-              Организация	600 руб.
-              Поддержка	300 руб./мес.
-              Поддержка вторичной зоны DNS (для «ваше-имя».ru)
-              Организация	бесплатно
-              Поддержка	бесплатно
-              Организация домена в зоне noginsk.ru, flex.ru (для «ваше-имя».*.ru)
-              Организация	600 руб.
-              Поддержка	60 руб./мес.
-              Использование электронной почты
-              Регистрация почтового ящика	84 руб.
-              Поддержка почтового ящика	84 руб./мес.
-              Для абонентов ООО «ФЛЕКС» регистрация и поддержка первого почтового ящика осуществляется бесплатно
+            </p>
+            <table style="text-align: center;">
+              <tr>
+                <td colspan="2" style="font-weight: bolder; width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Перечень телематических услуг
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Организация домена в зоне .ru («ваше-имя».ru)
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Организация и поддержка в течение первого года
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  900 руб.
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Поддержка в течение последующих лет
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  900 руб./год
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Поддержка первичной зоны DNS (для «ваше-имя».ru)
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Организация	
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  600 руб.
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Поддержка	
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  300 руб./мес.
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Поддержка вторичной зоны DNS (для «ваше-имя».ru)
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Организация
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  бесплатно
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Поддержка	
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  бесплатно
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Организация домена в зоне noginsk.ru, flex.ru (для «ваше-имя».*.ru)
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Организация
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  600 руб.
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Поддержка
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  60 руб./мес.
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Использование электронной почты
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Регистрация почтового ящика	
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  84 руб.
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Поддержка почтового ящика
+                </td>
+                <td style="font-weight: bolder; width: 350px; border: 1px solid rgb(0, 0, 0);">
+                  84 руб./мес.
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="width: 750px; border: 1px solid rgb(0, 0, 0);">
+                  Для абонентов ООО «ФЛЕКС» регистрация и поддержка первого почтового ящика осуществляется бесплатно
+                </td>
+              </tr>
+            </table>
+            <p>
               * Скорость указанная в тарифе, является максимально возможной. Реальная скорость скачивания может отличаться от указанной в тарифе.
             </p>
           </div>

@@ -12,7 +12,214 @@
             Партнёры ФЛЕКС в городах Подмосковья:
           </p>
           <div>
-            <p>
+            <table>
+              <tr>
+                <td style="text-align: center; width: 500px; border: 1px solid rgb(0, 0, 0);">Название</td>
+                <td style="text-align: center; width: 500px; border: 1px solid rgb(0, 0, 0);">Города</td>
+              </tr>
+              <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Раменское</p>
+                  <p>Раменский район</p>
+                </td>
+              </tr>
+                            <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Раменское</p>
+                  <p>Раменский район</p>
+                </td>
+              </tr>
+                            <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Раменское</p>
+                  <p>Раменский район</p>
+                </td>
+              </tr>
+                            <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Раменское</p>
+                  <p>Раменский район</p>
+                </td>
+              </tr>
+                            <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Раменское</p>
+                  <p>Раменский район</p>
+                </td>
+              </tr>
+                            <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Раменское</p>
+                  <p>Раменский район</p>
+                </td>
+              </tr>
+                            <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Раменское</p>
+                  <p>Раменский район</p>
+                </td>
+              </tr>
+                            <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Раменское</p>
+                  <p>Раменский район</p>
+                </td>
+              </tr>
+                            <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Раменское</p>
+                  <p>Раменский район</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Дмитров</p>
+                  <p>Дмитровский район:</p>
+                  <p>Автополигон</p>
+                  <p>     Белый раст</p>
+                  <p>Горшково</p>
+                  <p>Яхрома</p>
+                  <p>     Деденево</p>
+                  <p>     Дуброво</p>
+                  <p>     Икша</p>
+                  <p>     Новосиньково</p>
+                  <p>     Олядьево</p>
+                  <p>     Орудьево</p>
+                  <p>     Подосинки</p>
+                  <p>     Рогачево</p>
+                  <p>     Рыбное</p>
+                  <p>г. Кимры</p>
+                  <p>Кимрский район:</p>
+                  <p>     Белый городок</p>
+                  <p>Мытищинский район:</p>
+                  <p>     Долгопрудный</p>
+                  <p>     Титово</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Наро-Фоминск</p>
+                  <p>Наро-Фоминский район</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Ногинск</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Жуковский</p>
+                  <p>п.Ильинский</p>
+                  <p>п.Кратово</p>
+                  <p>д. Верея</p>
+                  <p>п. Буденовский</p>
+                  <p>Краснодарский край:</p>
+                  <p>     г. Анапа</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Москва</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Озеры</p>
+                  <p>Озерский район</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Волоколамск</p>
+                  <p>Волоколамский район</p>
+                  <p>Лотошинский район</p>
+                  <p>Шаховской район.</p>
+                  <p>пгт. Лотошино</p>
+                  <p>пгт. Шаховская</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г.Дубна</p>
+                  <p>Дубнинский район:</p>
+                  <p>     г.Талдом</p>
+                  <p>     п.Запрудня</p>
+                  <p>     п.Вербилки</p>
+                  <p>     п.Северный</p>
+                  <p>     п.Темпы</p>
+                  <p>     с.Новоникольское</p>
+                  <p>     д.Павловичи</p>
+                  <p>     д.Квашенки</p>
+                  <p>     д.Новогуслево</p>
+                  <p>     д.Юркино</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г.Коломна</p>
+                  <p>Коломенский район:</p>
+                  <p>     п. Биорки</p>
+                  <p>     п. Лесной</p>
+                  <p>     п. Первомайский</p>
+                  <p>     п. Возрождение</p>
+                  <p>     п. Шеметово</p>
+                  <p>     д. Михали</p>
+                  <p>     д. Юрцово</p>
+                  <p>    п. Ловцы</p>
+                  <p>д. Сельниково</p>
+                  <p>Лесной Городок (п. Тимшино)</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г.Луховицы</p>
+                  <p>п.Красная Пойма</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Мытищи</p>
+                  <p>Московская область - радиодоступ</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Щелково</p>
+                  <p>Щелковский район</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">"Авиэл" ЗАО</td>
+                <td style="text-align: left; width: 500px; border: 1px solid rgb(0, 0, 0);">
+                  <p>г. Электрогорск</p>
+                  <p>г. Павловский Посад</p>
+                  <p>пос. Большие Дворы</p>
+                  <p>пос. Вольгинский</p>
+                </td>
+              </tr>
+            </table>
               Название	Города
               "Авиэл" ЗАО
               г. Раменское

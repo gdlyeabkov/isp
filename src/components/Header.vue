@@ -1,9 +1,9 @@
 <template>
   <div :style="`min-height: ${minheight}px; ${minheight > 100 ? 'display: flex; justify-content: space-between;' : ''}`" class="header">
     <!-- <div style="display: flex;"> -->
-      <p v-if="minheight <= 75">ISP</p>
+      <p v-if="minheight <= 75" style="cursor: pointer;" @click="toPage('Home')">ISP</p>
       <div v-if="minheight > 75" style="display: flex; flex-direction: row; align-items: center;">
-        <p>ISP</p>
+        <p  style="cursor: pointer;" @click="toPage('Home')">ISP</p>
         <img v-if="minheight > 75" style="height: 100%;" src="https://lk.flex.ru/blocks/pre/1/logo.png">  
       </div>
     <!-- </div> -->
