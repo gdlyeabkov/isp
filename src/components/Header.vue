@@ -168,7 +168,9 @@ export default {
             let clientInfo = JSON.parse(result).client
             // console.log(`Object.values(clientInfo): ${Object.values(clientInfo)}`)
             // this.$router.push({ name: 'PersonalArea', query: { bonus: clientInfo.personalAccountBonus, rateid: clientInfo.rate, name: clientInfo.name, cilentid: clientInfo.cilentId } })
+            
             this.$router.push({ name: 'PersonalArea' })
+
           } else {
             this.errors = "Неправильно введены логин и пароль"
           }

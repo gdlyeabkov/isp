@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" />
+    <!-- <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" /> -->
     <div class="aside">
       <p @click="toPage('PersonalAreaNews')">Новости и уведомления</p>
       <hr/>
@@ -50,12 +50,22 @@
       <div style="background: rgb(92,194,207); background: linear-gradient(90deg, rgba(92,194,207,1) 0%, rgba(255,255,255,1) 100%); align-self: center; width: 100%; color: rgb(255, 255, 255); font-size: 28px;">
         <p>Личный кабинет: Интернет</p>
       </div>
-      <div style="margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start;">
-        <p style="font-size: 20px; text-align: left;">Лицевой счет абонента № {{ clientId }}</p>
-        <p>Имя пользователя: <span style="font-weight: bolder;">{{ clientName }}</span></p>
-        <p>Баланс лицевого счета: <span style="font-weight: bolder;">{{ personalAccountBonus }}Ք</span></p>
-        <p>Действующий тарифный план: <span style="font-weight: bolder;">{{ clientRate }}</span></p>
-        <p><span style="color: rgb(0, 0, 255);">Бонусная скидка:</span> <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span></p>
+      <div style="text-align: left; margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start;">
+        <p style="width:45%; font-weight: bolder;"> 
+          Справочная система «Личного Кабинета»
+        </p>
+        <p style="width:45%;"> 
+          Краткое описание разделов
+        </p>
+        <p style="width:45%;"> 
+          Функциональные отличия с предыдущей версией
+        </p>
+        <p style="width:45%;"> 
+          Возможные технические проблемы
+        </p>
+        <p style="width:45%;"> 
+          Инструкции по настройкам доступа к локальной сети и к сети интернет
+        </p>
       </div>
     </div>
     <br style="clear: both"/>
@@ -70,7 +80,7 @@ import Header from '@/components/Header.vue'
 import * as jwt from 'jsonwebtoken'
 
 export default {
-  name: 'PersonalArea',
+  name: 'PersonalAreaHelp',
   data(){
     return {
       _id: '',

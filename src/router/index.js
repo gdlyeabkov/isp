@@ -37,6 +37,27 @@ import PaymentMethod from '../views/PaymentMethod.vue'
 import SmartIntercom from '../views/SmartIntercom.vue'
 import IntercomSystems from '../views/IntercomSystems.vue'
 
+import PersonalAreaNews from '../views/personalarea/PersonalAreaNews.vue'
+import PersonalAreaHelp from '../views/personalarea/PersonalAreaHelp.vue'
+import PersonalAreaTariffPlan from '../views/personalarea/PersonalAreaTariffPlan.vue'
+import PersonalAreaTrafficData from '../views/personalarea/PersonalAreaTrafficData.vue'
+import PersonalAreaTurboButton from '../views/personalarea/PersonalAreaTurboButton.vue'
+import PersonalAreaPasswordForAccess from '../views/personalarea/PersonalAreaPasswordForAccess.vue'
+import PersonalAreaConnectionStatistics from '../views/personalarea/PersonalAreaConnectionStatistics.vue'
+import PersonalAreaPaymentStatistics from '../views/personalarea/PersonalAreaPaymentStatistics.vue'
+import PersonalAreaDebitStatistics from '../views/personalarea/PersonalAreaDebitStatistics.vue'
+import PersonalAreaFinancialDocuments from '../views/personalarea/PersonalAreaFinancialDocuments.vue'
+import PersonalAreaSettings from '../views/personalarea/PersonalAreaSettings.vue'
+import PersonalAreaSMSNotifications from '../views/personalarea/PersonalAreaSMSNotifications.vue'
+import PersonalAreaPromisedPayment from '../views/personalarea/PersonalAreaPromisedPayment.vue'
+import PersonalAreaPaymentByCreditCard from '../views/personalarea/PersonalAreaPaymentByCreditCard.vue'
+import PersonalAreaPaymentCardActivation from '../views/personalarea/PersonalAreaPaymentCardActivation.vue'
+import PersonalAreaRealIPAddress from '../views/personalarea/PersonalAreaRealIPAddress.vue'
+import PersonalAreaDrWebAntiVirus from '../views/personalarea/PersonalAreaDrWebAntiVirus.vue'
+import PersonalAreaSmotryshka from '../views/personalarea/PersonalAreaSmotryshka.vue'
+import PersonalAreaAccountLockout from '../views/personalarea/PersonalAreaAccountLockout.vue'
+import PersonalAreaPaymentForServices from '../views/personalarea/PersonalAreaPaymentForServices.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -219,7 +240,108 @@ const routes = [
     path: '/intercomsystems',
     name: 'IntercomSystems',
     component: IntercomSystems
-  }
+  },
+  {
+    path: '/client/news',
+    name: 'PersonalAreaNews',
+    component: PersonalAreaNews
+  },
+  {
+    path: '/client/ip',
+    name: 'PersonalAreaRealIPAddress',
+    component: PersonalAreaRealIPAddress
+  },
+  {
+    path: '/client/smotryshka',
+    name: 'PersonalAreaSmotryshka',
+    component: PersonalAreaSmotryshka
+  },
+  {
+    path: '/client/payment/promised',
+    name: 'PersonalAreaPromisedPayment',
+    component: PersonalAreaPromisedPayment
+  },
+  {
+    path: '/client/turbobutton',
+    name: 'PersonalAreaTurboButton',
+    component: PersonalAreaTurboButton
+  },
+  {
+    path: '/client/lockout',
+    name: 'PersonalAreaAccountLockout',
+    component: PersonalAreaAccountLockout
+  },
+  {
+    path: '/client/tariff/plan',
+    name: 'PersonalAreaTariffPlan',
+    component: PersonalAreaTariffPlan
+  },
+  {
+    path: '/client/traffic/data',
+    name: 'PersonalAreaTrafficData',
+    component: PersonalAreaTrafficData
+  },
+  {
+    path: '/client/connection/statistics',
+    name: 'PersonalAreaConnectionStatistics',
+    component: PersonalAreaConnectionStatistics
+  },
+  {
+    path: '/client/debit/statistics',
+    name: 'PersonalAreaDebitStatistics',
+    component: PersonalAreaDebitStatistics
+  },
+  {
+    path: '/client/sms',
+    name: 'PersonalAreaSMSNotifications',
+    component: PersonalAreaSMSNotifications
+  },
+  {
+    path: '/client/settings',
+    name: 'PersonalAreaSettings',
+    component: PersonalAreaSettings
+  },
+  {
+    path: '/client/financial',
+    name: 'PersonalAreaFinancialDocuments',
+    component: PersonalAreaFinancialDocuments
+  },
+  {
+    path: '/client/password',
+    name: 'PersonalAreaPasswordForAccess',
+    component: PersonalAreaPasswordForAccess
+  },
+  {
+    path: '/client/payment/cardactivation',
+    name: 'PersonalAreaPaymentCardActivation',
+    component: PersonalAreaPaymentCardActivation
+  },
+  {
+    path: '/client/payment/services',
+    name: 'PersonalAreaPaymentForServices',
+    component: PersonalAreaPaymentForServices
+  },
+  {
+    path: '/client/payment/creditcard',
+    name: 'PersonalAreaPaymentByCreditCard',
+    component: PersonalAreaPaymentByCreditCard
+  },
+  {
+    path: '/client/payment/statistics',
+    name: 'PersonalAreaPaymentStatistics',
+    component: PersonalAreaPaymentStatistics
+  },
+  {
+    path: '/client/help',
+    name: 'PersonalAreaHelp',
+    component: PersonalAreaHelp
+  },
+  {
+    path: '/client/antivirus',
+    name: 'PersonalAreaDrWebAntiVirus',
+    component: PersonalAreaDrWebAntiVirus
+  },
+  
   
 ]
 
