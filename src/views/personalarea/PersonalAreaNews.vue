@@ -1,51 +1,7 @@
 <template>
   <div>
-    <!-- <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" /> -->
-    <div class="aside">
-      <p @click="toPage('Home')">Новости и уведомления</p>
-      <hr/>
-      <p @click="toPage('Home')">Лицевой счет</p>
-      <hr/>
-      <p @click="toPage('Home')">Тарифный план</p>
-      <hr/>
-      <p @click="toPage('Home')">Данные по трафику</p>
-      <hr/>
-      <p @click="toPage('Home')">Турбокнопка</p>
-      <hr/>
-      <p @click="toPage('Home')">Пароль на доступ в интернет</p>
-      <hr/>
-      <p @click="toPage('Home')">Данные по соединениям</p>
-      <hr/>
-      <p @click="toPage('Home')">Статистика платежей</p>
-      <hr/>
-      <p @click="toPage('Home')">Статистика списаний</p>
-      <hr/>
-      <p @click="toPage('Home')">Финансовые документы</p>
-      <hr/>
-      <p @click="toPage('Home')">Активация карты оплаты</p>
-      <hr/>
-      <p @click="toPage('Home')">Оплата банковской картой</p>
-      <hr/>
-      <p @click="toPage('Home')">Обещанный платеж</p>
-      <hr/>
-      <p @click="toPage('Home')">Оплата услуг</p>
-      <hr/>
-      <p @click="toPage('Home')">Блокировка учетной записи</p>
-      <hr/>
-      <p @click="toPage('Home')">Смотрёшка</p>
-      <hr/>
-      <p @click="toPage('Home')">Антивирус Dr.Web</p>
-      <hr/>
-      <p @click="toPage('Home')">Статический IP адрес</p>
-      <hr/>
-      <p @click="toPage('Home')">SMS уведомления</p>
-      <hr/>
-      <p @click="toPage('Home')">Настройки</p>
-      <hr/>
-      <p @click="toPage('Home')">Помощь по ЛК</p>
-      <hr/>
-      <p @click="logout()">Выход</p>
-    </div>
+    <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" />
+    <Aside/>
     <div class="main">
       <div style="background: rgb(92,194,207); background: linear-gradient(90deg, rgba(92,194,207,1) 0%, rgba(255,255,255,1) 100%); align-self: center; width: 100%; color: rgb(255, 255, 255); font-size: 28px;">
         <p>Личный кабинет: Интернет</p>
@@ -371,6 +327,7 @@ import Footer from '@/components/Footer.vue'
 import Header from '@/components/Header.vue'
 
 import * as jwt from 'jsonwebtoken'
+import Aside from '../../components/Aside.vue'
 
 export default {
   name: 'PersonalAreaNews',
@@ -444,7 +401,8 @@ export default {
   },
   components: {
     Header,
-    Footer
+    Footer,
+    Aside
   }
 
 }

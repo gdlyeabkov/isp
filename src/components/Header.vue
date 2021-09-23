@@ -108,7 +108,7 @@ export default {
     mounted(){
       this.token = localStorage.getItem('isptoken')
       jwt.verify(this.token, 'ispsecret', (err, decoded) => {
-        if (!err) { 
+        if (err) { 
           this.$router.push({ name: "PersonalArea" })
         }
       })
@@ -183,6 +183,7 @@ export default {
           this.$refs.personalArea.style = `
             background-color: rgb(225, 225, 225);
             color: white;
+            z-index: 25;
           `
           // this.loginWindow =  document.createElement("div")
           // this.loginWindow.style = `

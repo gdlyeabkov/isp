@@ -1,51 +1,7 @@
 <template>
   <div>
-    <!-- <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" /> -->
-    <div class="aside">
-      <p @click="toPage('PersonalAreaNews')">Новости и уведомления</p>
-      <hr/>
-      <p @click="toPage('PersonalArea')">Лицевой счет</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaTariffPlan')">Тарифный план</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaTrafficData')">Данные по трафику</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaTurbobutton')">Турбокнопка</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaAccessForPassword')">Пароль на доступ в интернет</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaConnectionStatistics')">Данные по соединениям</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaPaymentStatistics')">Статистика платежей</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaDebitStatistics')">Статистика списаний</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaFinancialDocuments')">Финансовые документы</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaCardActivation')">Активация карты оплаты</p>
-      <hr/>
-      <p @click="toPage('Home')">Оплата банковской картой</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaPromisedPayment')">Обещанный платеж</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaPaymentServices')">Оплата услуг</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaAccountLockout')">Блокировка учетной записи</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaSmotroyshka')">Смотрёшка</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaAntiVirusDrWeb')">Антивирус Dr.Web</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaRealIpAddress')">Статический IP адрес</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaSMSNotifications')">SMS уведомления</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaSettings')">Настройки</p>
-      <hr/>
-      <p @click="toPage('PersonalAreaHelp')">Помощь по ЛК</p>
-      <hr/>
-      <p @click="logout()">Выход</p>
-    </div>
+    <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" />
+    <Aside />
     <div class="main">
       <div style="background: rgb(92,194,207); background: linear-gradient(90deg, rgba(92,194,207,1) 0%, rgba(255,255,255,1) 100%); align-self: center; width: 100%; color: rgb(255, 255, 255); font-size: 28px;">
         <p>Личный кабинет: Интернет</p>
@@ -173,6 +129,7 @@
 <script>
 import Footer from '@/components/Footer.vue'
 import Header from '@/components/Header.vue'
+import Aside from '@/components/Aside.vue'
 
 import * as jwt from 'jsonwebtoken'
 
@@ -248,6 +205,7 @@ export default {
   },
   components: {
     Header,
+    Aside,
     Footer
   }
 

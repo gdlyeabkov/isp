@@ -47,8 +47,27 @@
 </template>
 
 <script>
+import * as jwt from 'jsonwebtoken'
+
 export default {
-  name: 'Aside'
+  name: 'Aside',
+  data(){
+    return {
+      token: window.localStorage.getItem("isptoken")
+    }
+  },
+  methods: {
+    toPage(pageName){
+      this.$router.push({ name: pageName })
+    },
+    logout(){
+      this.token = jwt.sign({
+          clientId: this.clientid
+        }, 'ispsecret', { expiresIn: 1 })
+        localStorage.setItem('isptoken', this.token)
+      this.toPage('Home')
+    },    
+  }
 }
 </script>
 
@@ -56,12 +75,12 @@ export default {
   .aside {
     float: left;
     height: 2300px;
-    width: 15%;
+    width: 25%;
     background-color: rgb(205, 205, 205);
   }
   .main {
     background-color: rgb(225, 225, 225);
-    width: 85%;
+    width: 75%;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -184,7 +203,8 @@ export default {
     width: 100%;
   }
 
-  .personalArea {
+  .aside > p {
+    color: rgb(0, 0, 255);
     cursor: pointer;
   }
 

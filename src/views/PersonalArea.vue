@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" />
-    <div class="aside">
+    <!-- <div class="aside">
       <p @click="toPage('PersonalAreaNews')">Новости и уведомления</p>
       <hr/>
       <p @click="toPage('PersonalArea')">Лицевой счет</p>
@@ -45,7 +45,8 @@
       <p @click="toPage('PersonalAreaHelp')">Помощь по ЛК</p>
       <hr/>
       <p @click="logout()">Выход</p>
-    </div>
+    </div> -->
+    <Aside />
     <div class="main">
       <div style="background: rgb(92,194,207); background: linear-gradient(90deg, rgba(92,194,207,1) 0%, rgba(255,255,255,1) 100%); align-self: center; width: 100%; color: rgb(255, 255, 255); font-size: 28px;">
         <p>Личный кабинет: Интернет</p>
@@ -282,6 +283,6 @@ export default {
 
   .aside > p {
     color: rgb(0, 0, 255);
+    cursor: pointer;
   }
-
 </style>
