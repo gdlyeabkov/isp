@@ -6,7 +6,7 @@
     </div>
     <div class="main">
       <div style="width: 100%; background-color: rgb(35, 35, 35); display: flex; justify-content: flex-start;">
-        <div style="width: 65%; background-color: rgb(35, 35, 35); display: flex; justify-content: space-around; margin-left: 75px;">
+        <div @closeAllMenus="closeAllMenusHandler()" style="width: 65%; background-color: rgb(35, 35, 35); display: flex; justify-content: space-around; margin-left: 75px;">
           <p ref="subMenuOneWindow" @mouseenter="drawSubMenu(1, true)" style="color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; height: 100%;">
             &nbsp;&nbsp;&nbsp;&nbsp;Интернет&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
@@ -175,6 +175,7 @@ import Header from '@/components/Header.vue'
 
 export default {
   name: 'Home',
+  emits: [ 'closeAllMenus' ],
   data(){
     return {
       news: [],
@@ -193,6 +194,13 @@ export default {
     }
   },
   methods: {
+    closeAllMenusHandler(){
+      this.subMenuOne = false
+      this.subMenuTwo = false
+      this.subMenuThree = false
+      this.subMenuFour = false
+      console.log(`Закрываю все окна`) 
+    },
     toPage(pageName){
       this.$router.push({ name: pageName })
     },

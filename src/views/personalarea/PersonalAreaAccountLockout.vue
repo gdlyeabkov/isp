@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" />
+    <!-- <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" /> -->
     <div class="aside">
       <p @click="toPage('PersonalAreaNews')">Новости и уведомления</p>
       <hr/>

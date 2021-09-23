@@ -151,9 +151,9 @@ app.get('/clients/create', async (req, res)=>{
         preparedGeneratedClientId += randomLetter
     }
 
-    generatedClientId = bcrypt.hashSync(preparedGeneratedClientId, 10)
-    // generatedClientId = bcrypt.hash(preparedGeneratedClientId, 10, ())
-
+    // generatedClientId = bcrypt.hashSync(preparedGeneratedClientId, 10)
+    generatedClientId = preparedGeneratedClientId
+    
     let queryOfClients = ClientModel.find({})
     queryOfClients.exec(async (err, allClients) => {
         if (err){

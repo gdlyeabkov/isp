@@ -179,6 +179,7 @@ export default {
       openLoginWindow(){
         this.loginToggler = !this.loginToggler
         if(this.loginToggler){
+          this.$emit("closeAllMenus")
           this.$refs.personalArea.style = `
             background-color: rgb(225, 225, 225);
             color: white;

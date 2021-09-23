@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" />
+    <!-- <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" /> -->
     <div class="aside">
       <p @click="toPage('PersonalAreaNews')">Новости и уведомления</p>
       <hr/>
@@ -51,11 +51,44 @@
         <p>Личный кабинет: Интернет</p>
       </div>
       <div style="margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start;">
-        <p style="font-size: 20px; text-align: left;">Лицевой счет абонента № {{ clientId }}</p>
-        <p>Имя пользователя: <span style="font-weight: bolder;">{{ clientName }}</span></p>
-        <p>Баланс лицевого счета: <span style="font-weight: bolder;">{{ personalAccountBonus }}Ք</span></p>
-        <p>Действующий тарифный план: <span style="font-weight: bolder;">{{ clientRate }}</span></p>
-        <p><span style="color: rgb(0, 0, 255);">Бонусная скидка:</span> <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span></p>
+        <p class="newsHeader">
+          Лицевой счет абонента № {{ "411269" }}
+        </p>
+        <p>
+          Код пользователя: {{ "411269" }}
+        </p>
+        <p>
+          Имя пользователя: {{ "all-4973" }}
+        </p>
+        <p>
+          Баланс лицевого счета: {{ "128,49₽" }}
+        </p>
+        <p>
+          Действующий тарифный план: {{ "Супер u100M/399р" }}
+        </p>
+        <p>
+          Бонусная скидка: {{ "0%" }}
+        </p>
+        <button class="btn btn-light">Получить список документов</button>
+        <div style="width: 700px;">
+          <p style="font-weight: bolder">
+            Финансовые документы
+          </p>
+          <table style="width: 100%; text-align: left;">
+            <tr>
+              <td style="width: 33%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+                документ
+              </td>
+              <td style="width: 33%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+                дата
+              </td>
+              <td style="width: 33%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+                файл
+              </td>
+            </tr>
+          </table>
+          
+        </div> 
       </div>
     </div>
     <br style="clear: both"/>

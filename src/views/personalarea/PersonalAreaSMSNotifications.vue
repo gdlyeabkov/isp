@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" />
+    <!-- <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" /> -->
     <div class="aside">
       <p @click="toPage('PersonalAreaNews')">Новости и уведомления</p>
       <hr/>
@@ -51,11 +51,37 @@
         <p>Личный кабинет: Интернет</p>
       </div>
       <div style="margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start;">
-        <p style="font-size: 20px; text-align: left;">Лицевой счет абонента № {{ clientId }}</p>
-        <p>Имя пользователя: <span style="font-weight: bolder;">{{ clientName }}</span></p>
-        <p>Баланс лицевого счета: <span style="font-weight: bolder;">{{ personalAccountBonus }}Ք</span></p>
-        <p>Действующий тарифный план: <span style="font-weight: bolder;">{{ clientRate }}</span></p>
-        <p><span style="color: rgb(0, 0, 255);">Бонусная скидка:</span> <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span></p>
+        <p class="newsHeader">
+          SMS уведомления
+        </p>
+        <p class="newsHeader">
+          Номера телефонов, подписанные на услугу:
+        </p>
+        <div style="width: 100%; text-align: left;">
+          <span class="material-icons">
+          stay_primary_portrait
+          </span>
+          +7 
+          <input type="phone" placeholder="9031234567" style="display: inline;" class="w-25 form-control">
+          <button style="margin-left: 5px;" class="btn btn-light">
+            добавить номер
+          </button>
+        </div>
+        <hr />
+        <div style="width: 100%; text-align: left;">
+          <p>
+            142403, Московская обл., г. Ногинск, пл. Ленина, д. 11
+          </p>
+          <p>
+          Тел.: (495) 702-94-49, 993-04-32, 993-0433, 995-52-40, 600-42-13;(496) 517-30-02, 517-31-69
+          </p>
+          <p>
+            Электронная почта: info@flex.ru
+          </p>
+          <p>
+            По вопросам работы личного кабинета пишите на web@flex.ru
+          </p>
+        </div>
       </div>
     </div>
     <br style="clear: both"/>

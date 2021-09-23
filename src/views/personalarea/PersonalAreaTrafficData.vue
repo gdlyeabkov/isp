@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" />
+    <!-- <Header :auth="false" :area="true" :minheight="275" :balance="balance" :bonus="personalAccountBonus" :clientId="clientId" :clientName="clientName" /> -->
     <div class="aside">
       <p @click="toPage('PersonalAreaNews')">Новости и уведомления</p>
       <hr/>
@@ -51,11 +51,118 @@
         <p>Личный кабинет: Интернет</p>
       </div>
       <div style="margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start;">
-        <p style="font-size: 20px; text-align: left;">Лицевой счет абонента № {{ clientId }}</p>
-        <p>Имя пользователя: <span style="font-weight: bolder;">{{ clientName }}</span></p>
-        <p>Баланс лицевого счета: <span style="font-weight: bolder;">{{ personalAccountBonus }}Ք</span></p>
-        <p>Действующий тарифный план: <span style="font-weight: bolder;">{{ clientRate }}</span></p>
-        <p><span style="color: rgb(0, 0, 255);">Бонусная скидка:</span> <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span></p>
+        <p class="newsHeader">
+          Данные по трафику
+        </p>
+        <p>
+          Код пользователя: <span style="font-weight: bolder;">{{ "411269" }}</span>
+        </p>
+        <p>
+          Имя пользователя: <span style="font-weight: bolder;">{{ "all-4973" }}</span>
+        </p>
+        <p>
+          Баланс лицевого счета: <span style="font-weight: bolder;">{{ "128,49₽" }}</span>
+        </p>
+        <p>
+          Действующий тарифный план:  <span style="font-weight: bolder;">{{ "Супер u100M/399р" }}</span>
+        </p>
+        <p>
+          Привязка по IP адресу: <span style="font-weight: bolder;">{{ "10.203.3.21" }}</span>
+        </p>
+        <p>
+          Зачтенный трафик с начала месяца:112 229,50 МБайт
+        </p>
+        <div style="width: 675px;">
+          <p style="text-align: center; font-weight: bolder;">
+            Потребление трафика
+          </p>
+          <table style="width: 100%;">
+            <tr style="height: 45px;">
+              <td style="text-align: left; border: 1px solid rgb(0, 0, 0);">
+                
+              </td>
+              <td style="font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                за сутки
+              </td>
+              <td style="font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                за месяц
+              </td>
+              <td style="font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                за последнюю/текующую сессию
+              </td>
+            </tr>
+            <tr style="height: 45px;">
+              <td style="text-align: left; font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                Исходящий(от абонента)
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                -
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                {{ "9.2 ГБайт" }}
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                -
+              </td>
+            </tr>
+            <tr style="height: 45px;">
+              <td style="text-align: left; font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                Входящий(к абоненту)
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                -
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                {{ "80.76 ГБайт" }}
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                -
+              </td>
+            </tr>
+            <tr style="height: 45px;">
+              <td style="text-align: left; font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                Лимит
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                -
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                -
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                -
+              </td>
+            </tr>
+            <tr style="height: 45px;">
+              <td style="text-align: left; font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                Превышение
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                -
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                -
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                -
+              </td>
+            </tr>
+            <tr style="height: 45px;">
+              <td style="text-align: left; font-weight: bolder; border: 1px solid rgb(0, 0, 0);">
+                Остаток
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                -
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                -
+              </td>
+              <td style="border: 1px solid rgb(0, 0, 0);">
+                -
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
     <br style="clear: both"/>
