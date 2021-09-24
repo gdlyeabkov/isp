@@ -7,11 +7,140 @@
         <p>Личный кабинет: Интернет</p>
       </div>
       <div style="margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start;">
-        <p style="font-size: 20px; text-align: left;">Лицевой счет абонента № {{ clientId }}</p>
-        <p>Имя пользователя: <span style="font-weight: bolder;">{{ clientName }}</span></p>
-        <p>Баланс лицевого счета: <span style="font-weight: bolder;">{{ personalAccountBonus }}Ք</span></p>
-        <p>Действующий тарифный план: <span style="font-weight: bolder;">{{ clientRate }}</span></p>
-        <p><span style="color: rgb(0, 0, 255);">Бонусная скидка:</span> <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span></p>
+        <p class="newsHeader">
+          Информационная защита средствами ПО Dr.WEB
+        </p>
+        <p>
+          Внимание! Отключение услуги «антивирусной защиты Dr.Web» через управление услуги приведет к отмене действующих подписок, привязанных к данной услуге. Если вы хотите изменить количество активных подписок, вы можете добавить или удалить их через управление активными подписками. Актуальная стоимость действующей доп.услуги «антивирусной защиты Dr.Web» зависит от количества действующих подписок согласно тарифной сетке.
+        </p>
+        <p>
+          Возможна подписка до 5 устройств (независимо от выбранных тарифов).
+        </p>
+        <p style="font-weight: bolder; width: 100%;">
+          Тарифы на подписку на антивирус Dr.Web (c 01.10.2020)
+        </p>
+        <table>
+          <tr style="font-weight: bolder; color: rgb(255, 255, 255); background-color: rgb(155, 0, 255)">
+            <td rowspan="2" style="height: 45px; width: 175px; text-align: left; border: 1px solid rgb(175, 175, 175);">
+              Антивирус Dr.Web Премиум	  
+            </td>
+            <td colspan="5" style="height: 45px; width: 95px; text-align: left; border: 1px solid rgb(175, 175, 175);">
+              цена подписки (₽/мес.)
+            </td>
+          </tr>
+          <tr style="background-color: rgb(155, 0, 255)">
+            <td style="height: 45px; width: 95px; border: 1px solid rgb(175, 175, 175);">
+              на 1 устройство	
+            </td>
+            <td style="height: 45px; width: 95px; border: 1px solid rgb(175, 175, 175);">
+              на 2 устройства	
+            </td>
+            <td style="height: 45px; width: 95px; border: 1px solid rgb(175, 175, 175);">
+              на 3 устройства	
+            </td>
+            <td style="height: 45px; width: 95px; border: 1px solid rgb(175, 175, 175);">
+              на 4 устройства	
+            </td>
+            <td style="height: 45px; width: 95px; border: 1px solid rgb(175, 175, 175);">
+              на 5 устройств
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 175px; text-align: left; height: 45px; width: 95px; border: 1px solid rgb(175, 175, 175);">
+              Антивирус Dr.Web Премиум	  
+            </td>
+            <td style="height: 45px; width: 95px; border: 1px solid rgb(175, 175, 175);">
+              0
+            </td>
+            <td style="height: 45px; width: 95px; border: 1px solid rgb(175, 175, 175);">
+              99
+            </td>
+            <td style="height: 45px; width: 95px; border: 1px solid rgb(175, 175, 175);">
+              149
+            </td>
+            <td style="height: 45px; width: 95px; border: 1px solid rgb(175, 175, 175);">
+              199
+            </td>
+            <td style="height: 45px; width: 95px; border: 1px solid rgb(175, 175, 175);">
+              239            
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 175px; text-align: left; border: 1px solid rgb(175, 175, 175);">
+              Антивирус Dr.Web Премиум	  
+            </td>
+            <td style="border: 1px solid rgb(175, 175, 175);">
+              49
+            </td>
+            <td style="border: 1px solid rgb(175, 175, 175);">
+              98
+            </td>
+            <td style="border: 1px solid rgb(175, 175, 175);">
+              147
+            </td>
+            <td style="border: 1px solid rgb(175, 175, 175);">
+              196
+            </td>
+            <td style="border: 1px solid rgb(175, 175, 175);">
+              295
+            </td>
+          </tr>
+        </table>
+        <div style="text-align: left;">
+          <button class="m-1 w-25 btn btn-primary">
+            Добавить подписку на Антивирус Dr.Web Мобильный
+          </button>
+          <button class="w-25 btn btn-primary">
+            Добавить подписку на Антивирус Dr.Web Премиум
+          </button>
+        </div>
+        <div style="text-align: left;">
+          <div style="display: flex;">
+            <img width="150px" height="150px" src="https://lk.flex.ru/img/drweb.logo.jpg" alt="">
+            <div>
+              <p>
+                Суть услуги «Информационная защита средствами ПО Dr.WEB» заключается в предоставлении абонентам фирмы "ФЛЕКС" (далее Подписчикам) ограниченного временными рамками права использовать функции ПО Dr.Web для защиты их персональных компьютеров.
+              </p>
+              <br style="clear: both" />
+              <p>
+                Для работы антивирусного пакета требуется:
+              </p>
+              <p>
+                процессор Intel Pentium II с частотой 400 МГц или выше;
+              </p>
+              <p>
+                объем оперативной памяти не менее 32 МБ;
+              </p>
+              <p>
+                свободное место на жестком диске не менее 108 МБ (8 МБ для исполняемых файлов, остальное для протоколов работы);
+              </p>
+              <p>
+                ОС Windows 2000/XP/Vista/7/8; ОС Mac OS X 10.6 и выше
+              </p>
+              <p>
+                компьютер должен иметь соединение с Интернет для обеспечения связи с сервером.
+              </p>
+            </div>
+          </div>
+          <p>
+            Для подключения к услуге Подписчику необходимо последовательно выполнить следующие действия.
+          </p>
+          <p>
+            Оформить подписку на услугу.
+          </p>
+          <p>
+            Скачать инсталляционный пакет по вновь появившейся ссылке.
+          </p>
+          <p>
+            Произвести запуск инсталляционного пакета и установку ПО "Dr.Web", следуя инструкциям по установке.
+          </p>
+          <p>
+            Перегрузить компьютер и дождаться соединения с антивирусным сервером. Процесс подключения к услуге завершен.
+          </p>
+          <p>
+            Инсталляционный пакет устанавливается на компьютере пользователя. Объем инсталляционного пакета составляет ~2МБ. В исполняемом файле находится уникальный идентификационный номер пользователя (UID), созданный сервером и хранящийся в его базе данных. После запуска инсталляционного файла устанавливается связь сервера с компьютером пользователя по протоколу TCP/IP и происходит идентификация новой станции. В случае успешной идентификации на компьютер пользователя с сервера закачивается основной антивирусный пакет, размер ~20МБ. Обновление и управление антивирусным пакетом производятся в соответствии с инструкциями, получаемыми с антивирусного сервера.
+          </p>
+        </div>
       </div>
     </div>
     <br style="clear: both"/>

@@ -12,6 +12,86 @@
         <p>Баланс лицевого счета: <span style="font-weight: bolder;">{{ personalAccountBonus }}Ք</span></p>
         <p>Действующий тарифный план: <span style="font-weight: bolder;">{{ clientRate }}</span></p>
         <p><span style="color: rgb(0, 0, 255);">Бонусная скидка:</span> <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span></p>
+        <div style="text-align: left;">
+          <p class="newsHeader">Оплата банковской картой</p>
+          <img src="https://lk.flex.ru/img/payments/card/visa.png" alt="">
+          <img src="https://lk.flex.ru/img/payments/card/mastercard.png" alt="">
+          <p>Укажите сумму платежа:</p>
+          <input style="display: inline;" type="number" class="form-control w-25"/>
+          <span>руб.</span>
+          <button class="btn btn-light">
+            Перейти к оплате
+          </button>
+          <p>
+            Нажав "Перейти к оплате", вы будете перемещены на страницу процессингового центра для ввода реквизитов
+          </p>
+          <p>
+            Вашей банковской карты и адреса электронной почты.
+          </p>
+          <p style="font-weight: bolder;">
+            Важно! Не забудьте указать адрес Вашей электронной почты. На этот адрес придёт квитанция об оплате, подтверждающая факт списания денег с карты на Ваш лицевой счёт. Если Вы не укажете адрес электронной почты, платёж не будет проведён!
+          </p>
+        </div>
+        <p style="text-align: left;">Обращаем ваше внимание, что при возврате ошибочно уплаченных денежных средств с Абонента удерживается комиссия в размере 3% понесённых оператором расходов за проведение операций по проведению денежных средств.</p>
+        <p style="text-align: center; width: 100%; display: block; font-weight: bolder;">История последних операций с банковской картой</p>
+        <table>
+          <tr>
+            <td style="font-weight: bolder; border: 1px solid rgb(145, 145, 145);">
+              № заказа	
+            </td>
+            <td style="font-weight: bolder; border: 1px solid rgb(145, 145, 145);">
+              сумма	
+            </td>
+            <td style="font-weight: bolder; border: 1px solid rgb(145, 145, 145);">
+              дата и время
+            </td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid rgb(145, 145, 145);">
+              <button class="btn btn-primary">
+                1427684
+              </button>
+            </td>
+            <td style="border: 1px solid rgb(145, 145, 145);">
+              22,00
+            </td>
+            <td style="border: 1px solid rgb(145, 145, 145);">
+              15.03.2019 17:12
+            </td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid rgb(145, 145, 145);">
+              <button class="btn btn-primary">
+                1427682
+              </button>	
+            </td>
+            <td style="border: 1px solid rgb(145, 145, 145);">
+              2011,00
+            </td>
+            <td style="border: 1px solid rgb(145, 145, 145);">
+              15.03.2019 17:08
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" style="border: 1px solid rgb(145, 145, 145);">
+              Отображаются только 30 последних операций. Предоставление полного списка операций производится только по заявлению.
+            </td>
+          </tr>
+        </table>
+        <div style="text-align: left;">
+          <p>
+            При оплате банковской картой безопасность платежей гарантирует процессинговый центр Best2PayBest2Pay.
+          </p>
+          <p>
+            Приём платежей происходит через защищённое безопасное соединение, используя протокол TLS 1.2. Компания Best2Pay соответствует международным требованиями PCI DSS для обеспечения безопасной обработки реквизитов банковской карты плательщика. Ваши конфиденциальные данные необходимые для оплаты (реквизиты карты, регистрационные данные и др.) не поступают в интернет-магазин, их обработка производится на стороне процессингового центра Best2Pay и полностью защищена.
+          </p>
+          <p>
+            Никто, в том числе ООО «ФЛЕКС», не может получить банковские и персональные данные плательщика.
+          </p>
+          <p>
+            При оплате заказа банковской картой возврат денежных средств производится на ту же самую карту, с которой был произведён платёж.
+          </p>
+        </div>
       </div>
     </div>
     <br style="clear: both"/>

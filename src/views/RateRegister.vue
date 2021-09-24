@@ -14,9 +14,9 @@
           <span class="measure">Мб/с</span>
         </div>
         <label for="inputTV" class="labelRateField">Поддержка ТВ</label>
-        <input  @change="debug()" v-model="rateTV" type="checkbox" id="inputTV" required="" autofocus="" class="inputRateField">
+        <input @input="$refs.rateTVDescRef.disabled = rateTV" @change="debug()" v-model="rateTV" type="checkbox" id="inputTV" required="" autofocus="" class="inputRateField">
         <label for="inputTVDesc" class="labelRateField">Описание поддержки TV</label>
-        <input :disabled="!rateTV" v-model="rateTVDesc" type="text" id="inputTVDesc" class="form-control inputRateField" placeholder="Описание поддержки TV" required="" autofocus="">
+        <input v-model="rateTVDesc" ref="rateTVDescRef" :disabled="true" type="text" id="inputTVDesc" class="form-control inputRateField" placeholder="Описание поддержки TV" required="" autofocus="">
         <label for="inputWriteOff" class="labelRateField">Ежемесячное списание</label>
         <div style="display: flex;">
           <input  v-model="rateWriteOff" type="number" id="inputWriteOff" class="form-control inputRateField" placeholder="Ежемесячное списание" required="" autofocus="">
@@ -37,13 +37,14 @@ import Header from '@/components/Header.vue'
 
 export default {
   name: 'RateRegiser',
-  date(){
+  data(){
     return {
       rateName: '',
       rateSpeed: 0,
       rateTV: false,
       rateTVDesc: '',
-      rateWriteOff: 157286400,
+      rateWriteOff: 299,
+      errors: ''
     }
   },
   methods: {
@@ -52,6 +53,7 @@ export default {
     },
     register(){
       console.log(`Регистрирую новый тариф: ${this.rateName}, ${this.rateSpeed}, ${this.rateTV}, ${this.rateWriteOff}`)
+      // rateTVDesc
       fetch(`http://localhost:4000/rates/create/?ratename=${this.rateName}&ratespeed=${this.rateSpeed}&supporttv=${this.rateTV}&tvdesc=${this.rateTVDesc}&ratecost=${this.rateWriteOff}`, {
         mode: 'cors',
         method: 'GET'

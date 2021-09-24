@@ -108,8 +108,14 @@ export default {
     mounted(){
       this.token = localStorage.getItem('isptoken')
       jwt.verify(this.token, 'ispsecret', (err, decoded) => {
-        if (err) { 
-          this.$router.push({ name: "PersonalArea" })
+        if (err) {
+
+          // this.$router.push({ name: "PersonalArea" })
+         
+          if(minheight > 100){
+            this.$router.push({ name: "Home" })
+          }
+
         }
       })
     },

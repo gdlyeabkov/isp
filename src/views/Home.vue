@@ -101,14 +101,18 @@
                 <p class="rateHeader">{{ rate.speed }}</p>
                 <p class="rateSubheader">Мбит/сек</p>
               </div>
+              <p class="rateSubheader">Телевидение в пакете</p>
               <div class="rateFeature" v-if="rate.tv">
-                <p class="rateSubheader">Телевидение в пакете</p>
                 <p class="rateHeader">
                   <span class="material-icons">
                     tv
                   </span>
                 {{ rate.tvDesc }}</p>
                 <p class="rateSubheader">Список каналов</p>
+              </div>
+              <div v-else-if="!rate.tv">
+                <p style="font-size: 18px;">{{ rate.tvDesc }}</p>
+                <p style="font-size: 12px;">Подключается дополнительно</p>
               </div>
               <div class="rateFeature">
                 <p class="rateSubheader">Стоимость</p>

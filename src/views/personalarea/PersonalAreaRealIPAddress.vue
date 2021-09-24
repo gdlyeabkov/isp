@@ -7,11 +7,52 @@
         <p>Личный кабинет: Интернет</p>
       </div>
       <div style="margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start;">
-        <p style="font-size: 20px; text-align: left;">Лицевой счет абонента № {{ clientId }}</p>
-        <p>Имя пользователя: <span style="font-weight: bolder;">{{ clientName }}</span></p>
-        <p>Баланс лицевого счета: <span style="font-weight: bolder;">{{ personalAccountBonus }}Ք</span></p>
-        <p>Действующий тарифный план: <span style="font-weight: bolder;">{{ clientRate }}</span></p>
-        <p><span style="color: rgb(0, 0, 255);">Бонусная скидка:</span> <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span></p>
+        <p class="newsHeader">Дополнительные услуги</p>
+        <p style="text-align: center; width: 100%; font-weight: bolder;">Управление услугой «Реальный IP-адрес»</p>
+        <table style="border: 1px solid rgb(175, 175, 175); background-color: rgb(255, 255, 255);">
+          <tr>
+            <td style="height: 50px; width: 115px; border: 1px solid rgb(175, 175, 175); font-weight: bolder;">
+              управление
+            </td>
+            <td style="height: 50px; width: 115px; border: 1px solid rgb(175, 175, 175); font-weight: bolder;">
+              название услуги
+            </td>
+            <td style="height: 50px; width: 115px; border: 1px solid rgb(175, 175, 175); font-weight: bolder;">
+              абонентская плата
+            </td>
+            <td style="height: 50px; width: 115px; border: 1px solid rgb(175, 175, 175); font-weight: bolder;">
+              метод списания
+            </td>
+            <td style="height: 50px; width: 115px; border: 1px solid rgb(175, 175, 175); font-weight: bolder;">
+              стоимость подключения
+            </td>
+            <td style="height: 50px; width: 115px; border: 1px solid rgb(175, 175, 175); font-weight: bolder;">
+              состояние услуги
+            </td>
+          </tr>
+          <tr>
+            <td style="height: 50px; width: 115px;">
+              <span style="color: rgb(0, 200, 0); font-size: 46px; font-weight: bolder;" class="material-icons">
+                add
+              </span>  
+            </td>
+            <td style="height: 50px; width: 115px;">
+              Статический IPv4 адрес	
+            </td>
+            <td style="height: 50px; width: 115px;">
+              140 руб.
+            </td>
+            <td style="height: 50px; width: 115px;">
+              Ежедневно суточную долю суммы за вчера
+            </td>
+            <td style="height: 50px; width: 115px;">
+              420 руб.	
+            </td>
+            <td style="height: 50px; width: 115px;">
+              
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
     <br style="clear: both"/>

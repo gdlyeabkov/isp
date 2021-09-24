@@ -10,16 +10,16 @@
         <p style="width:45%; font-weight: bolder;"> 
           Справочная система «Личного Кабинета»
         </p>
-        <p style="width:45%;"> 
+        <p style="width:45%; color: rgb(0, 0, 255);"> 
           Краткое описание разделов
         </p>
-        <p style="width:45%;"> 
+        <p style="width:45%; color: rgb(0, 0, 255);"> 
           Функциональные отличия с предыдущей версией
         </p>
-        <p style="width:45%;"> 
+        <p style="width:45%; color: rgb(0, 0, 255);"> 
           Возможные технические проблемы
         </p>
-        <p style="width:45%;"> 
+        <p style="width:45%; color: rgb(0, 0, 255);"> 
           Инструкции по настройкам доступа к локальной сети и к сети интернет
         </p>
       </div>

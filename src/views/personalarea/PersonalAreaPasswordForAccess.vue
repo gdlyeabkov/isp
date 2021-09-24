@@ -7,11 +7,36 @@
         <p>Личный кабинет: Интернет</p>
       </div>
       <div style="margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start;">
-        <p style="font-size: 20px; text-align: left;">Лицевой счет абонента № {{ clientId }}</p>
-        <p>Имя пользователя: <span style="font-weight: bolder;">{{ clientName }}</span></p>
-        <p>Баланс лицевого счета: <span style="font-weight: bolder;">{{ personalAccountBonus }}Ք</span></p>
-        <p>Действующий тарифный план: <span style="font-weight: bolder;">{{ clientRate }}</span></p>
-        <p><span style="color: rgb(0, 0, 255);">Бонусная скидка:</span> <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span></p>
+        <p style="font-weight: bolder;">
+          Смена пароля на доступ в «Личный Кабинет»
+        </p>
+        <p>
+          Для смены пароля необходимо указать действующий пароль:
+        </p>
+        <input style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="старый пароль" />
+        <input style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="новый пароль" />
+        <input style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="новый пароль (повтор)" />
+        <button class="btn btn-light">
+          сменить пароль
+        </button>
+        <p style="font-size: 18px; text-align: left; color: rgb(0, 0, 255);">
+          Внимание! Настоятельно рекомендуем отказаться от использования простых и коротких паролей для вашей же безопасности.
+        </p>
+        <p>
+          Рекомендации по выбору пароля для доступа в сеть «Интернет»
+        </p>
+        <ul>
+          <li style="font-size: 18px; text-align: left; font-weight: bolder;">
+            Рекомендованная длина пароля - от 8 до 16 символов
+          </li>
+          <li style="font-size: 18px; text-align: left; font-weight: bolder;">
+            Не используйте в пароле только цифры или только буквы
+          </li>
+          <li style="font-size: 18px; text-align: left; font-weight: bolder;">
+            Рекомендуем указывать и цифры и строчные и прописные буквы
+          </li>
+        </ul>
+        
       </div>
     </div>
     <br style="clear: both"/>

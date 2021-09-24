@@ -12,6 +12,23 @@
         <p>Баланс лицевого счета: <span style="font-weight: bolder;">{{ personalAccountBonus }}Ք</span></p>
         <p>Действующий тарифный план: <span style="font-weight: bolder;">{{ clientRate }}</span></p>
         <p><span style="color: rgb(0, 0, 255);">Бонусная скидка:</span> <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span></p>
+        <p class='newsHeader'>
+          Активация карты оплаты
+        </p>
+        <p style='text-align: left;'>
+          Для активации карты оплаты введите ее номер и пин-код в соответствующие поля формы. По завершению ввода нажмите кнопку "Активировать карту оплаты", после чего дождитесь ответа от сервера. В случае если сервер ответил что ваша карта была уже активирована ранее (но вы уверены что не вами), обратитесь в абонентский отдел компании. Если же сервер выдал ошибку при активации карты, обратитесь в службу технической поддержки.
+        </p>
+        <div style="box-sizing: border-box; padding: 10px; width: 300px; height: 175px; background-color: rgb(255, 255, 255);">
+          <label style="display: block; text-align: right;">Номер карты</label>
+          <label  style="color: transparent">Пин-код</label>
+          <input type="text" style="margin-left: 10px; display: inline; text-align: right;" class="form-control w-50">
+          <p>
+            <label>Пин-код</label>
+            <input type="text" style="margin-left: 10px; display: inline;" class="form-control w-50">
+          </p>
+          <button style="box-shadow: inset 0px 0px 7px rgb(145, 145, 145); border: 1px solid rgb(200, 200, 200); margin: 0px 5px;" class="btn btn-light">Активировать карту оплаты</button>
+        </div>
+        <img src="https://lk.flex.ru/img/payments/cards.png" alt="">
       </div>
     </div>
     <br style="clear: both"/>

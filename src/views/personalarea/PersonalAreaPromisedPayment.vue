@@ -12,6 +12,18 @@
         <p>Баланс лицевого счета: <span style="font-weight: bolder;">{{ personalAccountBonus }}Ք</span></p>
         <p>Действующий тарифный план: <span style="font-weight: bolder;">{{ clientRate }}</span></p>
         <p><span style="color: rgb(0, 0, 255);">Бонусная скидка:</span> <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span></p>
+        <div style="text-align: left;">
+          <p class="newsHeader">
+            Обещанный платеж
+          </p>
+          <p>
+            «Обещанный платеж» – временно пополняет баланс на определенную сумму. Сумма платежа автоматически вычитается через трое суток с момента активации услуги, или сразу же при пополнении баланса, если пополнение произошло раньше автоматического вычета.
+          </p>
+          <p>
+            Сумма доступного обещанного платежа: <span style="font-weight: bolder;">168 руб.</span>
+          </p>
+        </div>
+        <button style="box-shadow: inset 0px 0px 7px rgb(145, 145, 145); border: 1px solid rgb(200, 200, 200); margin: 0px 5px;" class="btn btn-light">Взять обещанный платёж</button>
       </div>
     </div>
     <br style="clear: both"/>

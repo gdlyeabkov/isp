@@ -7,11 +7,37 @@
         <p>Личный кабинет: Интернет</p>
       </div>
       <div style="margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start;">
-        <p style="font-size: 20px; text-align: left;">Лицевой счет абонента № {{ clientId }}</p>
-        <p>Имя пользователя: <span style="font-weight: bolder;">{{ clientName }}</span></p>
-        <p>Баланс лицевого счета: <span style="font-weight: bolder;">{{ personalAccountBonus }}Ք</span></p>
-        <p>Действующий тарифный план: <span style="font-weight: bolder;">{{ clientRate }}</span></p>
-        <p><span style="color: rgb(0, 0, 255);">Бонусная скидка:</span> <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span></p>
+        <p class="newsHeader">Статистика соединений</p>
+        <div style="margin: 15px 0px;">
+          <button style="margin: 0px 5px;" class="btn btn-light">За весь период</button>
+          <button style="margin: 0px 5px;" class="btn btn-light">За сегодня</button>
+          <button style="margin: 0px 5px;" class="btn btn-light">За прошлый месяц</button>
+          <button style="margin: 0px 5px;" class="btn btn-light">За текущий месяц</button>
+          <button style="margin: 0px 5px;" class="btn btn-light">За перод</button>
+        </div>
+        <table style="width: 100%; text-align: left;">
+          <tr>
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              старт	
+            </td>
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              стоп	
+            </td>
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              отправлено
+            </td>
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              принято	
+            </td>
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              списано
+            </td>
+          </tr>
+        </table>
+        <p>
+          Суммарно зачтенный трафик за выбранный период (байт): 
+          <input type="number" class="form-control w-25" style="display: inline;" v-model="tracffic" />
+        </p>
       </div>
     </div>
     <br style="clear: both"/>
@@ -36,7 +62,8 @@ export default {
       clientRate: 'Супер u100M/399р',
       personalAccountBonus: 221.5,
       balance: 0,
-      token: window.localStorage.getItem("isptoken")
+      token: window.localStorage.getItem("isptoken"),
+      tracffic: 0
     }
   },
   mounted(){

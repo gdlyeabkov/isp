@@ -6,12 +6,19 @@
       <div style="background: rgb(92,194,207); background: linear-gradient(90deg, rgba(92,194,207,1) 0%, rgba(255,255,255,1) 100%); align-self: center; width: 100%; color: rgb(255, 255, 255); font-size: 28px;">
         <p>Личный кабинет: Интернет</p>
       </div>
-      <div style="margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start;">
-        <p style="font-size: 20px; text-align: left;">Лицевой счет абонента № {{ clientId }}</p>
-        <p>Имя пользователя: <span style="font-weight: bolder;">{{ clientName }}</span></p>
-        <p>Баланс лицевого счета: <span style="font-weight: bolder;">{{ personalAccountBonus }}Ք</span></p>
-        <p>Действующий тарифный план: <span style="font-weight: bolder;">{{ clientRate }}</span></p>
-        <p><span style="color: rgb(0, 0, 255);">Бонусная скидка:</span> <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span></p>
+      <div id="turoboBtnContainer" style="margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start">
+        <p class="newsHeader">
+          «Турбокнопка»
+        </p>
+        <p>
+          «Турбокнопка» – позволяет временно удвоить скорость подключения к интернету, без необходимости переподключения и смены тарифного плана. При активации услуги, с вашего лицевого счета списывается сумма в размере суточной величины абонентской платы. Удвоение скорости производится с момента активации услуги и длится 12 часов.
+        </p>
+        <p>
+          Уважаемые абоненты, обратите внимание, что, при наличии технических проблем со связью, использование турбо-кнопки может не дать ожидаемого результата. Если на вашем основном тарифе скорость значительно меньше заявленной по тарифному плану, возможно имеется техническая проблема. В этом случае рекомендуем Вам обратиться в техническую поддержку. Измерить скорость вашего подключения можно здесь
+        </p>
+        <p style="font-weight: bolder;">
+          Данная услуга вам не доступна.
+        </p>
       </div>
     </div>
     <br style="clear: both"/>
@@ -238,6 +245,10 @@ export default {
 
   .aside > p {
     color: rgb(0, 0, 255);
+  }
+
+  #turoboBtnContainer > p {
+    text-align: left;
   }
 
 </style>

@@ -18,7 +18,7 @@ const ClientSchema = new mongoose.Schema({
     password: String,
     rate: {
         type: String,
-        default: "614381fa21140a08e85570b5"
+        default: "614d5d823042d6bf5c76e19f"
     },
     balance: {
         type: Number,
@@ -326,8 +326,16 @@ app.get('/rates/create', async (req, res)=>{
         if(rateExists){
             return res.json({ "status": "Error" })
         } else {
+            let supportTV = false
+            let supportTVDesc = "Без ТВ"
+            if(req.query.supporttv.includes("true")){
+                supportTV = true
+                supportTVDesc = req.query.tvdesc
+            }
+            
+            // let newRate = await new RateModel({ name: req.query.ratename, speed: Number(req.query.ratespeed), tv: Boolean(req.query.supporttv), tvDesc: req.query.tvdesc, cost: Number(req.query.ratecost) });
+            let newRate = await new RateModel({ name: req.query.ratename, speed: Number(req.query.ratespeed), tv: supportTV, tvDesc: supportTVDesc, cost: Number(req.query.ratecost) });
 
-            let newRate = await new RateModel({ name: req.query.ratename, speed: Number(req.query.ratespeed), tv: Boolean(req.query.supporttv), tvDesc: req.query.tvdesc, cost: Number(req.query.ratecost) });
             newRate.save(function (err) {
                 if(err){
                     return res.json({ "status": "Error" })

@@ -10,7 +10,7 @@
         <p class="newsHeader">
           SMS уведомления
         </p>
-        <p class="newsHeader">
+        <p style="font-size: 24px; color: rgb(255, 150, 0);">
           Номера телефонов, подписанные на услугу:
         </p>
         <div style="width: 100%; text-align: left;">
@@ -32,10 +32,10 @@
           Тел.: (495) 702-94-49, 993-04-32, 993-0433, 995-52-40, 600-42-13;(496) 517-30-02, 517-31-69
           </p>
           <p>
-            Электронная почта: info@flex.ru
+            Электронная почта: <span style="color: rgb(0, 0, 255);">info@flex.ru</span>
           </p>
           <p>
-            По вопросам работы личного кабинета пишите на web@flex.ru
+            По вопросам работы личного кабинета пишите на <span style="color: rgb(0, 0, 255);">web@flex.ru</span>
           </p>
         </div>
       </div>

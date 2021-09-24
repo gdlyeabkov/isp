@@ -11,16 +11,16 @@
           Данные по трафику
         </p>
         <p>
-          Код пользователя: <span style="font-weight: bolder;">{{ "411269" }}</span>
+          Код пользователя: <span style="font-weight: bolder;">{{ clientId }}</span>
         </p>
         <p>
-          Имя пользователя: <span style="font-weight: bolder;">{{ "all-4973" }}</span>
+          Имя пользователя: <span style="font-weight: bolder;">{{ clientName }}</span>
         </p>
         <p>
-          Баланс лицевого счета: <span style="font-weight: bolder;">{{ "128,49₽" }}</span>
+          Баланс лицевого счета: <span style="font-weight: bolder;">{{ balance }}</span>
         </p>
         <p>
-          Действующий тарифный план:  <span style="font-weight: bolder;">{{ "Супер u100M/399р" }}</span>
+          Действующий тарифный план:  <span style="font-weight: bolder;">{{ clientRate }}</span>
         </p>
         <p>
           Привязка по IP адресу: <span style="font-weight: bolder;">{{ "10.203.3.21" }}</span>

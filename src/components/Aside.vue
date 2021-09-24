@@ -8,9 +8,9 @@
     <hr/>
     <p @click="toPage('PersonalAreaTrafficData')">Данные по трафику</p>
     <hr/>
-    <p @click="toPage('PersonalAreaTurbobutton')">Турбокнопка</p>
+    <p @click="toPage('PersonalAreaTurboButton')">Турбокнопка</p>
     <hr/>
-    <p @click="toPage('PersonalAreaAccessForPassword')">Пароль на доступ в интернет</p>
+    <p @click="toPage('PersonalAreaPasswordForAccess')">Пароль на доступ в интернет</p>
     <hr/>
     <p @click="toPage('PersonalAreaConnectionStatistics')">Данные по соединениям</p>
     <hr/>
@@ -20,9 +20,9 @@
     <hr/>
     <p @click="toPage('PersonalAreaFinancialDocuments')">Финансовые документы</p>
     <hr/>
-    <p @click="toPage('PersonalAreaCardActivation')">Активация карты оплаты</p>
+    <p @click="toPage('PersonalAreaPaymentCardActivation')">Активация карты оплаты</p>
     <hr/>
-    <p @click="toPage('Home')">Оплата банковской картой</p>
+    <p @click="toPage('PersonalAreaPaymentByCreditCard')">Оплата банковской картой</p>
     <hr/>
     <p @click="toPage('PersonalAreaPromisedPayment')">Обещанный платеж</p>
     <hr/>
@@ -32,9 +32,9 @@
     <hr/>
     <p @click="toPage('PersonalAreaSmotroyshka')">Смотрёшка</p>
     <hr/>
-    <p @click="toPage('PersonalAreaAntiVirusDrWeb')">Антивирус Dr.Web</p>
+    <p @click="toPage('PersonalAreaDrWebAntiVirus')">Антивирус Dr.Web</p>
     <hr/>
-    <p @click="toPage('PersonalAreaRealIpAddress')">Статический IP адрес</p>
+    <p @click="toPage('PersonalAreaRealIPAddress')">Статический IP адрес</p>
     <hr/>
     <p @click="toPage('PersonalAreaSMSNotifications')">SMS уведомления</p>
     <hr/>
