@@ -28,7 +28,8 @@ const ClientSchema = new mongoose.Schema({
     personalAccountBonus: {
         type: Number,
         default: 0
-    }
+    },
+    ip: String
 }, { collection : 'myclients' });
 
 const RateSchema = new mongoose.Schema({
@@ -146,7 +147,7 @@ app.get('/clients/create', async (req, res)=>{
     
     let preparedGeneratedClientId = ''
     // for(let i = 0; i < Math.floor(Math.random() * 10); i++){
-    for(let i = 15; i < Math.floor(Math.random() * 25); i++){
+    for(let i = 0; i < Math.floor(Math.random() * 25); i++){
         let randomIndex = Math.floor(Math.random() * alphabet.length)
         let randomLetter = alphabet[randomIndex]
         preparedGeneratedClientId += randomLetter
@@ -174,7 +175,7 @@ app.get('/clients/create', async (req, res)=>{
             let salt = bcrypt.genSalt(10)
             encodedPassword = bcrypt.hashSync(req.query.clientpassword, 10)
 
-            let newClient = await new ClientModel({ name: req.query.clientname, password: encodedPassword, clientId: generatedClientId });
+            let newClient = await new ClientModel({ name: req.query.clientname, password: encodedPassword, clientId: generatedClientId, ip: req.query.clientaddress });
             newClient.save(function (err) {
                 if(err){
                     return res.json({ "status": "Error" })

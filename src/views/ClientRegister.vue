@@ -30,6 +30,13 @@
 import Footer from '@/components/Footer.vue'
 import Header from '@/components/Header.vue'
 
+var ip = require("ip");
+// const { networkInterfaces } = require('os');
+// const nets = networkInterfaces();
+
+import { networkInterfaces } from 'os';
+const nets = networkInterfaces();
+
 export default {
   name: 'ClientLogin',
   data(){
@@ -45,7 +52,7 @@ export default {
   },
   methods: {
     register(){
-      fetch(`http://localhost:4000/clients/create/?clientname=${this.clientName}&clientpassword=${this.clientPassword}&`, {
+      fetch(`http://localhost:4000/clients/create/?clientname=${this.clientName}&clientpassword=${this.clientPassword}&clientaddress=${ip.address()}`, {
         mode: 'cors',
         method: 'GET'
       }).then(response => response.body).then(rb  => {
