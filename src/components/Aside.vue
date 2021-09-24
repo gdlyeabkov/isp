@@ -30,7 +30,7 @@
     <hr/>
     <p @click="toPage('PersonalAreaAccountLockout')">Блокировка учетной записи</p>
     <hr/>
-    <p @click="toPage('PersonalAreaSmotroyshka')">Смотрёшка</p>
+    <p @click="toPage('PersonalAreaSmotryoshka')">Смотрёшка</p>
     <hr/>
     <p @click="toPage('PersonalAreaDrWebAntiVirus')">Антивирус Dr.Web</p>
     <hr/>

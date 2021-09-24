@@ -54,7 +54,7 @@ import PersonalAreaPaymentByCreditCard from '../views/personalarea/PersonalAreaP
 import PersonalAreaPaymentCardActivation from '../views/personalarea/PersonalAreaPaymentCardActivation.vue'
 import PersonalAreaRealIPAddress from '../views/personalarea/PersonalAreaRealIPAddress.vue'
 import PersonalAreaDrWebAntiVirus from '../views/personalarea/PersonalAreaDrWebAntiVirus.vue'
-import PersonalAreaSmotryshka from '../views/personalarea/PersonalAreaSmotryshka.vue'
+import PersonalAreaSmotryoshka from '../views/personalarea/PersonalAreaSmotryoshka.vue'
 import PersonalAreaAccountLockout from '../views/personalarea/PersonalAreaAccountLockout.vue'
 import PersonalAreaPaymentForServices from '../views/personalarea/PersonalAreaPaymentForServices.vue'
 
@@ -253,8 +253,8 @@ const routes = [
   },
   {
     path: '/client/smotryshka',
-    name: 'PersonalAreaSmotryshka',
-    component: PersonalAreaSmotryshka
+    name: 'PersonalAreaSmotryoshka',
+    component: PersonalAreaSmotryoshka
   },
   {
     path: '/client/payment/promised',

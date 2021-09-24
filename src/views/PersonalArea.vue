@@ -119,7 +119,10 @@ export default {
           console.log(`JSON.parse(result): ${JSON.parse(result)}`)
           this.clientId = JSON.parse(result).client.clientId 
           this.clientName = JSON.parse(result).client.name
-          this.clientRate = JSON.parse(result).client.rate
+          
+          // this.clientRate = JSON.parse(result).client.rate
+          this.clientRate = JSON.parse(result).rate.name
+
           this.personalAccountBonus = JSON.parse(result).client.personalAccountBonus
           this.balance = JSON.parse(result).client.balance
         });

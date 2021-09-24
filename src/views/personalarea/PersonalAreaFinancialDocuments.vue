@@ -8,22 +8,22 @@
       </div>
       <div style="margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start;">
         <p class="newsHeader">
-          Лицевой счет абонента № {{ "411269" }}
+          Лицевой счет абонента № {{ clientId}}
         </p>
         <p>
-          Код пользователя: {{ "411269" }}
+          Код пользователя: {{ clientId }}
         </p>
         <p>
-          Имя пользователя: {{ "all-4973" }}
+          Имя пользователя: {{ clientName }}
         </p>
         <p>
-          Баланс лицевого счета: {{ "128,49₽" }}
+          Баланс лицевого счета: {{ balance }}Ք
         </p>
         <p>
-          Действующий тарифный план: {{ "Супер u100M/399р" }}
+          Действующий тарифный план: {{ clientRate }}
         </p>
         <p>
-          Бонусная скидка: {{ "0%" }}
+          Бонусная скидка: {{ bonus }}%
         </p>
         <button class="btn btn-light">Получить список документов</button>
         <div style="width: 700px;">
@@ -107,7 +107,10 @@ export default {
           console.log(`JSON.parse(result): ${JSON.parse(result)}`)
           this.clientId = JSON.parse(result).client.clientId 
           this.clientName = JSON.parse(result).client.name
-          this.clientRate = JSON.parse(result).client.rate
+          
+          // this.clientRate = JSON.parse(result).client.rate
+          this.clientRate = JSON.parse(result).rate.name
+
           this.personalAccountBonus = JSON.parse(result).client.personalAccountBonus
           this.balance = JSON.parse(result).client.balance
         });

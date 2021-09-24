@@ -145,7 +145,8 @@ app.get('/clients/create', async (req, res)=>{
     let alphabet = "abcdefghjiklmnoprstuvwxyz"
     
     let preparedGeneratedClientId = ''
-    for(let i = 0; i < Math.floor(Math.random() * 10); i++){
+    // for(let i = 0; i < Math.floor(Math.random() * 10); i++){
+    for(let i = 15; i < Math.floor(Math.random() * 25); i++){
         let randomIndex = Math.floor(Math.random() * alphabet.length)
         let randomLetter = alphabet[randomIndex]
         preparedGeneratedClientId += randomLetter
@@ -230,7 +231,13 @@ app.get('/clients/get', (req,res)=>{
         if(err){
             return res.json({ "status": "Error" })
         }
-        return res.json({ "client": client, "status": "OK" })
+        let queryOfRate =  RateModel.findOne({'_id': client.rate }, function(err, rate){
+            if(err){
+                return res.json({ "status": "Error" })
+            }
+            return res.json({ "client": client, rate: rate, "status": "OK" })
+        })
+        // return res.json({ "client": client, "status": "OK" })
     })
 })
 
