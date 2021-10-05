@@ -8,22 +8,37 @@
       </div>
       <div style="margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start;">
         <p class="newsHeader">
-          Лицевой счет абонента № {{ clientId }}
+          Лицевой счет абонента №
+          <span style="font-weight: bolder;">
+            {{ clientId }}
+          </span>
         </p>
         <p>
-          Код пользователя: {{ clientId }}
+          Код пользователя:
+          <span style="font-weight: bolder;">
+            {{ clientId }}
+          </span>
         </p>
         <p>
-          Имя пользователя: {{ clientName }}
+          Имя пользователя:
+          <span style="font-weight: bolder;">
+            {{ clientName }}
+          </span>
         </p>
         <p>
-          Баланс лицевого счета: {{ balance }}Ք
+          Баланс лицевого счета:
+          <span style="font-weight: bolder;">
+            {{ balance }}Ք
+          </span>
         </p>
         <p>
-          Действующий тарифный план: {{ clientRate }}
+          Действующий тарифный план:
+          <span style="font-weight: bolder;">
+            {{ clientRate }}
+          </span>
         </p>
         <p style="color: rgb(0, 0, 255);">
-          Бонусная скидка: <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ "0%" }}</span>
+          Бонусная скидка: <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span>
         </p>
         <p class="newsHeader">
           Статистика списаний

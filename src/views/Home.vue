@@ -58,24 +58,31 @@
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
           </div>
           <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image: url('https://www.malls.ru/upload/medialibrary/e92/tpu-shchelkovskiy.jpg'); background-size: cover; height: 250px;">
+            <div class="carousel-item active" @click="$router.push({ name: 'Home' })" style="cursor: pointer; background-image: url('https://www.malls.ru/upload/medialibrary/e92/tpu-shchelkovskiy.jpg'); background-size: cover; height: 250px;">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Открытие нового центра обслуживания абонентов.</h5>
                 <p>Друзья открылся новый центр обслуживания абонентов.</p>
               </div>
             </div>
-            <div class="carousel-item" style="background-image: url('https://cdn5.vedomosti.ru/crop/image/2016/61/1eq7nx/original-1tqr.jpg?height=609&width=1082'); background-size: cover; height: 250px;">
+            <div class="carousel-item" @click="$router.push({ name: 'InteractiveTelevisionSmotryoshka' })" style="cursor: pointer; background-image: url('https://cdn5.vedomosti.ru/crop/image/2016/61/1eq7nx/original-1tqr.jpg?height=609&width=1082'); background-size: cover; height: 250px;">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Множество онлайн кинотеатров в мобильном приложении.</h5>
                 <p>Доступно бесплатно в Google Play и App Store.</p>
               </div>
             </div>
-            <div class="carousel-item" style="background-image: url('https://moscow.shop.megafon.ru/images/goods/1058/105860_p_8_3.jpg'); background-size: cover; height: 250px;">
+            <div class="carousel-item" @click="$router.push({ name: 'RouterInInstallments' })" style="cursor: pointer; background-image: url('https://moscow.shop.megafon.ru/images/goods/1058/105860_p_8_3.jpg'); background-size: cover; height: 250px;">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Роутер в рассрочку</h5>
                 <p>50 руб. в месяц.</p>
+              </div>
+            </div>
+            <div class="carousel-item" @click="$router.push({ name: 'TemporaryBlocking' })" style="cursor: pointer; background-image: url('https://selcdn.fedsp.com/aquila/26/23643/875cc2c48589ebc.jpg'); background-size: cover; height: 250px;">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Временная блокировка учётной записи</h5>
+                <p>Собрались как следует отдохнуть</p>
               </div>
             </div>
           </div>

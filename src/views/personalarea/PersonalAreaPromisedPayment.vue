@@ -23,7 +23,9 @@
             Сумма доступного обещанного платежа: <span style="font-weight: bolder;">168 руб.</span>
           </p>
         </div>
-        <button style="box-shadow: inset 0px 0px 7px rgb(145, 145, 145); border: 1px solid rgb(200, 200, 200); margin: 0px 5px;" class="btn btn-light">Взять обещанный платёж</button>
+        <button :disabled="!promisedPayments.id.includes('error')" @click="getPromisedPayment()" style="box-shadow: inset 0px 0px 7px rgb(145, 145, 145); border: 1px solid rgb(200, 200, 200); margin: 0px 5px;" class="btn btn-light">
+          Взять обещанный платёж
+        </button>
       </div>
     </div>
     <br style="clear: both"/>
@@ -48,6 +50,10 @@ export default {
       clientRate: 'Супер u100M/399р',
       personalAccountBonus: 221.5,
       balance: 0,
+      promisedPayments: {
+        id: 'error',
+        date: 'error'
+      },
       token: window.localStorage.getItem("isptoken")
     }
   },
@@ -92,11 +98,52 @@ export default {
           
           this.personalAccountBonus = JSON.parse(result).client.personalAccountBonus
           this.balance = JSON.parse(result).client.balance
+
+          console.log(`JSON.parse(result).client.promisedPayments.length: ${JSON.parse(result).client.promisedPayments.length}`)
+          if(JSON.parse(result).client.promisedPayments[0] !== null && JSON.parse(result).client.promisedPayments[0] !== undefined){
+            this.promisedPayments = JSON.parse(result).client.promisedPayments[0]
+          }
+
         });
       }
     })
   },
   methods: {
+    getPromisedPayment(){
+      fetch(`http://localhost:4000/clients/promised/add/?clientid=${this.clientId}`, {
+        mode: 'cors',
+        method: 'GET'
+      }).then(response => response.body).then(rb  => {
+        const reader = rb.getReader()
+        return new ReadableStream({
+          start(controller) {
+            function push() {
+              reader.read().then( ({done, value}) => {
+                if (done) {
+                  console.log('done', done);
+                  controller.close();
+                  return;
+                }
+                controller.enqueue(value);
+                console.log(done, value);
+                push();
+              })
+            }
+            push();
+          }
+        });
+      }).then(stream => {
+        return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+      })
+      .then(result => {
+        console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+        if(JSON.parse(result).status.includes('OK')){
+          this.$router.push({ name: 'PersonalArea' })
+        } else if(JSON.parse(result).status.includes('Error')){
+          alert('Невозможно взять Обещанный платёж')
+        }
+      })
+    },
     plugIn(){
 
     },

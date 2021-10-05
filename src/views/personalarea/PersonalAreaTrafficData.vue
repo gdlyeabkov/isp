@@ -23,7 +23,7 @@
           Действующий тарифный план:  <span style="font-weight: bolder;">{{ clientRate }}</span>
         </p>
         <p>
-          Привязка по IP адресу: <span style="font-weight: bolder;">{{ "10.203.3.21" }}</span>
+          Привязка по IP адресу: <span style="font-weight: bolder;">{{ clientIp }}</span>
         </p>
         <p>
           Зачтенный трафик с начала месяца:112 229,50 МБайт
@@ -143,6 +143,7 @@ export default {
       clientRate: 'Супер u100M/399р',
       personalAccountBonus: 221.5,
       balance: 0,
+      clientIp: '',
       token: window.localStorage.getItem("isptoken")
     }
   },
@@ -186,6 +187,9 @@ export default {
           
           this.personalAccountBonus = JSON.parse(result).client.personalAccountBonus
           this.balance = JSON.parse(result).client.balance
+
+          this.clientIp = JSON.parse(result).client.ip
+
         });
       }
     })

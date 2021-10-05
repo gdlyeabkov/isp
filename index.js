@@ -29,7 +29,31 @@ const ClientSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    ip: String
+    ip: String,
+    phones: {
+        type: [mongoose.Schema.Types.Map],
+        default: []
+    },
+    cards: {
+        type: [mongoose.Schema.Types.Map],
+        default: []
+    },
+    debits: {
+        type: [mongoose.Schema.Types.Map],
+        default: []
+    },
+    payments: {
+        type: [mongoose.Schema.Types.Map],
+        default: []
+    },
+    connections: {
+        type: [mongoose.Schema.Types.Map],
+        default: []
+    },
+    promisedPayments: {
+        type: [mongoose.Schema.Types.Map],
+        default: []
+    }
 }, { collection : 'myclients' });
 
 const RateSchema = new mongoose.Schema({
@@ -199,6 +223,174 @@ app.get('/clients/create', async (req, res)=>{
         }
     })
 })
+
+app.get('/clients/password/replace', (req, res) => {
+    
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+    
+    let encodedPassword = "#"
+    let saltRounds = 10
+    let salt = bcrypt.genSalt(saltRounds)
+    encodedPassword = bcrypt.hashSync(req.query.newpassword, saltRounds)
+    ClientModel.updateOne({ clientId: req.query.clientid }, { password: encodedPassword }, (err, client) => {
+        if(err){
+            return res.json({ status: 'Error' })        
+        }
+        return res.json({ status: 'OK' })    
+    })
+})
+
+app.get('/clients/cards/activate', (req, res) => {
+    
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+    
+    let insertCard = true
+    let queryOfClient = ClientModel.findOne({ clientId: req.query.clientid })
+    queryOfClient.exec((err, currentClient) => {
+        if(err){
+            console.log('ошибка здесь')
+            return res.json({ status: "Error" })
+        }
+        currentClient.cards.map(card => {
+            if(new Map(card).get('cardnumber').includes(req.query.cardnumber)){
+                insertCard = false
+            }
+        })
+        if(insertCard && currentClient.cards.length <= 0){
+            ClientModel.updateOne({ clientId: req.query.clientid },{ $push: 
+                { 
+                    cards: [
+                        {
+                            cardnumber: req.query.cardnumber,
+                            pincode: req.query.pincode
+                        }
+                    ]
+                    
+                }
+            }, (err, client) => {
+                if(err){
+                    return res.json({ status: 'Error' })        
+                }
+                return res.json({ status: 'OK' })    
+            })
+        } else {
+            return res.json({ status: 'Error' })
+        }
+    })
+
+})
+
+app.get('/clients/promised/add', (req, res) => {
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+    
+    let queryOfClient = ClientModel.findOne({ clientId: req.query.clientid })
+    queryOfClient.exec((err, currentClient) => {
+        if(err){
+            return res.json({ status: "Error" })
+        }
+        if(currentClient.promisedPayments.length <= 0){
+            ClientModel.updateOne({ clientId: req.query.clientid },
+            {
+                $push: 
+                {
+                    promisedPayments: [
+                        {
+                            id: "1",
+                            date: new Date().toLocaleString()
+                        }
+                    ]
+                },
+                $inc: { "balance": 168 }
+            }, (err, client) => {
+                if(err){
+                    return res.json({ status: 'Error' })        
+                }
+                console.log("добавляю обещанный платёж")
+                setTimeout(() => {
+                    // if(currentClient.promisedPayments.length >= 1){
+                        console.log("удаляю обещанный платёж")    
+                        mongoose.connection.collection("myclients").updateOne(
+                            { clientId: req.query.clientid },
+                            { $pull: { 'promisedPayments': { id: "1" } } }
+                        )
+                    // }
+                }, 60 * 60 * 24 * 3)
+                return res.json({ status: 'OK' })    
+            })
+        } else {
+            console.log("обещанный платёж несколько раз взять нельзя")
+            return res.json({ status: 'Error' })    
+        }
+    })
+})
+
+app.get('/clients/cards/pay', (req, res) => {
+    
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+    
+    let queryOfClient = ClientModel.findOne({ clientId: req.query.clientid })
+    queryOfClient.exec((err, currentClient) => {
+        if(err){
+            return res.json({ status: "Error" })
+        }
+        if(currentClient.balance >= req.query.amount){
+            
+            let alphabet = "abcdefghjiklmnoprstuvwxyz"
+            let preparedGeneratedOrderId = ''
+            for(let i = 0; i < Math.floor(Math.random() * 25); i++){
+                let randomIndex = Math.floor(Math.random() * alphabet.length)
+                let randomLetter = alphabet[randomIndex]
+                preparedGeneratedOrderId += randomLetter
+            }
+            
+            let possiblePromisedPayment = 0
+            if(currentClient.promisedPayments.length >= 1 && Number(req.query.amount) >= 168){
+                possiblePromisedPayment = 168
+                mongoose.connection.collection("myclients").updateOne(
+                    { clientId: req.query.clientid },
+                    { $pull: { 'promisedPayments': { id: "1" } } }
+                )   
+            }
+
+            ClientModel.updateOne({ clientId: req.query.clientid },
+            {
+                $push: 
+                {
+                    payments: [
+                        {
+                            orderNumber: preparedGeneratedOrderId,
+                            amount: req.query.amount - possiblePromisedPayment,
+                            date: new Date().toLocaleString()
+                        }
+                    ]
+                    
+                },
+                $inc: { "balance": -req.query.amount }
+            }, (err, client) => {
+                if(err){
+                    return res.json({ status: 'Error' })        
+                }
+                return res.json({ status: 'OK' })    
+            })
+        } else {
+            return res.json({ status: 'Error' })  
+        }
+    })
+})
+
 
 app.get('/clients/check', (req,res)=>{
   
@@ -453,13 +645,37 @@ app.get('/ads/create', async (req, res)=>{
     })
 })
 
+app.get("client/phone/", async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+
+    await ClientModel.updateOne({ clientId: req.query.clientid },
+    { $push: 
+        { 
+            phones: [
+                {
+                    phone: req.query.phone
+                }
+            ]
+            
+        }
+    }, (err, client) => {
+        if(err){
+            return res.json({ "status": "Error" })
+        }
+        return res.json({ "status": "OK" })
+    })
+})
+
 app.get("**", (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
 
-    return res.json({ "status": "Error" })
+    return res.json({ "status": "OK" })
 })
     
 

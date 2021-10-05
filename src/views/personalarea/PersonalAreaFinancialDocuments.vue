@@ -11,19 +11,36 @@
           Лицевой счет абонента № {{ clientId}}
         </p>
         <p>
-          Код пользователя: {{ clientId }}
+          Код пользователя:
+          <span style="font-weight: bolder;">
+            {{ clientId }}
+          </span>
         </p>
         <p>
-          Имя пользователя: {{ clientName }}
+          Имя пользователя:
+          <span style="font-weight: bolder;">
+            {{ clientName }}
+          </span>
         </p>
         <p>
-          Баланс лицевого счета: {{ balance }}Ք
+          Баланс лицевого счета:
+          <span style="font-weight: bolder;">
+            {{ balance }}Ք
+          </span>
         </p>
         <p>
-          Действующий тарифный план: {{ clientRate }}
+          Действующий тарифный план:
+          <span style="font-weight: bolder;">
+            {{ clientRate }}
+          </span>
         </p>
         <p>
-          Бонусная скидка: {{ bonus }}%
+          <span style="color: rgb(0, 0, 255);">
+            Бонусная скидка:
+          </span>
+          <span style="color: rgb(255, 0, 0); font-weight: bolder;">
+            {{ personalAccountBonus }}%
+          </span>
         </p>
         <button class="btn btn-light">Получить список документов</button>
         <div style="width: 700px;">

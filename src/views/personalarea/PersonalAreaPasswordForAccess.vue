@@ -14,9 +14,9 @@
           Для смены пароля необходимо указать действующий пароль:
         </p>
         <input style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="старый пароль" />
-        <input style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="новый пароль" />
-        <input style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="новый пароль (повтор)" />
-        <button class="btn btn-light">
+        <input v-model="newPassword" style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="новый пароль" />
+        <input v-model="newPasswordCheck" style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="новый пароль (повтор)" />
+        <button class="btn btn-light" @click="replacePassword()">
           сменить пароль
         </button>
         <p style="font-size: 18px; text-align: left; color: rgb(0, 0, 255);">
@@ -61,7 +61,9 @@ export default {
       clientRate: 'Супер u100M/399р',
       personalAccountBonus: 221.5,
       balance: 0,
-      token: window.localStorage.getItem("isptoken")
+      token: window.localStorage.getItem("isptoken"),
+      newPassword: '',
+      newPasswordCheck: '',
     }
   },
   mounted(){
@@ -107,6 +109,45 @@ export default {
     })
   },
   methods: {
+    replacePassword(){
+      if((this.newPassword.includes(this.newPasswordCheck)) && (this.newPassword.length === this.newPasswordCheck.length)){
+        fetch(`http://localhost:4000/clients/password/replace/?clientid=${this.clientId}&newpassword=${this.newPassword}`, {
+          mode: 'cors',
+          method: 'GET'
+        }).then(response => response.body).then(rb  => {
+          const reader = rb.getReader()
+          return new ReadableStream({
+            start(controller) {
+              function push() {
+                reader.read().then( ({done, value}) => {
+                  if (done) {
+                    console.log('done', done);
+                    controller.close();
+                    return;
+                  }
+                  controller.enqueue(value);
+                  console.log(done, value);
+                  push();
+                })
+              }
+              push();
+            }
+          });
+        }).then(stream => {
+          return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+        })
+        .then(result => {
+          console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+          if(JSON.parse(result).status.includes("OK")){
+            this.$router.push({ name: 'PersonalArea' })
+          } else {
+            alert("Ошибка смены пароля")
+          }
+        })
+      } else {
+        alert('Пароли не совпадают')
+      }
+    },
     plugIn(){
 
     },

@@ -8,7 +8,7 @@
       </div>
       <div style="margin-top: 25px; width:85%; display: flex; flex-direction: column; align-items: flex-start;">
         <p class="newsHeader">Данные по тарифному плану</p>
-        <p>Действующий тарифный план: {{ "Супер u100M/399р" }}</p>
+        <p>Действующий тарифный план: {{ clientRate.name }}</p>
         <p style="font-weight: bolder;">Доступные для подключения тарифные планы:</p>
         <p style="font-weight: bolder;">Специальные предложения!</p>
         <div style="font-size: 13px; width: 100%; text-align: left;">
@@ -112,7 +112,10 @@ export default {
           console.log(`JSON.parse(result): ${JSON.parse(result)}`)
           this.clientId = JSON.parse(result).client.clientId 
           this.clientName = JSON.parse(result).client.name
-          this.clientRate = JSON.parse(result).client.rate
+          
+          // this.clientRate = JSON.parse(result).client.rate
+          this.clientRate = JSON.parse(result).rate
+
           this.personalAccountBonus = JSON.parse(result).client.personalAccountBonus
           this.balance = JSON.parse(result).client.balance
         });

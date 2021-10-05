@@ -15,15 +15,25 @@
         </p>
         <div style="width: 100%; text-align: left;">
           <span class="material-icons">
-          stay_primary_portrait
+            stay_primary_portrait
           </span>
           +7 
-          <input type="phone" placeholder="9031234567" style="display: inline;" class="w-25 form-control">
-          <button style="margin-left: 5px;" class="btn btn-light">
+          <input type="phone" placeholder="9031234567" style="display: inline;" class="w-25 form-control" v-model="phone">
+          <button @click="bindPhone()" style="margin-left: 5px;" class="btn btn-light">
             добавить номер
           </button>
         </div>
+        <div v-if="phones.length >= 1">
+          <div v-for="phone in phones" :key="phone.phone">
+            <p>{{ phone.phone }}</p>
+          </div>
+        </div>
+        <div v-else>
+          <p>Вы не прикрепили ещё ни 1 номер!</p>
+        </div>
+        <p>{{ errors }}</p>
         <hr />
+          
         <div style="width: 100%; text-align: left;">
           <p>
             142403, Московская обл., г. Ногинск, пл. Ленина, д. 11
@@ -62,7 +72,10 @@ export default {
       clientRate: 'Супер u100M/399р',
       personalAccountBonus: 221.5,
       balance: 0,
-      token: window.localStorage.getItem("isptoken")
+      token: window.localStorage.getItem("isptoken"),
+      phone: '',
+      phones: [],
+      errors: ''
     }
   },
   mounted(){
@@ -103,11 +116,51 @@ export default {
           this.clientRate = JSON.parse(result).client.rate
           this.personalAccountBonus = JSON.parse(result).client.personalAccountBonus
           this.balance = JSON.parse(result).client.balance
+          this.phones = JSON.parse(result).client.phones
         });
       }
     })
   },
   methods: {
+    bindPhone(){
+      if(this.phone.length === 10){
+        fetch(`http://localhost:4000/client/phone/?clientid=${this.clientId}&phone=+7${this.phone}`, {
+          mode: 'cors',
+          method: 'GET'
+        }).then(response => response.body).then(rb  => {
+          const reader = rb.getReader()
+          return new ReadableStream({
+            start(controller) {
+              function push() {
+                reader.read().then( ({done, value}) => {
+                  if (done) {
+                    console.log('done', done);
+                    controller.close();
+                    return;
+                  }
+                  controller.enqueue(value);
+                  console.log(done, value);
+                  push();
+                })
+              }
+              push();
+            }
+          });
+        }).then(stream => {
+          return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+        })
+        .then(result => {
+          console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+          console.log(`JSON.parse(result).status: ${JSON.parse(result).status}, this.clientId: ${this.clientId}, this.phone: ${this.phone}`)
+          if(JSON.parse(result).status.includes("OK")){
+            this.$router.push({ name: "PersonalArea" })
+          }
+        });
+      } else {
+        this.errors = "Неправильно указан номер телефона"
+      }
+      
+    },
     plugIn(){
 
     },

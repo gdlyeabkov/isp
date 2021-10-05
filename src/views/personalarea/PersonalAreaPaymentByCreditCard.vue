@@ -16,10 +16,17 @@
           <p class="newsHeader">Оплата банковской картой</p>
           <img src="https://lk.flex.ru/img/payments/card/visa.png" alt="">
           <img src="https://lk.flex.ru/img/payments/card/mastercard.png" alt="">
-          <p>Укажите сумму платежа:</p>
-          <input style="display: inline;" type="number" class="form-control w-25"/>
-          <span>руб.</span>
-          <button class="btn btn-light">
+          <span v-if="!clientCard.cardnumber.includes('error')">
+            <p>Укажите сумму платежа:</p>
+            <input v-model="amount" style="display: inline;" type="number" class="form-control w-25"/>
+            <span>руб.</span>
+          </span>
+          <span v-else>
+            <p style="font-weight: bolder;">
+              Карта оплаты ещё не прикреплена
+            </p>
+          </span>
+          <button @click="pay()" :disabled="clientCard.cardnumber.includes('error')" class="btn btn-light">
             Перейти к оплате
           </button>
           <p>
@@ -34,7 +41,8 @@
         </div>
         <p style="text-align: left;">Обращаем ваше внимание, что при возврате ошибочно уплаченных денежных средств с Абонента удерживается комиссия в размере 3% понесённых оператором расходов за проведение операций по проведению денежных средств.</p>
         <p style="text-align: center; width: 100%; display: block; font-weight: bolder;">История последних операций с банковской картой</p>
-        <table>
+        
+        <!-- <table>
           <tr>
             <td style="font-weight: bolder; border: 1px solid rgb(145, 145, 145);">
               № заказа	
@@ -77,7 +85,42 @@
               Отображаются только 30 последних операций. Предоставление полного списка операций производится только по заявлению.
             </td>
           </tr>
+        </table> -->
+        
+        <table>
+          <tr>
+            <td style="font-weight: bolder; border: 1px solid rgb(145, 145, 145);">
+              № заказа	
+            </td>
+            <td style="font-weight: bolder; border: 1px solid rgb(145, 145, 145);">
+              сумма	
+            </td>
+            <td style="font-weight: bolder; border: 1px solid rgb(145, 145, 145);">
+              дата и время
+            </td>
+          </tr>
+          <tr v-for="payment in payments.reverse().filter((pmnt, pmntIdx) => {
+              return pmntIdx <= 29
+            }).reverse()" :key="payment.order">
+            <td style="border: 1px solid rgb(145, 145, 145);">
+              <button class="btn btn-primary">
+                {{ payment.orderNumber }}
+              </button>
+            </td>
+            <td style="border: 1px solid rgb(145, 145, 145);">
+              {{ payment.amount }}Ք
+            </td>
+            <td style="border: 1px solid rgb(145, 145, 145);">
+              {{ `${payment.date.split(' ')[0].split('-')[2]}.${payment.date.split(' ')[0].split('-')[1]}.${payment.date.split(' ')[0].split('-')[0]} ${payment.date.split(' ')[1].split(':')[0]}:${payment.date.split(' ')[1].split(':')[1]}` }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" style="border: 1px solid rgb(145, 145, 145);">
+              Отображаются только 30 последних операций. Предоставление полного списка операций производится только по заявлению.
+            </td>
+          </tr>
         </table>
+
         <div style="text-align: left;">
           <p>
             При оплате банковской картой безопасность платежей гарантирует процессинговый центр Best2PayBest2Pay.
@@ -116,7 +159,13 @@ export default {
       clientRate: 'Супер u100M/399р',
       personalAccountBonus: 221.5,
       balance: 0,
-      token: window.localStorage.getItem("isptoken")
+      clientCard: {
+        cardnumber: "error",
+        pincode: "error",
+      },
+      amount: 0,
+      payments: [],
+      token: window.localStorage.getItem("isptoken"),
     }
   },
   mounted(){
@@ -160,11 +209,53 @@ export default {
 
           this.personalAccountBonus = JSON.parse(result).client.personalAccountBonus
           this.balance = JSON.parse(result).client.balance
-        });
+
+          if(JSON.parse(result).client.cards[0] !== null && JSON.parse(result).client.cards[0] !== undefined){
+            this.clientCard = JSON.parse(result).client.cards[0]
+          }
+
+          this.payments = JSON.parse(result).client.payments
+
+        })
       }
     })
   },
   methods: {
+    pay(){
+      fetch(`http://localhost:4000/clients/cards/pay/?clientid=${this.clientId}&amount=${this.amount}`, {
+        mode: 'cors',
+        method: 'GET'
+      }).then(response => response.body).then(rb  => {
+        const reader = rb.getReader()
+        return new ReadableStream({
+          start(controller) {
+            function push() {
+              reader.read().then( ({done, value}) => {
+                if (done) {
+                  console.log('done', done);
+                  controller.close();
+                  return;
+                }
+                controller.enqueue(value);
+                console.log(done, value);
+                push();
+              })
+            }
+            push();
+          }
+        });
+      }).then(stream => {
+        return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+      })
+      .then(result => {
+        console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+        if(JSON.parse(result).status.includes('OK')){
+          this.$router.push({ name: 'PersonalArea' })
+        } else {
+          alert('Оплата прошла неудачно')
+        }
+      })
+    },
     plugIn(){
 
     },

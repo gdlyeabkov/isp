@@ -24,7 +24,7 @@
           Действующий тарифный план: {{ clientRate }}
         </p>
         <p style="color: rgb(0, 0, 255);">
-          Бонусная скидка: <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ "0%" }}</span>
+          Бонусная скидка: <span style="font-weight: bolder; color: rgb(255, 0, 0);">{{ personalAccountBonus }}%</span>
         </p>
         <p class="newsHeader">
           Статистика платежей

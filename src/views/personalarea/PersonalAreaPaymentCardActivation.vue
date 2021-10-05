@@ -21,12 +21,14 @@
         <div style="box-sizing: border-box; padding: 10px; width: 300px; height: 175px; background-color: rgb(255, 255, 255);">
           <label style="display: block; text-align: right;">Номер карты</label>
           <label  style="color: transparent">Пин-код</label>
-          <input type="text" style="margin-left: 10px; display: inline; text-align: right;" class="form-control w-50">
-          <p>
+          <input v-model="cardNumber" type="text" style="margin-left: 10px; display: inline; text-align: right;" class="form-control w-50">
+          <p style="margin-top: 5px; ">
             <label>Пин-код</label>
-            <input type="text" style="margin-left: 10px; display: inline;" class="form-control w-50">
+            <input v-model="pinCode" type="text" style="margin-left: 10px; display: inline;" class="form-control w-50">
           </p>
-          <button style="box-shadow: inset 0px 0px 7px rgb(145, 145, 145); border: 1px solid rgb(200, 200, 200); margin: 0px 5px;" class="btn btn-light">Активировать карту оплаты</button>
+          <button @click="actvatePaymentCard()" style="box-shadow: inset 0px 0px 7px rgb(145, 145, 145); border: 1px solid rgb(200, 200, 200); margin: 0px 5px;" class="btn btn-light">
+            Активировать карту оплаты
+          </button>
         </div>
         <img src="https://lk.flex.ru/img/payments/cards.png" alt="">
       </div>
@@ -54,7 +56,9 @@ export default {
       clientRate: 'Супер u100M/399р',
       personalAccountBonus: 221.5,
       balance: 0,
-      token: window.localStorage.getItem("isptoken")
+      token: window.localStorage.getItem("isptoken"),
+      cardNumber: '',
+      pinCode: ''
     }
   },
   mounted(){
@@ -103,6 +107,41 @@ export default {
     })
   },
   methods: {
+    actvatePaymentCard(){
+      fetch(`http://localhost:4000/clients/cards/activate/?clientid=${this.clientId}&cardnumber=${this.cardNumber}&pincode=${this.pinCode}`, {
+        mode: 'cors',
+        method: 'GET'
+      }).then(response => response.body).then(rb  => {
+        const reader = rb.getReader()
+        return new ReadableStream({
+          start(controller) {
+            function push() {
+              reader.read().then( ({done, value}) => {
+                if (done) {
+                  console.log('done', done);
+                  controller.close();
+                  return;
+                }
+                controller.enqueue(value);
+                console.log(done, value);
+                push();
+              })
+            }
+            push();
+          }
+        });
+      }).then(stream => {
+        return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+      })
+      .then(result => {
+        console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+        if(JSON.parse(result).status.includes('OK')){
+          this.$router.push({ name: 'PersonalArea' })
+        } else {
+          alert('Карта уже прикреплена')
+        }
+      })
+    },
     plugIn(){
 
     },
