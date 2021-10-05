@@ -16,6 +16,27 @@ const connectionParams = {
 const ClientSchema = new mongoose.Schema({
     name: String,
     password: String,
+    email: String,
+    dontDisplayAboutUnfullSecurity: {
+        type: Boolean,
+        default: false
+    },
+    receiveNotificationsSecurity: {
+        type: Boolean,
+        default: false
+    },
+    receiveSubscribeForActions: {
+        type: Boolean,
+        default: false
+    },
+    blocked: {
+        type: Boolean,
+        default: false
+    },
+    staticIPService: {
+        type: Boolean,
+        default: false
+    },
     rate: {
         type: String,
         default: "614d5d823042d6bf5c76e19f"
@@ -159,6 +180,22 @@ app.get("/client/writeoff", (req, res) => {
 
 })
 
+app.get('/clients/blocked', async (req, res)=>{
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+    
+    ClientModel.updateOne({ clientId: req.query.clientid }, { blocked: true }, (err, client) => {
+        if(err){
+            return res.json({ status: 'Error' })        
+        }
+        return res.json({ status: 'OK' })    
+    })
+
+})
+
 app.get('/clients/create', async (req, res)=>{
     
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -199,7 +236,7 @@ app.get('/clients/create', async (req, res)=>{
             let salt = bcrypt.genSalt(10)
             encodedPassword = bcrypt.hashSync(req.query.clientpassword, 10)
 
-            let newClient = await new ClientModel({ name: req.query.clientname, password: encodedPassword, clientId: generatedClientId, ip: req.query.clientaddress });
+            let newClient = await new ClientModel({ name: req.query.clientname, email: req.query.clientemail, password: encodedPassword, clientId: generatedClientId, ip: req.query.clientaddress });
             newClient.save(function (err) {
                 if(err){
                     return res.json({ "status": "Error" })
@@ -217,6 +254,39 @@ app.get('/clients/create', async (req, res)=>{
                             
                         }
                 }, (err, client) => {
+                    setInterval(() => {
+                        let queryOfClient = ClientModel.findOne({ clientId: generatedClientId })
+                        queryOfClient.exec((err, currentClient) => {
+                            if(err){
+                                return res.json({ status: "Error" })
+                            }
+                            let queryOfRate = RateModel.findOne({ _id: currentClient.rate })
+                            queryOfRate.exec((err, currentRate) => {
+                                if(err){
+                                    return res.json({ status: "Error" })
+                                }
+                                ClientModel.updateOne({ clientId: generatedClientId },
+                                    {
+                                        $push: 
+                                        {
+                                            debits: [
+                                                {
+                                                    amount: currentRate.cost,
+                                                    desc: `За месячное пользование тарифом ${currentRate.name}`,
+                                                    date: new Date().toLocaleString()
+                                                }
+                                            ]
+                                        },
+                                        $inc: { "balance": -currentRate.cost }
+                                    }, (err, client) => {
+                                        if(err){
+                                            return res.json({ status: 'Error' })        
+                                        }
+                                    })
+                            })
+                            console.log('Списываю деньги за ежемесячное пользование интернетом')
+                        })
+                    }, 60 * 60 * 24 * 30)
                     return res.json({ "status": "OK" })
                 })
             })
@@ -236,6 +306,54 @@ app.get('/clients/password/replace', (req, res) => {
     let salt = bcrypt.genSalt(saltRounds)
     encodedPassword = bcrypt.hashSync(req.query.newpassword, saltRounds)
     ClientModel.updateOne({ clientId: req.query.clientid }, { password: encodedPassword }, (err, client) => {
+        if(err){
+            return res.json({ status: 'Error' })        
+        }
+        return res.json({ status: 'OK' })    
+    })
+})
+
+app.get('/clients/settings/set', (req, res) => {
+    
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+    
+    if(req.query.option.includes('dont')){
+        ClientModel.updateOne({ clientId: req.query.clientid }, { dontDisplayAboutUnfullSecurity: req.query.newvalue.includes('true') }, (err, client) => {
+            if(err){
+                return res.json({ status: 'Error' })        
+            }
+            return res.json({ status: 'OK' })    
+        })        
+    } else if(req.query.option.includes('notification')){
+        ClientModel.updateOne({ clientId: req.query.clientid }, { receiveNotificationsSecurity: req.query.newvalue.includes('true') }, (err, client) => {
+            if(err){
+                return res.json({ status: 'Error' })        
+            }
+            return res.json({ status: 'OK' })    
+        })
+    } else if(req.query.option.includes('sub')){
+        ClientModel.updateOne({ clientId: req.query.clientid }, { receiveSubscribeForActions: req.query.newvalue.includes('true') }, (err, client) => {
+            if(err){
+                return res.json({ status: 'Error' })        
+            }
+            return res.json({ status: 'OK' })    
+        })
+    }
+    
+})
+
+
+app.get('/clients/email/delete', (req, res) => {
+    
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+    
+    ClientModel.updateOne({ clientId: req.query.clientid }, { email: '' }, (err, client) => {
         if(err){
             return res.json({ status: 'Error' })        
         }
@@ -332,6 +450,37 @@ app.get('/clients/promised/add', (req, res) => {
             return res.json({ status: 'Error' })    
         }
     })
+})
+
+app.get('/clients/connections/add', (req, res) => {
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+    
+    ClientModel.updateOne({ clientId: req.query.clientid },
+    {
+        $push: 
+        {
+            connections: [
+                {
+                    start: `${Math.floor(Math.random() * 100)}`,
+                    stop: `${Math.floor(Math.random() * 100)}`,
+                    transfer: `${Math.floor(Math.random() * 100)}`,
+                    receive: `${Math.floor(Math.random() * 100)}`,
+                    debit: `${Math.floor(Math.random() * 100)}`,
+                }
+            ]
+            
+        }
+    }, (err, client) => {
+        if(err){
+            return res.json({ status: 'Error' })        
+        }
+        return res.json({ status: 'OK' })    
+    })
+
 })
 
 app.get('/clients/cards/pay', (req, res) => {
@@ -645,13 +794,13 @@ app.get('/ads/create', async (req, res)=>{
     })
 })
 
-app.get("client/phone/", async (req, res) => {
+app.get("/client/phone", async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
 
-    await ClientModel.updateOne({ clientId: req.query.clientid },
+    ClientModel.updateOne({ clientId: req.query.clientid },
     { $push: 
         { 
             phones: [

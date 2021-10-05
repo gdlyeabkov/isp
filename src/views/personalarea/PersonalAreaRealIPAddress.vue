@@ -49,7 +49,7 @@
               420 руб.	
             </td>
             <td style="height: 50px; width: 115px;">
-              
+              {{ status ? "Подключена" : "Отключена" }}
             </td>
           </tr>
         </table>
@@ -77,7 +77,8 @@ export default {
       clientRate: 'Супер u100M/399р',
       personalAccountBonus: 221.5,
       balance: 0,
-      token: window.localStorage.getItem("isptoken")
+      token: window.localStorage.getItem("isptoken"),
+      status: false
     }
   },
   mounted(){
@@ -118,6 +119,38 @@ export default {
           this.clientRate = JSON.parse(result).client.rate
           this.personalAccountBonus = JSON.parse(result).client.personalAccountBonus
           this.balance = JSON.parse(result).client.balance
+          this.status = JSON.parse(result).client.status
+
+          fetch(`http://localhost:4000/clients/connections/add/?clientid=${this.clientId}`, {
+            mode: 'cors',
+            method: 'GET'
+          }).then(response => response.body).then(rb  => {
+            const reader = rb.getReader()
+            return new ReadableStream({
+              start(controller) {
+                function push() {
+                  reader.read().then( ({done, value}) => {
+                    if (done) {
+                      console.log('done', done);
+                      controller.close();
+                      return;
+                    }
+                    controller.enqueue(value);
+                    console.log(done, value);
+                    push();
+                  })
+                }
+                push();
+              }
+            });
+          }).then(stream => {
+            return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+          })
+          .then(result => {
+            console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+            
+          })
+        
         });
       }
     })

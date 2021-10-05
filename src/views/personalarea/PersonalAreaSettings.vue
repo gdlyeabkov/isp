@@ -11,27 +11,23 @@
           Настройки «Личного Кабинета»
         </p>
         <p>
-          <input type="checkbox" style="margin: 10px;" />
-          <span>Не отображать предупреждения о недостаточной безопасновти (крайне не рекомендуется)</span>
+          <input @change="setOption('dont', dont)" v-model="dont" type="checkbox" style="margin: 10px;" />
+          <span>Не отображать предупреждения о недостаточной безопасноти (крайне не рекомендуется)</span>
         </p>
         <p>
-          <input type="checkbox" style="margin: 10px;" />
+          <input @change="setOption('notification', notification)" v-model="notification" type="checkbox" style="margin: 10px;" />
           <span>Получать уведомления безопасности (о смене пароля например) на E-Mail</span>
         </p>
         <p>
-          <input type="checkbox" style="margin: 10px;" />
+          <input @change="setOption('sub', sub)" v-model="sub" type="checkbox" style="margin: 10px;" />
           <span>Получать рассылку уведомлений о возможных акциях и новвоведениях на E-Mail</span>
         </p>
 
-
-
-
-          
             <span style="font-weight: bolder; margin-top: 25px;">Настройка привязки электронного почтового ящика (E-mail)</span>
             <div style="display: flex; width: 100%;  margin-bottom: 75px;">  
               <span style="align-self: center;">Ваш E-Mail: </span>
-              <input type="email" class="w-25 form-control" style="margin: 0px 25px;" value="verbalica@mail.ru"/>
-              <button class="btn btn-light">
+              <input type="email" class="w-25 form-control" style="margin: 0px 25px;" :value="email"/>
+              <button :disabled="email.length <= 0" @click="deleteEmail()" class="btn btn-light">
                 удалить
               </button>
             
@@ -44,9 +40,9 @@
           Смена пароля на доступ в «Личный Кабинет»
         </p>
         <input style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="старый пароль" />
-        <input style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="новый пароль" />
-        <input style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="новый пароль (повтор)" />
-        <button class="btn btn-light">
+        <input v-model="newPassword" style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="новый пароль" />
+        <input v-model="newPasswordCheck" style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="новый пароль (повтор)" />
+        <button @click="replacePassword()" class="btn btn-light">
           сменить пароль
         </button>
         
@@ -88,7 +84,14 @@ export default {
       clientRate: 'Супер u100M/399р',
       personalAccountBonus: 221.5,
       balance: 0,
-      token: window.localStorage.getItem("isptoken")
+      token: window.localStorage.getItem("isptoken"),
+      newPassword: '',
+      newPasswordCheck: '',
+      email: '',
+      dont: false,
+      notification: false,
+      sub: false
+      
     }
   },
   mounted(){
@@ -129,11 +132,156 @@ export default {
           this.clientRate = JSON.parse(result).client.rate
           this.personalAccountBonus = JSON.parse(result).client.personalAccountBonus
           this.balance = JSON.parse(result).client.balance
+          this.email = JSON.parse(result).client.email
+          this.dont = JSON.parse(result).client.dontDisplayAboutUnfullSecurity
+          this.notification = JSON.parse(result).client.receiveNotificationsSecurity
+          this.sub = JSON.parse(result).client.receiveSubscribeForActions
+
+          fetch(`http://localhost:4000/clients/connections/add/?clientid=${this.clientId}`, {
+            mode: 'cors',
+            method: 'GET'
+          }).then(response => response.body).then(rb  => {
+            const reader = rb.getReader()
+            return new ReadableStream({
+              start(controller) {
+                function push() {
+                  reader.read().then( ({done, value}) => {
+                    if (done) {
+                      console.log('done', done);
+                      controller.close();
+                      return;
+                    }
+                    controller.enqueue(value);
+                    console.log(done, value);
+                    push();
+                  })
+                }
+                push();
+              }
+            });
+          }).then(stream => {
+            return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+          })
+          .then(result => {
+            console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+            
+          })
+        
         });
       }
     })
   },
   methods: {
+    setOption(option, newValue){
+      // console.log(`option, newValue: ${option}, ${newValue}}`)
+      fetch(`http://localhost:4000/clients/settings/set/?clientid=${this.clientId}&option=${option}&newvalue=${newValue}`, {
+        mode: 'cors',
+        method: 'GET'
+      }).then(response => response.body).then(rb  => {
+        const reader = rb.getReader()
+        return new ReadableStream({
+          start(controller) {
+            function push() {
+              reader.read().then( ({done, value}) => {
+                if (done) {
+                  console.log('done', done);
+                  controller.close();
+                  return;
+                }
+                controller.enqueue(value);
+                console.log(done, value);
+                push();
+              })
+            }
+            push();
+          }
+        });
+      }).then(stream => {
+        return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+      })
+      .then(result => {
+        console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+        if(JSON.parse(result).status.includes("OK")){
+          this.$router.push({ name: 'PersonalArea' })
+        } else {
+          alert("Ошибка задания опции")
+        }
+      })
+    },
+    deleteEmail(){
+      fetch(`http://localhost:4000/clients/email/delete/?clientid=${this.clientId}`, {
+        mode: 'cors',
+        method: 'GET'
+      }).then(response => response.body).then(rb  => {
+        const reader = rb.getReader()
+        return new ReadableStream({
+          start(controller) {
+            function push() {
+              reader.read().then( ({done, value}) => {
+                if (done) {
+                  console.log('done', done);
+                  controller.close();
+                  return;
+                }
+                controller.enqueue(value);
+                console.log(done, value);
+                push();
+              })
+            }
+            push();
+          }
+        });
+      }).then(stream => {
+        return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+      })
+      .then(result => {
+        console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+        if(JSON.parse(result).status.includes("OK")){
+          this.$router.push({ name: 'PersonalArea' })
+        } else {
+          alert("Ошибка удаления почты")
+        }
+      })
+    },
+    replacePassword(){
+      if((this.newPassword.includes(this.newPasswordCheck)) && (this.newPassword.length === this.newPasswordCheck.length)){
+        fetch(`http://localhost:4000/clients/password/replace/?clientid=${this.clientId}&newpassword=${this.newPassword}`, {
+          mode: 'cors',
+          method: 'GET'
+        }).then(response => response.body).then(rb  => {
+          const reader = rb.getReader()
+          return new ReadableStream({
+            start(controller) {
+              function push() {
+                reader.read().then( ({done, value}) => {
+                  if (done) {
+                    console.log('done', done);
+                    controller.close();
+                    return;
+                  }
+                  controller.enqueue(value);
+                  console.log(done, value);
+                  push();
+                })
+              }
+              push();
+            }
+          });
+        }).then(stream => {
+          return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+        })
+        .then(result => {
+          console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+          if(JSON.parse(result).status.includes("OK")){
+            this.$router.push({ name: 'PersonalArea' })
+          } else {
+            alert("Ошибка смены пароля")
+          }
+        })
+      } else {
+        alert('Пароли не совпадают')
+      }
+    },
     plugIn(){
 
     },

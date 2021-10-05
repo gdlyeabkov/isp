@@ -26,7 +26,7 @@
     <hr/>
     <p @click="toPage('PersonalAreaPromisedPayment')">Обещанный платеж</p>
     <hr/>
-    <p @click="toPage('PersonalAreaPaymentServices')">Оплата услуг</p>
+    <p @click="toPage('PersonalAreaPaymentForServices')">Оплата услуг</p>
     <hr/>
     <p @click="toPage('PersonalAreaAccountLockout')">Блокировка учетной записи</p>
     <hr/>

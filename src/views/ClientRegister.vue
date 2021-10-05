@@ -6,8 +6,8 @@
     </div>
     <div class="main">
       <h1>Регистрация клиента</h1>
+      <input v-model="clientEmail" type="email" id="inputEmail" class="form-control" placeholder="E-mail клиента" required="" autofocus="" style="width: 215px; margin: 5px;">
       <input v-model="clientName" type="text" id="inputName" class="form-control" placeholder="Имя клиента" required="" autofocus="" style="width: 215px; margin: 5px;">
-      <label for="inputPassword" class="sr-only">Пароль</label>
       <input ref="passwordfield" v-model="clientPassword" type="password" id="inputPassword" class="form-control" placeholder="Пароль" required="" style="width: 215px; margin: 5px;">
       <!-- <div style="display: flex;">
         <input ref="passwordfield" v-model="clientPassword" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
@@ -41,6 +41,7 @@ export default {
   name: 'ClientLogin',
   data(){
     return {
+      clientEmail: '',
       clientName: '',
       clientPassword: '',
       errors: ''
@@ -52,7 +53,7 @@ export default {
   },
   methods: {
     register(){
-      fetch(`http://localhost:4000/clients/create/?clientname=${this.clientName}&clientpassword=${this.clientPassword}&clientaddress=${ip.address()}`, {
+      fetch(`http://localhost:4000/clients/create/?clientname=${this.clientName}&clientemail=${this.clientEmail}&clientpassword=${this.clientPassword}&clientaddress=${ip.address()}`, {
         mode: 'cors',
         method: 'GET'
       }).then(response => response.body).then(rb  => {

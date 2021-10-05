@@ -54,6 +54,21 @@
           <p style="font-weight: bolder">
             Данные по списаниям
           </p>
+          
+          <!-- <table style="width: 100%; text-align: left;">
+            <tr>
+              <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+                дата
+              </td>
+              <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+                описание платежа
+              </td>
+              <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+                сумма
+              </td>
+            </tr>
+          </table> -->
+
           <table style="width: 100%; text-align: left;">
             <tr>
               <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
@@ -66,7 +81,19 @@
                 сумма
               </td>
             </tr>
+            <tr v-for="debit in debits" :key="debit.date">
+              <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+                {{ `${debit.date.split(' ')[0].split('-')[2]}.${debit.date.split(' ')[0].split('-')[1]}.${debit.date.split(' ')[0].split('-')[0]} ${debit.date.split(' ')[1].split(':')[0]}:${debit.date.split(' ')[1].split(':')[1]}` }}
+              </td>
+              <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+                {{ debit.desc }}
+              </td>
+              <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+                {{ debit.amount }}Ք
+              </td>
+            </tr>
           </table>
+
         </div>
       </div>
     </div>
@@ -92,7 +119,8 @@ export default {
       clientRate: 'Супер u100M/399р',
       personalAccountBonus: 221.5,
       balance: 0,
-      token: window.localStorage.getItem("isptoken")
+      token: window.localStorage.getItem("isptoken"),
+      debits: []
     }
   },
   mounted(){
@@ -136,6 +164,40 @@ export default {
 
           this.personalAccountBonus = JSON.parse(result).client.personalAccountBonus
           this.balance = JSON.parse(result).client.balance
+
+          this.debits = JSON.parse(result).client.debits
+          // console.log(`JSON.parse(result).debits.length ${JSON.parse(result).debits.length}`)
+
+          fetch(`http://localhost:4000/clients/connections/add/?clientid=${this.clientId}`, {
+            mode: 'cors',
+            method: 'GET'
+          }).then(response => response.body).then(rb  => {
+            const reader = rb.getReader()
+            return new ReadableStream({
+              start(controller) {
+                function push() {
+                  reader.read().then( ({done, value}) => {
+                    if (done) {
+                      console.log('done', done);
+                      controller.close();
+                      return;
+                    }
+                    controller.enqueue(value);
+                    console.log(done, value);
+                    push();
+                  })
+                }
+                push();
+              }
+            });
+          }).then(stream => {
+            return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+          })
+          .then(result => {
+            console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+            
+          })
+        
         });
       }
     })

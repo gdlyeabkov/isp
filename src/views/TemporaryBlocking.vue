@@ -45,7 +45,7 @@ export default {
   name: 'SmartIntercom',
   data(){
     return {
-      
+          
     }
   },
   methods: {

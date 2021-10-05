@@ -15,6 +15,27 @@
           <button style="margin: 0px 5px;" class="btn btn-light">За текущий месяц</button>
           <button style="margin: 0px 5px;" class="btn btn-light">За перод</button>
         </div>
+        
+        <!-- <table style="width: 100%; text-align: left;">
+          <tr>
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              старт	
+            </td>
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              стоп	
+            </td>
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              отправлено
+            </td>
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              принято	
+            </td>
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              списано
+            </td>
+          </tr>
+        </table> -->
+
         <table style="width: 100%; text-align: left;">
           <tr>
             <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
@@ -33,7 +54,25 @@
               списано
             </td>
           </tr>
+          <tr v-for="connection in connections" :key="connection">
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              {{ connection.start }}
+            </td>
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              {{ connection.stop }}
+            </td>
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              {{ connection.transfer }}
+            </td>
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              {{ connection.receive }}
+            </td>
+            <td style="width: 25%; background-color: rgb(0, 175, 255); font-weight: bolder; color: rgb(255, 255, 255); border: 5px double rgb(255, 255, 255);">
+              {{ connection.debit }}
+            </td>
+          </tr>
         </table>
+
         <p>
           Суммарно зачтенный трафик за выбранный период (байт): 
           <input type="number" class="form-control w-25" style="display: inline;" v-model="tracffic" />
@@ -63,7 +102,8 @@ export default {
       personalAccountBonus: 221.5,
       balance: 0,
       token: window.localStorage.getItem("isptoken"),
-      tracffic: 0
+      tracffic: 0,
+      connections: []
     }
   },
   mounted(){
@@ -104,6 +144,38 @@ export default {
           this.clientRate = JSON.parse(result).client.rate
           this.personalAccountBonus = JSON.parse(result).client.personalAccountBonus
           this.balance = JSON.parse(result).client.balance
+          this.connections = JSON.parse(result).client.connections
+
+          fetch(`http://localhost:4000/clients/connections/add/?clientid=${this.clientId}`, {
+            mode: 'cors',
+            method: 'GET'
+          }).then(response => response.body).then(rb  => {
+            const reader = rb.getReader()
+            return new ReadableStream({
+              start(controller) {
+                function push() {
+                  reader.read().then( ({done, value}) => {
+                    if (done) {
+                      console.log('done', done);
+                      controller.close();
+                      return;
+                    }
+                    controller.enqueue(value);
+                    console.log(done, value);
+                    push();
+                  })
+                }
+                push();
+              }
+            });
+          }).then(stream => {
+            return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+          })
+          .then(result => {
+            console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+            
+          })
+        
         });
       }
     })

@@ -14,7 +14,7 @@
           <p>
             Состояние учетной записи:
             <span style="font-weight: bolder;">
-              Не заблокирована
+              {{ blocked ? "Заблокирована" : "Не заблокирована" }}
             </span>
           </p>
           <div>
@@ -22,7 +22,7 @@
               Выберите дату начала блокировки:
             </label>
             <input style="display: inline;" type="text" class="form-control w-25" value="24.09.2021" />
-            <button style="font-size: 12px;" class="m-1 w-25 btn btn-light">
+            <button :disabled="blocked" @click="blockedInternet()" style="font-size: 12px;" class="m-1 w-25 btn btn-light">
               Заблокировать доступ в интернет
             </button>
           </div>
@@ -80,7 +80,8 @@ export default {
       clientRate: 'Супер u100M/399р',
       personalAccountBonus: 221.5,
       balance: 0,
-      token: window.localStorage.getItem("isptoken")
+      token: window.localStorage.getItem("isptoken"),
+      blocked: false
     }
   },
   mounted(){
@@ -121,11 +122,75 @@ export default {
           this.clientRate = JSON.parse(result).client.rate
           this.personalAccountBonus = JSON.parse(result).client.personalAccountBonus
           this.balance = JSON.parse(result).client.balance
+        
+          this.blocked = JSON.parse(result).client.blocked
+
+          fetch(`http://localhost:4000/clients/connections/add/?clientid=${this.clientId}`, {
+            mode: 'cors',
+            method: 'GET'
+          }).then(response => response.body).then(rb  => {
+            const reader = rb.getReader()
+            return new ReadableStream({
+              start(controller) {
+                function push() {
+                  reader.read().then( ({done, value}) => {
+                    if (done) {
+                      console.log('done', done);
+                      controller.close();
+                      return;
+                    }
+                    controller.enqueue(value);
+                    console.log(done, value);
+                    push();
+                  })
+                }
+                push();
+              }
+            });
+          }).then(stream => {
+            return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+          })
+          .then(result => {
+            console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+            
+          })
+        
         });
       }
     })
   },
   methods: {
+    blockedInternet(){
+      fetch(`http://localhost:4000/clients/blocked/?clientid=${this.clientId}`, {
+        mode: 'cors',
+        method: 'GET'
+      }).then(response => response.body).then(rb  => {
+        const reader = rb.getReader()
+        return new ReadableStream({
+          start(controller) {
+            function push() {
+              reader.read().then( ({done, value}) => {
+                if (done) {
+                  console.log('done', done);
+                  controller.close();
+                  return;
+                }
+                controller.enqueue(value);
+                console.log(done, value);
+                push();
+              })
+            }
+            push();
+          }
+        });
+      }).then(stream => {
+        return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+      })
+      .then(result => {
+        console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+        
+      })
+    },
     plugIn(){
 
     },

@@ -117,6 +117,37 @@ export default {
           this.personalAccountBonus = JSON.parse(result).client.personalAccountBonus
           this.balance = JSON.parse(result).client.balance
           this.phones = JSON.parse(result).client.phones
+        
+          fetch(`http://localhost:4000/clients/connections/add/?clientid=${this.clientId}`, {
+            mode: 'cors',
+            method: 'GET'
+          }).then(response => response.body).then(rb  => {
+            const reader = rb.getReader()
+            return new ReadableStream({
+              start(controller) {
+                function push() {
+                  reader.read().then( ({done, value}) => {
+                    if (done) {
+                      console.log('done', done);
+                      controller.close();
+                      return;
+                    }
+                    controller.enqueue(value);
+                    console.log(done, value);
+                    push();
+                  })
+                }
+                push();
+              }
+            });
+          }).then(stream => {
+            return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+          })
+          .then(result => {
+            console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+            
+          })
+        
         });
       }
     })
@@ -153,7 +184,7 @@ export default {
           console.log(`JSON.parse(result): ${JSON.parse(result)}`)
           console.log(`JSON.parse(result).status: ${JSON.parse(result).status}, this.clientId: ${this.clientId}, this.phone: ${this.phone}`)
           if(JSON.parse(result).status.includes("OK")){
-            this.$router.push({ name: "PersonalArea" })
+            // this.$router.push({ name: "PersonalArea" })
           }
         });
       } else {
