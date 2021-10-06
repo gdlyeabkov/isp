@@ -1,48 +1,71 @@
 <template>
   <div class="aside">
-    <p @click="toPage('PersonalAreaNews')">Новости и уведомления</p>
-    <hr/>
-    <p @click="toPage('PersonalArea')">Лицевой счет</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaTariffPlan')">Тарифный план</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaTrafficData')">Данные по трафику</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaTurboButton')">Турбокнопка</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaPasswordForAccess')">Пароль на доступ в интернет</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaConnectionStatistics')">Данные по соединениям</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaPaymentStatistics')">Статистика платежей</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaDebitStatistics')">Статистика списаний</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaFinancialDocuments')">Финансовые документы</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaPaymentCardActivation')">Активация карты оплаты</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaPaymentByCreditCard')">Оплата банковской картой</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaPromisedPayment')">Обещанный платеж</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaPaymentForServices')">Оплата услуг</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaAccountLockout')">Блокировка учетной записи</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaSmotryoshka')">Смотрёшка</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaDrWebAntiVirus')">Антивирус Dr.Web</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaRealIPAddress')">Статический IP адрес</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaSMSNotifications')">SMS уведомления</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaSettings')">Настройки</p>
-    <hr/>
-    <p @click="toPage('PersonalAreaHelp')">Помощь по ЛК</p>
-    <hr/>
-    <p @click="logout()">Выход</p>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaNews')">Новости и уведомления</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalArea')">Лицевой счет</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaTariffPlan')">Тарифный план</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaTrafficData')">Данные по трафику</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaTurboButton')">Турбокнопка</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaPasswordForAccess')">Пароль на доступ в интернет</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaConnectionStatistics')">Данные по соединениям</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaPaymentStatistics')">Статистика платежей</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaDebitStatistics')">Статистика списаний</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaFinancialDocuments')">Финансовые документы</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaPaymentCardActivation')">Активация карты оплаты</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaPaymentByCreditCard')">Оплата банковской картой</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaPromisedPayment')">Обещанный платеж</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaPaymentForServices')">Оплата услуг</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaAccountLockout')">Блокировка учетной записи</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaSmotryoshka')">Смотрёшка</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaDrWebAntiVirus')">Антивирус Dr.Web</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaRealIPAddress')">Статический IP адрес</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaSMSNotifications')">SMS уведомления</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaSettings')">Настройки</p>
+    </div>
+    <div class="asideItem">
+      <p @click="toPage('PersonalAreaHelp')">Помощь по ЛК</p>
+    </div>
+    <div class="asideItem">
+      <p @click="logout()">Выход</p>
+    </div>
   </div>
 </template>
 
@@ -203,9 +226,16 @@ export default {
     width: 100%;
   }
 
-  .aside > p {
+  .asideItem {
     color: rgb(0, 0, 255);
     cursor: pointer;
+    height: 45px;
+    border-bottom: 1px solid rgb(145, 145, 145);
+  }
+
+  .asideItem:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 255);
   }
 
 </style>

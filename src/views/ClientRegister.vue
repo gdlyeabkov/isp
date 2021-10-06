@@ -5,6 +5,7 @@
       
     </div>
     <div class="main">
+      
       <h1>Регистрация клиента</h1>
       <input v-model="clientEmail" type="email" id="inputEmail" class="form-control" placeholder="E-mail клиента" required="" autofocus="" style="width: 215px; margin: 5px;">
       <input v-model="clientName" type="text" id="inputName" class="form-control" placeholder="Имя клиента" required="" autofocus="" style="width: 215px; margin: 5px;">
@@ -20,6 +21,15 @@
       </div>
       <button @click="register()" class="btn btn-lg btn-primary btn-block registerBtn">Зарегестрировать нового клиента</button>
       <div class="customErros">{{ errors }}</div>
+      
+      <div class="notifier">
+        <h5>Оповестить клиентов о новинке</h5>
+        <div class="notifierAligner">
+          <input v-model="mailTitle" type="text" id="inputMailTitle" class="form-control" placeholder="Тема сообщения" required="" autofocus="" style="width: 215px; margin: 5px;">
+          <input v-model="mailContent" type="text" id="inputMailContent" class="form-control" placeholder="Текст сообщения" required="" autofocus="" style="width: 215px; margin: 5px;">
+        </div>
+        <button class="w-100 btn btn-primary" @click="notifySubscribers()">Оповестить клиентов</button>
+      </div>
     </div>
     <br style="clear: both"/>
     <Footer />
@@ -44,7 +54,9 @@ export default {
       clientEmail: '',
       clientName: '',
       clientPassword: '',
-      errors: ''
+      errors: '',
+      mailTitle: '',
+      mailContent: ''
     }
   },
   components: {
@@ -52,6 +64,42 @@ export default {
     Footer
   },
   methods: {
+    notifySubscribers(){
+      fetch(`http://localhost:4000/subscribers/notify/?title=${this.mailTitle}&content=${this.mailContent}`, {
+        mode: 'cors',
+        method: 'GET'
+      }).then(response => response.body).then(rb  => {
+        const reader = rb.getReader()
+        return new ReadableStream({
+          start(controller) {
+            function push() {
+              reader.read().then( ({done, value}) => {
+                if (done) {
+                  console.log('done', done);
+                  controller.close();
+                  return;
+                }
+                controller.enqueue(value);
+                console.log(done, value);
+                push();
+              })
+            }
+            push();
+          }
+        });
+      }).then(stream => {
+        return new Response(stream, { headers: { "Content-Type": "text/html" } }).text();
+      })
+      .then(result => {
+        console.log(`JSON.parse(result): ${JSON.parse(result)}`)
+        if(JSON.parse(result).status.includes("OK")){
+          alert('Сообщение отправлено')
+        } else if(JSON.parse(result).status.includes("Error")){
+          alert('Сообщение не отправлено')
+        }
+      })
+      console.log(`mailContent: ${this.mailContent}, mailTitle: ${this.mailTitle}`)
+    },
     register(){
       fetch(`http://localhost:4000/clients/create/?clientname=${this.clientName}&clientemail=${this.clientEmail}&clientpassword=${this.clientPassword}&clientaddress=${ip.address()}`, {
         mode: 'cors',
@@ -224,6 +272,16 @@ export default {
 
   .personalArea {
     cursor: pointer;
+  }
+
+  .notifier {
+    margin-top: 75px;
+  }
+
+  .notifierAligner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
 </style>

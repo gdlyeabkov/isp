@@ -4,6 +4,15 @@ const app = express()
 const serveStatic = require('serve-static')
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
+const nodemailer = require("nodemailer")
+
+var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'gdlyeabkov@gmail.com',
+        pass: 'myreversepassword'
+    }
+})
 
 app.use('/', serveStatic(path.join(__dirname, '/dist')))
 
@@ -818,7 +827,37 @@ app.get("/client/phone", async (req, res) => {
     })
 })
 
+app.get('/subscribers/notify', (req, res) => {
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+
+    let query = ClientModel.find({ })
+    query.exec((err, clients) => {
+        if(err){
+            return res.json({ "status": "Error" })
+        }
+        clients.map((client) => {
+            if(client.email.length >= 1 && client.receiveSubscribeForActions){
+                let mailOptions = {
+                    from: `"${'gdlyeabkov'}" <${"gdlyeabkov"}>`,
+                    to: `${client.email}`,
+                    subject: `ISP оповещение! ${req.query.title}`,
+                    html: `<h3>Вы подписаны на оповещения ISP. Посетите наш сайт, чтобы посмотреть новинки.</h3><br/><p>${req.query.content}.</p>`,
+                }
+                transporter.sendMail(mailOptions, function (err, info) {
+                })
+            }
+        })
+        return res.json({ "status": "OK" })
+    })
+
+})
+
 app.get("**", (req, res) => {
+    
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
