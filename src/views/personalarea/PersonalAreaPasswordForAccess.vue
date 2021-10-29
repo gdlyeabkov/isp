@@ -13,7 +13,7 @@
         <p>
           Для смены пароля необходимо указать действующий пароль:
         </p>
-        <input style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="старый пароль" />
+        <input v-model="oldPassword" style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="старый пароль" />
         <input v-model="newPassword" style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="новый пароль" />
         <input v-model="newPasswordCheck" style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="новый пароль (повтор)" />
         <button class="btn btn-light" @click="replacePassword()">
@@ -63,6 +63,7 @@ export default {
       balance: 0,
       token: window.localStorage.getItem("isptoken"),
       newPassword: '',
+      oldPassword: '',
       newPasswordCheck: '',
     }
   },
@@ -142,7 +143,7 @@ export default {
   methods: {
     replacePassword(){
       if((this.newPassword.includes(this.newPasswordCheck)) && (this.newPassword.length === this.newPasswordCheck.length)){
-        fetch(`http://localhost:4000/clients/password/replace/?clientid=${this.clientId}&newpassword=${this.newPassword}`, {
+        fetch(`http://localhost:4000/clients/password/replace/?clientid=${this.clientId}&newpassword=${this.newPassword}&oldpassword=${this.oldPassword}`, {
           mode: 'cors',
           method: 'GET'
         }).then(response => response.body).then(rb  => {

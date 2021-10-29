@@ -310,15 +310,21 @@ app.get('/clients/password/replace', (req, res) => {
     res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, X-Access-Token, X-Socket-ID, Content-Type");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
     
-    let encodedPassword = "#"
-    let saltRounds = 10
-    let salt = bcrypt.genSalt(saltRounds)
-    encodedPassword = bcrypt.hashSync(req.query.newpassword, saltRounds)
-    ClientModel.updateOne({ clientId: req.query.clientid }, { password: encodedPassword }, (err, client) => {
-        if(err){
-            return res.json({ status: 'Error' })        
+    let query =  ClientModel.findOne({ 'clientId': req.query.clientid }, function(err, client){
+        if (err || !bcrypt.compareSync(req.query.oldpassword, client.password)){
+            return res.json({ "status": "Error" })
+        } else {
+            let encodedPassword = "#"
+            let saltRounds = 10
+            let salt = bcrypt.genSalt(saltRounds)
+            encodedPassword = bcrypt.hashSync(req.query.newpassword, saltRounds)
+            ClientModel.updateOne({ clientId: req.query.clientid }, { password: encodedPassword }, (err, client) => {
+                if(err){
+                    return res.json({ status: 'Error' })        
+                }
+                return res.json({ status: 'OK' })    
+            })
         }
-        return res.json({ status: 'OK' })    
     })
 })
 

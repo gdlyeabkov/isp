@@ -39,7 +39,7 @@
         <p style="font-weight: bolder;">
           Смена пароля на доступ в «Личный Кабинет»
         </p>
-        <input style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="старый пароль" />
+        <input v-model="oldPassword" style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="старый пароль" />
         <input v-model="newPassword" style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="новый пароль" />
         <input v-model="newPasswordCheck" style="margin: 10px 0px;" class="w-25 form-control" type="password" placeholder="новый пароль (повтор)" />
         <button @click="replacePassword()" class="btn btn-light">
@@ -85,6 +85,7 @@ export default {
       personalAccountBonus: 221.5,
       balance: 0,
       token: window.localStorage.getItem("isptoken"),
+      oldPassword: '',
       newPassword: '',
       newPasswordCheck: '',
       email: '',
@@ -245,7 +246,7 @@ export default {
     },
     replacePassword(){
       if((this.newPassword.includes(this.newPasswordCheck)) && (this.newPassword.length === this.newPasswordCheck.length)){
-        fetch(`http://localhost:4000/clients/password/replace/?clientid=${this.clientId}&newpassword=${this.newPassword}`, {
+        fetch(`http://localhost:4000/clients/password/replace/?clientid=${this.clientId}&newpassword=${this.newPassword}&oldpassword=${this.oldPassword}`, {
           mode: 'cors',
           method: 'GET'
         }).then(response => response.body).then(rb  => {
